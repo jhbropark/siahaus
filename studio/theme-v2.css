@@ -138,7 +138,7 @@ nav.main a:hover{color:#000}
   padding-top:30px}
 #contact .c-block dt{color:rgba(255,255,255,.4)}
 #contact .c-block dd{color:rgba(255,255,255,.66)}
-#contact .c-mail{font-size:clamp(30px,4.8vw,72px);color:#fff;font-weight:300;letter-spacing:-.05em}
+#contact .c-mail{font-size:clamp(14px,1.25vw,18px);color:#fff;font-weight:300;letter-spacing:-.02em}
 #contact .link-row{border-color:var(--v2-line-dark)}
 #contact .link-row b{color:#fff}
 #contact .link-row span{color:rgba(255,255,255,.45)}
