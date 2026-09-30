@@ -148,7 +148,7 @@ nav.main a:hover{color:#000}
 footer.site{background:#111;padding:34px 0}
 
 /* P3 — project detail: media first, no dead whitespace */
-.proj-hero{padding:clamp(120px,12vw,176px) 0 clamp(46px,6vw,84px)!important}
+.proj-hero{padding:clamp(92px,8vw,124px) 0 clamp(28px,4vw,48px)!important}
 .proj-hero .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(320px,1.2fr);
   gap:clamp(48px,8vw,120px);align-items:end}
 .proj-hero .eyebrow{grid-column:1/-1}
@@ -157,8 +157,11 @@ footer.site{background:#111;padding:34px 0}
 .proj-name,.proj-ctx,.proj-year{grid-column:1}
 .proj-desc{grid-column:2;grid-row:2/7;margin:0!important;align-self:end;max-width:48ch!important;
   font-size:clamp(15px,1.45vw,19px)!important;line-height:1.75!important;word-break:keep-all}
-.back-link{grid-column:2;margin-top:24px!important}
-.proj-media-wrap{max-width:1720px;margin:0 auto;padding:0 var(--v2-pad)}
+.project-actions{grid-column:2;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:24px}
+.back-link{margin-top:0!important}
+.project-contact-cta{display:inline-block;padding:10px 14px;background:#050505;color:#fff;font-size:12px;letter-spacing:.02em}
+.project-contact-cta:hover{background:#333}
+.proj-media-wrap{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1}
 .proj-media-stage{position:relative;width:100%;background:#ececea;overflow:hidden;aspect-ratio:16/9}
 .proj-media-stage img,.proj-media-stage video{width:100%;height:100%;object-fit:cover;display:block}
 .proj-media-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -187,6 +190,8 @@ footer.site{background:#111;padding:34px 0}
 }
 
 @media(max-width:900px){
+  .project-actions{grid-column:1;margin-top:28px}
+  .proj-media-wrap{margin-top:0}
   .hero-meta{display:none}
   .sec-head{grid-template-columns:1fr}
   .sec-head .eyebrow,.sec-head h2,.sec-head .lead{grid-column:1;justify-self:start}
