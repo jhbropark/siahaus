@@ -169,8 +169,12 @@ h2{font-size:clamp(22px,3vw,38px);font-weight:400;letter-spacing:-0.03em;
 /* work — media.work: 3-column masonry grid with hover overlay cards */
 .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .work-card{position:relative;overflow:hidden;background:var(--surface)}
-.work-card-media{width:100%;display:block;aspect-ratio:auto}
-/* placeholder when no video asset */
+.work-card-media{position:relative;width:100%;display:block;aspect-ratio:4/5;overflow:hidden}
+.work-card-media img,.work-card-media video{width:100%;height:100%;display:block;object-fit:cover}
+.work-card-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+.work-card:nth-child(3n+2) .work-card-media{aspect-ratio:16/9}
+.work-card:nth-child(3n+3) .work-card-media{aspect-ratio:1/1}
+/* placeholder when no verified media asset */
 .work-card-placeholder{width:100%;aspect-ratio:4/5;background:
   linear-gradient(135deg,#e8e8e8 0%,#d0d0d0 50%,#e8e8e8 100%)}
 .work-card:nth-child(3n+2) .work-card-placeholder{aspect-ratio:16/9}
@@ -225,9 +229,10 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
   color:rgba(255,255,255,0.4)}
 @media(max-width:960px){.foot-grid{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:520px){.foot-grid{grid-template-columns:repeat(2,1fr)}}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-.proj-hero{padding:clamp(120px,12vw,176px) 0 clamp(46px,6vw,84px)!important}
+.proj-hero{padding:clamp(92px,8vw,124px) 0 clamp(28px,4vw,48px)!important}
 .proj-hero .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(320px,1.2fr);
   gap:clamp(48px,8vw,120px);align-items:end}
 .proj-hero .eyebrow{grid-column:1/-1}
@@ -236,8 +241,11 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 .proj-name,.proj-ctx,.proj-year{grid-column:1}
 .proj-desc{grid-column:2;grid-row:2/7;margin:0!important;align-self:end;max-width:48ch!important;
   font-size:clamp(15px,1.45vw,19px)!important;line-height:1.75!important;word-break:keep-all}
-.back-link{grid-column:2;margin-top:24px!important}
-.proj-media-wrap{max-width:1720px;margin:0 auto;padding:0 var(--v2-pad)}
+.project-actions{grid-column:2;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:24px}
+.back-link{margin-top:0!important}
+.project-contact-cta{display:inline-block;padding:10px 14px;background:#050505;color:#fff;font-size:12px;letter-spacing:.02em}
+.project-contact-cta:hover{background:#333}
+.proj-media-wrap{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1}
 .proj-media-stage{position:relative;width:100%;background:#ececea;overflow:hidden;aspect-ratio:16/9}
 .proj-media-stage img,.proj-media-stage video{width:100%;height:100%;object-fit:cover;display:block}
 .proj-media-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -249,8 +257,9 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
   .proj-hero .wrap{grid-template-columns:1fr}
   .proj-client,.proj-name,.proj-ctx,.proj-year,.proj-desc,.back-link{grid-column:1;grid-row:auto}
   .proj-desc{margin-top:28px!important}
-}
-</style>
+  .project-actions{grid-column:1;margin-top:28px}
+  .proj-media-wrap{margin-top:0}
+}</style>
 <link rel="stylesheet" href="/theme-v2.css" />
 </head>
 <body>
@@ -273,12 +282,15 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
       
       
       <p class="proj-desc">휠라홀딩스 1층에는 브랜드의 헤리티지가 가득 담긴 &#x27;헤리티지 라운지&#x27;가 있습니다. 이 공간은 100년이 넘는 휠라의 역사가 한눈에 보이는 곳 입니다. 브랜드의 헤리티지를 강조하기 위해 단순한 역사 전시가 아니라 현대적인 기술에 아날로그적인 감성을 더했습니다. 플립 아트 보드를 활용하여 아날로그 적인 감성을 더했습니다. 역사 깊은 휠라가 진취적이고 적극적인 기업임을 연출한 공간 입니다.</p>
-      <a class="back-link" href="/#work">← 실적</a>
+      <div class="project-actions">
+        <a class="back-link" href="/#work">← 실적</a>
+        <a class="project-contact-cta" href="mailto:sia@sia.haus?subject=FILA Holdings 프로젝트 문의">프로젝트 문의 ↗</a>
+      </div>
     </div>
   </section>
 
   <div class="proj-media-wrap">
-    <div class="proj-media-stage"><img src="/assets/projects/page_020.png" alt="FILA Holdings — Heritage Lounge 대표 이미지" /></div>
+    <div class="proj-media-stage"><img src="/assets/projects/page_020.png" alt="FILA Holdings — Heritage Lounge 대표 이미지" loading="eager" /></div>
   </div>
 
   <div class="wrap">
