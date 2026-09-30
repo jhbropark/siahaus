@@ -7,18 +7,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <title>삼성 — LUX Soundroom | SIA.HAUS</title>
-<meta name="description" content="공간의 특성을 반영한 전략적 사운드 설계를 통해 마케팅 효과를 극대화했습니다." />
+<meta name="description" content="공간의 특성을 반영한 전략적 사운드 설계를 통해 마케팅 효과를 극대화했습니다. · Moscone West Convention Center, San Francisco" />
 <link rel="canonical" href="https://www.sia.haus/projects/samsung-lux" />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="SIA.HAUS" />
 <meta property="og:url" content="https://www.sia.haus/projects/samsung-lux" />
 <meta property="og:title" content="삼성 — LUX Soundroom | SIA.HAUS" />
-<meta property="og:description" content="공간의 특성을 반영한 전략적 사운드 설계를 통해 마케팅 효과를 극대화했습니다." />
+<meta property="og:description" content="공간의 특성을 반영한 전략적 사운드 설계를 통해 마케팅 효과를 극대화했습니다. · Moscone West Convention Center, San Francisco" />
 <meta property="og:locale" content="ko" />
-<meta property="og:image" content="https://www.sia.haus/assets/projects/samsung-notion.png" />
+<meta property="og:image" content="https://www.sia.haus/og-default.svg" />
 <meta property="og:image:alt" content="삼성 — LUX Soundroom | SIA.HAUS" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://www.sia.haus/assets/projects/samsung-notion.png" />
+<meta name="twitter:image" content="https://www.sia.haus/og-default.svg" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -29,7 +29,6 @@
       "url": "https://www.sia.haus/projects/samsung-lux",
       "name": "삼성 — LUX Soundroom",
       "headline": "LUX Soundroom",
-      "image": "https://www.sia.haus/assets/projects/samsung-notion.png",
       "inLanguage": "ko",
       "creator": {
         "@id": "https://www.sia.haus/#organization"
@@ -37,7 +36,9 @@
       "isPartOf": {
         "@id": "https://www.sia.haus/#website"
       },
-      "description": "공간의 특성을 반영한 전략적 사운드 설계를 통해 마케팅 효과를 극대화했습니다. 스테레오 사운드 원칙에 기반한 그룹별 기기 배치를 통해 소리의 왜곡을 최소화하였으며, 특히 'Galaxy Home' 멀티 스테레오 피쳐 리스닝이 가능하도록 구현하여 상업적 활용도를 높였습니다. 고난도 사운드 마스터링 과정에서 확보한 안정성을 바탕으로 대규모 글로벌 컨벤션 환경에서도 완벽한 퍼포먼스를 증명했습니다."
+      "description": "공간의 특성을 반영한 전략적 사운드 설계를 통해 마케팅 효과를 극대화했습니다. 스테레오 사운드 원칙에 기반한 그룹별 기기 배치를 통해 소리의 왜곡을 최소화하였으며, 특히 'Galaxy Home' 멀티 스테레오 피쳐 리스닝이 가능하도록 구현하여 상업적 활용도를 높였습니다. 고난도 사운드 마스터링 과정에서 확보한 안정성을 바탕으로 대규모 글로벌 컨벤션 환경에서도 완벽한 퍼포먼스를 증명했습니다.",
+      "dateCreated": "2018",
+      "about": "Moscone West Convention Center, San Francisco"
     },
     {
       "@type": "BreadcrumbList",
@@ -170,8 +171,12 @@ h2{font-size:clamp(22px,3vw,38px);font-weight:400;letter-spacing:-0.03em;
 /* work — media.work: 3-column masonry grid with hover overlay cards */
 .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .work-card{position:relative;overflow:hidden;background:var(--surface)}
-.work-card-media{width:100%;display:block;aspect-ratio:auto}
-/* placeholder when no video asset */
+.work-card-media{position:relative;width:100%;display:block;aspect-ratio:4/5;overflow:hidden}
+.work-card-media img,.work-card-media video{width:100%;height:100%;display:block;object-fit:cover}
+.work-card-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+.work-card:nth-child(3n+2) .work-card-media{aspect-ratio:16/9}
+.work-card:nth-child(3n+3) .work-card-media{aspect-ratio:1/1}
+/* placeholder when no verified media asset */
 .work-card-placeholder{width:100%;aspect-ratio:4/5;background:
   linear-gradient(135deg,#e8e8e8 0%,#d0d0d0 50%,#e8e8e8 100%)}
 .work-card:nth-child(3n+2) .work-card-placeholder{aspect-ratio:16/9}
@@ -229,7 +234,7 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-.proj-hero{padding:clamp(120px,12vw,176px) 0 clamp(46px,6vw,84px)!important}
+.proj-hero{padding:clamp(92px,8vw,124px) 0 clamp(28px,4vw,48px)!important}
 .proj-hero .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(320px,1.2fr);
   gap:clamp(48px,8vw,120px);align-items:end}
 .proj-hero .eyebrow{grid-column:1/-1}
@@ -238,8 +243,11 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 .proj-name,.proj-ctx,.proj-year{grid-column:1}
 .proj-desc{grid-column:2;grid-row:2/7;margin:0!important;align-self:end;max-width:48ch!important;
   font-size:clamp(15px,1.45vw,19px)!important;line-height:1.75!important;word-break:keep-all}
-.back-link{grid-column:2;margin-top:24px!important}
-.proj-media-wrap{max-width:1720px;margin:0 auto;padding:0 var(--v2-pad)}
+.project-actions{grid-column:2;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:24px}
+.back-link{margin-top:0!important}
+.project-contact-cta{display:inline-block;padding:10px 14px;background:#050505;color:#fff;font-size:12px;letter-spacing:.02em}
+.project-contact-cta:hover{background:#333}
+.proj-media-wrap{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1}
 .proj-media-stage{position:relative;width:100%;background:#ececea;overflow:hidden;aspect-ratio:16/9}
 .proj-media-stage img,.proj-media-stage video{width:100%;height:100%;object-fit:cover;display:block}
 .proj-media-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -251,8 +259,9 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
   .proj-hero .wrap{grid-template-columns:1fr}
   .proj-client,.proj-name,.proj-ctx,.proj-year,.proj-desc,.back-link{grid-column:1;grid-row:auto}
   .proj-desc{margin-top:28px!important}
-}
-</style>
+  .project-actions{grid-column:1;margin-top:28px}
+  .proj-media-wrap{margin-top:0}
+}</style>
 <link rel="stylesheet" href="/theme-v2.css" />
 </head>
 <body>
@@ -272,15 +281,18 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
       <p class="eyebrow">PROJECT</p>
       <h1 class="proj-client">삼성</h1>
       <p class="proj-name">LUX Soundroom</p>
+      <span class="proj-ctx">Moscone West Convention Center, San Francisco</span>
       <span class="proj-year">2018</span>
-      
       <p class="proj-desc">공간의 특성을 반영한 전략적 사운드 설계를 통해 마케팅 효과를 극대화했습니다. 스테레오 사운드 원칙에 기반한 그룹별 기기 배치를 통해 소리의 왜곡을 최소화하였으며, 특히 &#x27;Galaxy Home&#x27; 멀티 스테레오 피쳐 리스닝이 가능하도록 구현하여 상업적 활용도를 높였습니다. 고난도 사운드 마스터링 과정에서 확보한 안정성을 바탕으로 대규모 글로벌 컨벤션 환경에서도 완벽한 퍼포먼스를 증명했습니다.</p>
-      <a class="back-link" href="/#work">← 실적</a>
+      <div class="project-actions">
+        <a class="back-link" href="/#work">← 실적</a>
+        <a class="project-contact-cta" href="mailto:sia@sia.haus?subject=삼성 프로젝트 문의">프로젝트 문의 ↗</a>
+      </div>
     </div>
   </section>
 
   <div class="proj-media-wrap">
-    <div class="proj-media-stage"><img src="/assets/projects/samsung-notion.png" alt="삼성 LUX Soundroom 대표 이미지" loading="eager" /><iframe src="https://www.youtube.com/embed/8BQEu7_OHVg?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=8BQEu7_OHVg&amp;controls=0&amp;rel=0" title="삼성 LUX Soundroom 영상" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+    <div class="proj-media-stage"><img src="/assets/projects/samsung-notion.png" alt="삼성 — LUX Soundroom 대표 이미지" loading="eager" /><iframe src="https://www.youtube.com/embed/8BQEu7_OHVg?autoplay=1&amp;mute=1&amp;loop=1&amp;playlist=8BQEu7_OHVg&amp;controls=0&amp;rel=0" title="삼성 — LUX Soundroom 영상" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
   </div>
 
   <div class="wrap">
