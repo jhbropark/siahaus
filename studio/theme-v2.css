@@ -132,7 +132,7 @@ nav.main a:hover{color:#000}
 #contact{background:var(--v2-black);color:#fff;padding:clamp(96px,12vw,184px) 0}
 #contact .eyebrow{color:rgba(255,255,255,.46)}
 #contact .sec-head{margin-bottom:50px}
-#contact .sec-head h2{color:#fff;max-width:11ch;font-size:clamp(48px,7vw,104px)}
+#contact .sec-head h2{color:#fff;max-width:min(100%,520px);font-size:clamp(26px,3.5vw,52px);line-height:1.15;word-break:keep-all}
 #contact .sec-head .lead{color:rgba(255,255,255,.58);font-size:15px}
 #contact .contact-grid{display:grid;grid-template-columns:1.5fr .75fr .75fr;gap:40px;border-top:1px solid var(--v2-line-dark);
   padding-top:30px}
