@@ -369,7 +369,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         # This prevents iframe/video loading failures and text-bearing fallbacks.
         if image_url:
             media = (f'<div class="work-card-media">'
-                     f'<img src="{esc(image_url)}" alt="" aria-hidden="true" loading="lazy" />'
+                     f'<img src="{esc(image_url)}" alt="{esc(label)} 대표 이미지" loading="lazy" />'
                      f'</div>')
         else:
             media = ''
@@ -674,6 +674,9 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     year_html = f'<span class="proj-year">{esc(w["year"])}</span>' if w["year"] else ""
     ctx_html = f'<span class="proj-ctx">{esc(w["context"])}</span>' if w["context"] else ""
     desc_html = f'<p class="proj-desc">{esc(w["description"])}</p>' if w.get("description") else ""
+    contact_subject = f'{w["client"]} 프로젝트 문의'
+    contact_cta = (f'<a class="project-contact-cta" href="mailto:{esc(s["email"])}?subject={esc(contact_subject)}">'
+                   f'{esc(t["cta_contact"])} ↗</a>')
 
     video_url = (w.get("video_url") or "").strip()
     video_urls = [str(x).strip() for x in (w.get("video_urls") or []) if str(x).strip()]
@@ -740,7 +743,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 {build_project_jsonld(d, w)}
 </script>
 <style>{CSS}
-.proj-hero{{padding:clamp(120px,12vw,176px) 0 clamp(46px,6vw,84px)!important}}
+.proj-hero{{padding:clamp(92px,8vw,124px) 0 clamp(28px,4vw,48px)!important}}
 .proj-hero .wrap{{display:grid;grid-template-columns:minmax(0,.8fr) minmax(320px,1.2fr);
   gap:clamp(48px,8vw,120px);align-items:end}}
 .proj-hero .eyebrow{{grid-column:1/-1}}
@@ -749,8 +752,11 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 .proj-name,.proj-ctx,.proj-year{{grid-column:1}}
 .proj-desc{{grid-column:2;grid-row:2/7;margin:0!important;align-self:end;max-width:48ch!important;
   font-size:clamp(15px,1.45vw,19px)!important;line-height:1.75!important;word-break:keep-all}}
-.back-link{{grid-column:2;margin-top:24px!important}}
-.proj-media-wrap{{max-width:1720px;margin:0 auto;padding:0 var(--v2-pad)}}
+.project-actions{{grid-column:2;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:24px}}
+.back-link{{margin-top:0!important}}
+.project-contact-cta{{display:inline-block;padding:10px 14px;background:#050505;color:#fff;font-size:12px;letter-spacing:.02em}}
+.project-contact-cta:hover{{background:#333}}
+.proj-media-wrap{{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1}}
 .proj-media-stage{{position:relative;width:100%;background:#ececea;overflow:hidden;aspect-ratio:16/9}}
 .proj-media-stage img,.proj-media-stage video{{width:100%;height:100%;object-fit:cover;display:block}}
 .proj-media-stage iframe{{position:absolute;inset:0;width:100%;height:100%;border:0}}
@@ -762,6 +768,8 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
   .proj-hero .wrap{{grid-template-columns:1fr}}
   .proj-client,.proj-name,.proj-ctx,.proj-year,.proj-desc,.back-link{{grid-column:1;grid-row:auto}}
   .proj-desc{{margin-top:28px!important}}
+  .project-actions{{grid-column:1;margin-top:28px}}
+  .proj-media-wrap{{margin-top:0}}
 }}</style>
 <link rel="stylesheet" href="/theme-v2.css" />
 </head>
@@ -785,7 +793,10 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
       {ctx_html}
       {year_html}
       {desc_html}
-      <a class="back-link" href="/#work">\u2190 {esc(t["nav_work"])}</a>
+      <div class="project-actions">
+        <a class="back-link" href="/#work">\u2190 {esc(t["nav_work"])}</a>
+        {contact_cta}
+      </div>
     </div>
   </section>
 
