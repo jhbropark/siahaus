@@ -171,8 +171,12 @@ h2{font-size:clamp(22px,3vw,38px);font-weight:400;letter-spacing:-0.03em;
 /* work — media.work: 3-column masonry grid with hover overlay cards */
 .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .work-card{position:relative;overflow:hidden;background:var(--surface)}
-.work-card-media{width:100%;display:block;aspect-ratio:auto}
-/* placeholder when no video asset */
+.work-card-media{position:relative;width:100%;display:block;aspect-ratio:4/5;overflow:hidden}
+.work-card-media img,.work-card-media video{width:100%;height:100%;display:block;object-fit:cover}
+.work-card-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+.work-card:nth-child(3n+2) .work-card-media{aspect-ratio:16/9}
+.work-card:nth-child(3n+3) .work-card-media{aspect-ratio:1/1}
+/* placeholder when no verified media asset */
 .work-card-placeholder{width:100%;aspect-ratio:4/5;background:
   linear-gradient(135deg,#e8e8e8 0%,#d0d0d0 50%,#e8e8e8 100%)}
 .work-card:nth-child(3n+2) .work-card-placeholder{aspect-ratio:16/9}
@@ -230,7 +234,7 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-.proj-hero{padding:clamp(120px,12vw,176px) 0 clamp(46px,6vw,84px)!important}
+.proj-hero{padding:clamp(92px,8vw,124px) 0 clamp(28px,4vw,48px)!important}
 .proj-hero .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(320px,1.2fr);
   gap:clamp(48px,8vw,120px);align-items:end}
 .proj-hero .eyebrow{grid-column:1/-1}
@@ -239,8 +243,11 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 .proj-name,.proj-ctx,.proj-year{grid-column:1}
 .proj-desc{grid-column:2;grid-row:2/7;margin:0!important;align-self:end;max-width:48ch!important;
   font-size:clamp(15px,1.45vw,19px)!important;line-height:1.75!important;word-break:keep-all}
-.back-link{grid-column:2;margin-top:24px!important}
-.proj-media-wrap{max-width:1720px;margin:0 auto;padding:0 var(--v2-pad)}
+.project-actions{grid-column:2;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:24px}
+.back-link{margin-top:0!important}
+.project-contact-cta{display:inline-block;padding:10px 14px;background:#050505;color:#fff;font-size:12px;letter-spacing:.02em}
+.project-contact-cta:hover{background:#333}
+.proj-media-wrap{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1}
 .proj-media-stage{position:relative;width:100%;background:#ececea;overflow:hidden;aspect-ratio:16/9}
 .proj-media-stage img,.proj-media-stage video{width:100%;height:100%;object-fit:cover;display:block}
 .proj-media-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -252,8 +259,9 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
   .proj-hero .wrap{grid-template-columns:1fr}
   .proj-client,.proj-name,.proj-ctx,.proj-year,.proj-desc,.back-link{grid-column:1;grid-row:auto}
   .proj-desc{margin-top:28px!important}
-}
-</style>
+  .project-actions{grid-column:1;margin-top:28px}
+  .proj-media-wrap{margin-top:0}
+}</style>
 <link rel="stylesheet" href="/theme-v2.css" />
 </head>
 <body>
@@ -276,7 +284,10 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
       <span class="proj-ctx">Milan Design Week</span>
       <span class="proj-year">2026</span>
       <p class="proj-desc">2026 밀라노 디자인 위크에서 공개된 기아의 EV 비전 전시 프로젝트. 브랜드 철학인 &#x27;오퍼짓 유나이티드(Opposites United)&#x27;를 기반으로 미래 모빌리티에 대한 비전을 공간 경험으로 구현하였다. 빛, 소재, 건축적 구조를 활용한 몰입형 전시를 통해 Vision Meta Turismo를 비롯한 차세대 EV 콘셉트를 선보이며, 기아가 추구하는 혁신과 지속가능한 미래 가치를 전달하였습니다.</p>
-      <a class="back-link" href="/#work">← 실적</a>
+      <div class="project-actions">
+        <a class="back-link" href="/#work">← 실적</a>
+        <a class="project-contact-cta" href="mailto:sia@sia.haus?subject=KIA 프로젝트 문의">프로젝트 문의 ↗</a>
+      </div>
     </div>
   </section>
 
