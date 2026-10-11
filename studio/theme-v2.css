@@ -105,9 +105,8 @@ nav.main a:hover{color:#000}
 /* P2 — reduce explanation; retain proof */
 #structure{background:var(--v2-paper);padding:clamp(68px,8vw,112px) 0}
 #structure .sec-head{margin-bottom:34px}
-@media(min-width:901px){#structure .sec-head{grid-template-columns:1fr}#structure .sec-head h2{white-space:nowrap}}
 #structure .lead{display:none}
-#structure .steps{background:transparent;border-top:1px solid var(--v2-line);gap:0}
+#structure .steps{background:transparent;border-top:1px solid var(--v2-line);column-gap:24px;row-gap:0}
 #structure .step{background:transparent;padding:24px 0;border-bottom:1px solid var(--v2-line);
   display:grid;grid-template-columns:70px minmax(0,1fr) auto;align-items:baseline}
 #structure .step-n{grid-column:1;margin:0}
