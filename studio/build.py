@@ -573,7 +573,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
       </div>
       <div>
         <dt>Information</dt>
-        <dd><a href="/llms.txt">llms.txt</a></dd>
+        <dd><a href="https://docs.google.com/presentation/d/171DjianF251m7syNLfqL5QrkOTJxo29TOQLVexNRJJ8/edit?usp=sharing" target="_blank" rel="noopener">breif</a></dd>
       </div>
       <div>
         <dt>Studio</dt>
