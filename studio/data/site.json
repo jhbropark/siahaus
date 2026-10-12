@@ -114,14 +114,281 @@
         "year": "2026",
         "slug": "behance-01",
         "display_title": "2026 Kim Tschang-Yeul Atelier",
-        "description": "",
+        "description": "본 작업은 완성된 결과물로서의 물방울에 머무르지 않고, 시간의 흐름을 거슬러 변화하는 물방울의 밀도와 움직임을 통해 1980년대 김창열 화백이 가장 치열하게 몰두했던 창작의 순간을 감각적으로 복원합니다.",
         "url": "/projects/behance-01",
         "image_url": "/assets/projects/behance-01/cover.jpg",
         "category": "BEHANCE",
         "gallery_images": [
-          "/assets/projects/behance-01/cover.jpg"
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/daf56d248940463.69fddd36de46c.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/e6105f248940463.69fddd36ddfb3.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/a73c84248940463.69fd5486b9270.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/0db992248940463.69fd5486b9a59.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/67e07a248940463.69fca4b860034.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/b64a44248940463.69fca6c1be6e6.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/975c9e248940463.69fca6c1bef80.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/9821de248940463.69fca6c1bff3e.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/9e37db248940463.69fca6c1bf7cc.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/0dccb2248940463.69fca6c2deceb.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/fd371d248940463.69fd4c3cbb5d8.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/27af8c248940463.69fca6c46c1dc.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/beedc6248940463.69fd4c3d27415.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/c40c8d248940463.69fd4c3d28369.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/675758248940463.69fd4c3d27b83.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/8bc1ea248940463.69fd4c3db940b.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/52d451248940463.69fd4c3fa1deb.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/d6fea1248940463.69fd4c3fa2470.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/ac1e7b248940463.69fd4c3fa2c01.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/f4be1a248940463.69fd4c409a12c.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/662163248940463.69fd4c424a235.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/c67865248940463.69fd4c424a704.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/3a6c21248940463.69fd4c43002c9.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/74c5f1248940463.69fd4c42f3fc3.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/efede7248940463.69fd54831b891.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/dc3a28248940463.69fd548495d8d.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/53d6ce248940463.69fd548495585.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/bd8658248940463.69fd548538f97.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/3977d1248940463.69fd54853886f.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/3bdcb5248940463.69fd5486b9688.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/48fccc248940463.69fdd7cf3e52d.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/279493248940463.69fdd7cf3e078.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/2fbce6248940463.69fdd7cf3e9d0.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/390be0248940463.6a05583b15b9b.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/de7baa248940463.6a05583b1630c.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/4f493b248940463.69fddd36ddb75.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/4af9d1248940463.69fd5485c0696.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/683358248940463.69fd5485bf92d.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/6fb283248940463.69fd5485c0e35.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/fde090248940463.6a014cf8b8aeb.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/318472248940463.69fd548653356.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/951d3d248940463.6a014cfbd4514.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ebd6e5248940463.6a014cf94b989.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/d84366248940463.69fddd364b580.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/dbaca6248940463.69fddd364bcab.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/b5b510248940463.6a014cfa8bfff.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/893069248940463.6a014cfa8b96a.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/5396c1248940463.6a014cfa8b2c0.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/55d84e248940463.6a014cfb1dad5.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/556f9d248940463.6a014cfb1d68a.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/ef672b248940463.69fd6e995cf73.png"
         ],
-        "source": "https://www.behance.net/gallery/248940463/2026-Kim-Tschang-Yeul-Atelier"
+        "source": "",
+        "video_urls": [
+          "https://player.vimeo.com/video/1190121726?autoplay=1&muted=1&loop=1&background=1"
+        ],
+        "media_blocks": [
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/daf56d248940463.69fddd36de46c.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/e6105f248940463.69fddd36ddfb3.png"
+          },
+          {
+            "kind": "video",
+            "src": "https://player.vimeo.com/video/1190121726?autoplay=1&muted=1&loop=1&background=1"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/a73c84248940463.69fd5486b9270.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/0db992248940463.69fd5486b9a59.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/67e07a248940463.69fca4b860034.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/b64a44248940463.69fca6c1be6e6.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/975c9e248940463.69fca6c1bef80.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/9821de248940463.69fca6c1bff3e.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/9e37db248940463.69fca6c1bf7cc.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/0dccb2248940463.69fca6c2deceb.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/fd371d248940463.69fd4c3cbb5d8.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/27af8c248940463.69fca6c46c1dc.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/beedc6248940463.69fd4c3d27415.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/c40c8d248940463.69fd4c3d28369.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/675758248940463.69fd4c3d27b83.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/8bc1ea248940463.69fd4c3db940b.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/52d451248940463.69fd4c3fa1deb.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/d6fea1248940463.69fd4c3fa2470.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/ac1e7b248940463.69fd4c3fa2c01.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/f4be1a248940463.69fd4c409a12c.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/662163248940463.69fd4c424a235.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/c67865248940463.69fd4c424a704.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/3a6c21248940463.69fd4c43002c9.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/74c5f1248940463.69fd4c42f3fc3.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/efede7248940463.69fd54831b891.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/dc3a28248940463.69fd548495d8d.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/53d6ce248940463.69fd548495585.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/bd8658248940463.69fd548538f97.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/3977d1248940463.69fd54853886f.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/3bdcb5248940463.69fd5486b9688.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/48fccc248940463.69fdd7cf3e52d.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/279493248940463.69fdd7cf3e078.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/2fbce6248940463.69fdd7cf3e9d0.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/390be0248940463.6a05583b15b9b.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/de7baa248940463.6a05583b1630c.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/4f493b248940463.69fddd36ddb75.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/4af9d1248940463.69fd5485c0696.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/683358248940463.69fd5485bf92d.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/6fb283248940463.69fd5485c0e35.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/fde090248940463.6a014cf8b8aeb.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/318472248940463.69fd548653356.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/951d3d248940463.6a014cfbd4514.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ebd6e5248940463.6a014cf94b989.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/d84366248940463.69fddd364b580.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/dbaca6248940463.69fddd364bcab.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/b5b510248940463.6a014cfa8bfff.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/893069248940463.6a014cfa8b96a.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/5396c1248940463.6a014cfa8b2c0.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/55d84e248940463.6a014cfb1dad5.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/556f9d248940463.6a014cfb1d68a.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/ef672b248940463.69fd6e995cf73.png"
+          },
+          {
+            "kind": "text",
+            "text": "본 작업은 완성된 결과물로서의 물방울에 머무르지 않고, 시간의 흐름을 거슬러 변화하는 물방울의 밀도와 움직임을 통해 1980년대 김창열 화백이 가장 치열하게 몰두했던 창작의 순간을 감각적으로 복원합니다."
+          }
+        ]
       },
       {
         "client": "This is the first IP gallery project by SIAHAUS \"ARFA\"",
@@ -135,9 +402,191 @@
         "image_url": "/assets/projects/behance-02/cover.png",
         "category": "BEHANCE",
         "gallery_images": [
-          "/assets/projects/behance-02/cover.png"
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/bdafb9248714797.69f94d9122a08.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/497581248714797.6a02c28680352.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/8b8669248714797.69f9441fa725f.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/a3db8d248714797.69f9441fa6afd.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/a238b0248714797.69faca5bec66a.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/7edc54248714797.69faca5bec295.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/379626248714797.6a02c2867ff48.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/35b7e5248714797.69f94d8ed8d27.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/6ed9fc248714797.69f94d8ed84e5.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/314ea6248714797.69faca5c736e6.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/69f666248714797.69faca5c73ad4.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/f9177a248714797.69fac0f94e68b.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/88a2b6248714797.69fabc3ce3578.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/31907e248714797.69fc6b7207d04.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/968e25248714797.69fabc420c1b6.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/638b90248714797.69fabc3e762e9.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/1595ad248714797.69fc6b7441fe2.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f065fe248714797.69facb735f3d1.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/9451ce248714797.69faca5d9d480.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/8f1543248714797.69fac0f94ebe2.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/7d7626248714797.69f955a186cec.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ceba64248714797.69f955a1866df.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f77dd5248714797.69faca5e20d4c.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/96bfce248714797.69faca5e21510.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/ca5c13248714797.69fabc420c76d.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/b3caa0248714797.69fabc3feb595.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/d43ebe248714797.69fc6b7614d0a.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/7210bb248714797.69faca5e9469b.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/4fe410248714797.69faca5e93fe0.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/a3f64a248714797.69fd651e6262a.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp_webp/019302248714797.69fabc417357a.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp_webp/49c59f248714797.69fabc4173ffc.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp_webp/dc7b6c248714797.69fabc4172f8c.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp_webp/902a2e248714797.69fabc4173a38.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp_webp/f1727e248714797.69fabc4172a37.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp_webp/d3c3cf248714797.69fabc41744b3.png"
         ],
-        "source": "https://www.behance.net/gallery/248714797/This-is-the-first-IP-gallery-project-by-SIAHAUS-ARFA"
+        "source": "",
+        "video_urls": [],
+        "media_blocks": [
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/bdafb9248714797.69f94d9122a08.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/497581248714797.6a02c28680352.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/8b8669248714797.69f9441fa725f.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/a3db8d248714797.69f9441fa6afd.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/a238b0248714797.69faca5bec66a.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/7edc54248714797.69faca5bec295.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/379626248714797.6a02c2867ff48.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/35b7e5248714797.69f94d8ed8d27.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/6ed9fc248714797.69f94d8ed84e5.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/314ea6248714797.69faca5c736e6.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/69f666248714797.69faca5c73ad4.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/f9177a248714797.69fac0f94e68b.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/88a2b6248714797.69fabc3ce3578.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/31907e248714797.69fc6b7207d04.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/968e25248714797.69fabc420c1b6.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/638b90248714797.69fabc3e762e9.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/1595ad248714797.69fc6b7441fe2.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f065fe248714797.69facb735f3d1.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/9451ce248714797.69faca5d9d480.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/8f1543248714797.69fac0f94ebe2.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/7d7626248714797.69f955a186cec.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ceba64248714797.69f955a1866df.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f77dd5248714797.69faca5e20d4c.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/96bfce248714797.69faca5e21510.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/ca5c13248714797.69fabc420c76d.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/b3caa0248714797.69fabc3feb595.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/d43ebe248714797.69fc6b7614d0a.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/7210bb248714797.69faca5e9469b.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/4fe410248714797.69faca5e93fe0.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/a3f64a248714797.69fd651e6262a.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp_webp/019302248714797.69fabc417357a.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp_webp/49c59f248714797.69fabc4173ffc.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp_webp/dc7b6c248714797.69fabc4172f8c.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp_webp/902a2e248714797.69fabc4173a38.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp_webp/f1727e248714797.69fabc4172a37.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp_webp/d3c3cf248714797.69fabc41744b3.png"
+          }
+        ]
       },
       {
         "client": "2025 SWL Kinetic Display Media Art ' ARIA'",
@@ -146,14 +595,116 @@
         "year": "2025",
         "slug": "behance-03",
         "display_title": "2025 SWL Kinetic Display Media Art ' ARIA'",
-        "description": "",
+        "description": "강남 코엑스에서 열린 Smart Life Week 2025에서 선보인 본 프로젝트는‘AI 도시, 미래 서울’을 주제로,기술과 인간이 공존하는 새로운 도시의 모습을 시각적으로 표현했습니다.",
         "url": "/projects/behance-03",
         "image_url": "/assets/projects/behance-03/cover.png",
         "category": "BEHANCE",
         "gallery_images": [
-          "/assets/projects/behance-03/cover.png"
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/827d47248045121.69eb4eece3db8.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/2f9c2c248045121.69eb4eece3685.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/1bbfe5248045121.69eb3bf5791b7.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/35876e248045121.69eb5882865f0.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/9b3970248045121.69eb58312ece8.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/6957b0248045121.69eb3bf28db7a.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/03f3fd248045121.69eb4c748000d.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/211188248045121.69eb58312e748.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/d6a374248045121.69eb4c7d6ed4f.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/06fc8e248045121.69eb4c79544a6.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/7ce18f248045121.69eb4c7954a20.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/7589db248045121.69eb5833edc48.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/88e27a248045121.69eb5833ee2dd.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/bde53a248045121.69eb5834be4b7.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/ac6e19248045121.69eb5834bddf0.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/934187248045121.69eb58368fe7f.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/1a5ce3248045121.69eb58368fb10.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/97fc6b248045121.69fd67cd4329d.jpg"
         ],
-        "source": "https://www.behance.net/gallery/248045121/2025-SWL-Kinetic-Display-Media-Art-ARIA"
+        "source": "",
+        "video_urls": [
+          "https://player.vimeo.com/video/1186182295?autoplay=1&muted=1&loop=1&background=1"
+        ],
+        "media_blocks": [
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/827d47248045121.69eb4eece3db8.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/2f9c2c248045121.69eb4eece3685.jpg"
+          },
+          {
+            "kind": "video",
+            "src": "https://player.vimeo.com/video/1186182295?autoplay=1&muted=1&loop=1&background=1"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/1bbfe5248045121.69eb3bf5791b7.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/35876e248045121.69eb5882865f0.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/9b3970248045121.69eb58312ece8.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/6957b0248045121.69eb3bf28db7a.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/03f3fd248045121.69eb4c748000d.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/211188248045121.69eb58312e748.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/d6a374248045121.69eb4c7d6ed4f.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/06fc8e248045121.69eb4c79544a6.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/7ce18f248045121.69eb4c7954a20.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/7589db248045121.69eb5833edc48.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/88e27a248045121.69eb5833ee2dd.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/bde53a248045121.69eb5834be4b7.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/ac6e19248045121.69eb5834bddf0.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/934187248045121.69eb58368fe7f.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/1a5ce3248045121.69eb58368fb10.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/97fc6b248045121.69fd67cd4329d.jpg"
+          },
+          {
+            "kind": "text",
+            "text": "강남 코엑스에서 열린 Smart Life Week 2025에서 선보인 본 프로젝트는‘AI 도시, 미래 서울’을 주제로,기술과 인간이 공존하는 새로운 도시의 모습을 시각적으로 표현했습니다."
+          }
+        ]
       },
       {
         "client": "2025 GRAND JOSAN Anamorphic media facade",
@@ -162,14 +713,96 @@
         "year": "2025",
         "slug": "behance-04",
         "display_title": "2025 GRAND JOSAN Anamorphic media facade",
-        "description": "",
+        "description": "Grand Josun Busan 외벽의 커브드 LED 미디어파사드를 활용해, 건축과 결합되는 아나몰픽 비주얼 콘텐츠를 연출한 프로젝트입니다. 해운대라는 장소적 맥락 속에서, 자연의 흐름과 도시의 빛이 교차하는 새로운 공공 시각 경험을 제안합니다.",
         "url": "/projects/behance-04",
         "image_url": "/assets/projects/behance-04/cover.jpg",
         "category": "BEHANCE",
         "gallery_images": [
-          "/assets/projects/behance-04/cover.jpg"
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/054e80248318473.69f84c24e478d.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/0c4f07248318473.69f4111e08e9f.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/b6b774248318473.6a06c6aab8e4b.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d23da4248318473.69ef4a54b50a2.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/7ecbcf248318473.69ef4a54b4806.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f23456248318473.69f41119c1780.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/36de7a248318473.69f41119c13bd.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/7b23a7248318473.69f4111e08783.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d4a133248318473.69f4111a4244b.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/582e44248318473.69f4111a42a7e.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/39c554248318473.69f4111a935e5.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/663b83248318473.69f4111c56fa1.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/959abb248318473.69f4111c57780.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/c6c35f248318473.69fd670a6a67d.jpg"
         ],
-        "source": "https://www.behance.net/gallery/248318473/2025-GRAND-JOSAN-Anamorphic-media-facade"
+        "source": "",
+        "video_urls": [
+          "https://player.vimeo.com/video/1186891802?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1"
+        ],
+        "media_blocks": [
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/054e80248318473.69f84c24e478d.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/0c4f07248318473.69f4111e08e9f.jpg"
+          },
+          {
+            "kind": "video",
+            "src": "https://player.vimeo.com/video/1186891802?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/b6b774248318473.6a06c6aab8e4b.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d23da4248318473.69ef4a54b50a2.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/7ecbcf248318473.69ef4a54b4806.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f23456248318473.69f41119c1780.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/36de7a248318473.69f41119c13bd.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/7b23a7248318473.69f4111e08783.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d4a133248318473.69f4111a4244b.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/582e44248318473.69f4111a42a7e.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/39c554248318473.69f4111a935e5.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/663b83248318473.69f4111c56fa1.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/959abb248318473.69f4111c57780.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/c6c35f248318473.69fd670a6a67d.jpg"
+          },
+          {
+            "kind": "text",
+            "text": "Grand Josun Busan 외벽의 커브드 LED 미디어파사드를 활용해, 건축과 결합되는 아나몰픽 비주얼 콘텐츠를 연출한 프로젝트입니다. 해운대라는 장소적 맥락 속에서, 자연의 흐름과 도시의 빛이 교차하는 새로운 공공 시각 경험을 제안합니다."
+          }
+        ]
       },
       {
         "client": "시공간의 만개(滿開): 서울의 맥박",
@@ -178,14 +811,150 @@
         "year": "",
         "slug": "behance-05",
         "display_title": "시공간의 만개(滿開): 서울의 맥박",
-        "description": "",
+        "description": "2026년 붉은 말의 해를 상징하는 꽃으로 이루어진 말 가족은, 삭막한 도심에 생명력과 온기를 불어넣는 존재입니다. 말의 역동적인 에너지는 정체된 도시 풍경에 활기를 더하며, 전통 위에 새로운 희망이 피어나는 서울의 조화를 시각화한 작품입니다.",
         "url": "/projects/behance-05",
         "image_url": "/assets/projects/behance-05/cover.png",
         "category": "BEHANCE",
         "gallery_images": [
-          "/assets/projects/behance-05/cover.png"
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/967202247968473.69e72f94bae64.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/1531aa247968473.69e75c3d686ef.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/3f0e55247968473.69e75c3d68ba5.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/319e89247968473.6a06c7e959447.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/baccd7247968473.69e72f9334e75.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/556109247968473.69e891379f576.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/7f366c247968473.69e72f9335322.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/60443a247968473.69e8913917af0.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/6fdd56247968473.69e891391807b.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/1796ec247968473.69e89139b485a.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/8f9f51247968473.69e89139b4cf0.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/aa60a1247968473.69e748269b50f.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/d67aa5247968473.69e748269bb46.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/f310bb247968473.69e7482785b1b.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/7ca020247968473.69e7482785ed7.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/95e659247968473.69e760bee3d46.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/63ca6b247968473.69e7413c4ab48.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/f4cc3d247968473.69e89297188cf.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/ba61d6247968473.69e7413c4b39c.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/514c0c247968473.69e75c3cdb3bb.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/6dca2b247968473.69e7413c4a6c7.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/a6eb11247968473.69e7413c4afde.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/2a7950247968473.69e73ec074f20.jpg",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/3d8373247968473.69e8953961bb8.png",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/719a58247968473.69e89539c4548.gif",
+          "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/204635247968473.69fd673f5032c.png"
         ],
-        "source": "https://www.behance.net/gallery/247968473/-()-"
+        "source": "",
+        "video_urls": [],
+        "media_blocks": [
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/967202247968473.69e72f94bae64.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/1531aa247968473.69e75c3d686ef.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/3f0e55247968473.69e75c3d68ba5.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/319e89247968473.6a06c7e959447.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/baccd7247968473.69e72f9334e75.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/556109247968473.69e891379f576.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/7f366c247968473.69e72f9335322.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/60443a247968473.69e8913917af0.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/6fdd56247968473.69e891391807b.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/1796ec247968473.69e89139b485a.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/8f9f51247968473.69e89139b4cf0.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/aa60a1247968473.69e748269b50f.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/d67aa5247968473.69e748269bb46.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/f310bb247968473.69e7482785b1b.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/disp/7ca020247968473.69e7482785ed7.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/95e659247968473.69e760bee3d46.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/63ca6b247968473.69e7413c4ab48.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400/f4cc3d247968473.69e89297188cf.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/ba61d6247968473.69e7413c4b39c.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/514c0c247968473.69e75c3cdb3bb.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/6dca2b247968473.69e7413c4a6c7.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/a6eb11247968473.69e7413c4afde.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/2a7950247968473.69e73ec074f20.jpg"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/3d8373247968473.69e8953961bb8.png"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/719a58247968473.69e89539c4548.gif"
+          },
+          {
+            "kind": "image",
+            "src": "https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/204635247968473.69fd673f5032c.png"
+          },
+          {
+            "kind": "text",
+            "text": "2026년 붉은 말의 해를 상징하는 꽃으로 이루어진 말 가족은, 삭막한 도심에 생명력과 온기를 불어넣는 존재입니다. 말의 역동적인 에너지는 정체된 도시 풍경에 활기를 더하며, 전통 위에 새로운 희망이 피어나는 서울의 조화를 시각화한 작품입니다."
+          }
+        ]
       },
       {
         "client": "가평 더",

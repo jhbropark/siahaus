@@ -257,10 +257,13 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 .project-contact-cta:hover{background:#333}
 .project-source-link{display:inline-block;font-size:12px;color:inherit;text-decoration:underline;text-underline-offset:4px}
 .project-source-link:hover{opacity:.65}
-.proj-media-wrap{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1}
-.proj-media-stage{position:relative;width:100%;background:#ececea;overflow:hidden;aspect-ratio:16/9}
-.proj-media-stage img,.proj-media-stage video{width:100%;height:100%;object-fit:cover;display:block}
+.proj-media-wrap{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
+.proj-media-stage{position:relative;width:100%;background:#ececea;overflow:hidden}
+.proj-media-stage img,.proj-media-stage video{width:100%;height:auto;object-fit:contain;display:block}
+.proj-media-stage.is-video{aspect-ratio:16/9}
+.proj-media-stage.is-video video{width:100%;height:100%;object-fit:cover}
 .proj-media-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.proj-text-block{max-width:68ch;margin:0 auto;padding:clamp(20px,3vw,36px);background:#f4f4f2;font-size:clamp(15px,1.45vw,19px);line-height:1.8;word-break:keep-all}
 .proj-media-empty{height:100%;display:flex;align-items:flex-end;padding:clamp(24px,4vw,56px);
   background:#111;color:#fff;font-size:clamp(30px,5vw,72px);font-weight:300;letter-spacing:-.05em}
 .proj-nav{margin-top:clamp(58px,8vw,110px)!important;padding:30px 0!important}
@@ -303,7 +306,7 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
   </section>
 
   <div class="proj-media-wrap">
-    <div class="proj-media-stage"><img src="/assets/projects/project-42/01.jpg" alt="좋알람 — Netflix Pop-up 대표 이미지" loading="eager" /><img src="/assets/projects/project-42/02.jpg" alt="좋알람 — Netflix Pop-up 추가 이미지" loading="lazy" /><img src="/assets/projects/project-42/03.jpg" alt="좋알람 — Netflix Pop-up 추가 이미지" loading="lazy" /><iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FNetflixKR%2Fvideos%2F878062519232978%2F&amp;show_text=0&amp;width=1280" title="좋알람 — Netflix Pop-up 영상" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
+    <div class="proj-media-stage"><img src="/assets/projects/project-42/01.jpg" alt="좋알람 — Netflix Pop-up 대표 이미지" loading="eager" /></div><div class="proj-media-stage"><img src="/assets/projects/project-42/02.jpg" alt="좋알람 — Netflix Pop-up 추가 이미지" loading="lazy" /></div><div class="proj-media-stage"><img src="/assets/projects/project-42/03.jpg" alt="좋알람 — Netflix Pop-up 추가 이미지" loading="lazy" /></div><div class="proj-media-stage is-video"><iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FNetflixKR%2Fvideos%2F878062519232978%2F&amp;show_text=0&amp;width=1280" title="좋알람 — Netflix Pop-up 영상" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div>
   </div>
 
   <div class="wrap">

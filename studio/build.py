@@ -690,28 +690,48 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     image_url = (w.get("image_url") or "").strip()
     gallery_images = [str(x).strip() for x in (w.get("gallery_images") or []) if str(x).strip()]
     media_label = display_title
-    media_parts = []
-    if image_url:
-        media_parts.append(f'<img src="{esc(image_url)}" alt="{esc(media_label)} 대표 이미지" loading="eager" />')
-    for gallery_image in gallery_images:
-        if gallery_image != image_url:
-            media_parts.append(f'<img src="{esc(gallery_image)}" alt="{esc(media_label)} 추가 이미지" loading="lazy" />')
-    embed_urls = video_urls or ([video_url] if video_url else [])
-    for embed_url in embed_urls:
+    media_blocks = [b for b in (w.get("media_blocks") or []) if isinstance(b, dict)]
+    def _embed_stage(embed_url: str, eager: bool) -> str:
+        loading = "eager" if eager else "lazy"
         if ("player.vimeo.com" in embed_url or "youtube.com/embed" in embed_url
                 or "facebook.com/plugins/video.php" in embed_url):
-            media_parts.append(
-                f'<iframe src="{esc(embed_url)}" title="{esc(media_label)} 영상" '
-                f'loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>'
-            )
-        else:
-            media_parts.append(
-                f'<video src="{esc(embed_url)}" muted loop autoplay playsinline preload="metadata"></video>'
-            )
-    if media_parts:
-        proj_media = "".join(media_parts)
+            return (f'<div class="proj-media-stage is-video">'
+                    f'<iframe src="{esc(embed_url)}" title="{esc(media_label)} 영상" '
+                    f'loading="{loading}" allow="autoplay; fullscreen" allowfullscreen></iframe></div>')
+        return (f'<div class="proj-media-stage is-video">'
+                f'<video src="{esc(embed_url)}" muted loop autoplay playsinline preload="metadata"></video></div>')
+    if media_blocks:
+        stages = []
+        for i, b in enumerate(media_blocks):
+            kind = str(b.get("kind") or "").strip().lower()
+            if kind == "video":
+                src = str(b.get("src") or "").strip()
+                if src:
+                    stages.append(_embed_stage(src, i == 0))
+            elif kind == "text":
+                txt = esc(str(b.get("text") or "").strip()).replace("\n", "<br>")
+                if txt:
+                    stages.append(f'<div class="proj-text-block">{txt}</div>')
+            else:
+                src = str(b.get("src") or "").strip()
+                if src:
+                    loading = "eager" if i == 0 else "lazy"
+                    stages.append(f'<div class="proj-media-stage"><img src="{esc(src)}" alt="{esc(media_label)} 이미지 {i + 1}" loading="{loading}" /></div>')
+        proj_media = "".join(stages) if stages else f'<div class="proj-media-empty">{esc(display_title)}</div>'
     else:
-        proj_media = f'<div class="proj-media-empty">{esc(display_title)}</div>'
+        media_parts = []
+        if image_url:
+            media_parts.append(f'<div class="proj-media-stage"><img src="{esc(image_url)}" alt="{esc(media_label)} 대표 이미지" loading="eager" /></div>')
+        for gallery_image in gallery_images:
+            if gallery_image != image_url:
+                media_parts.append(f'<div class="proj-media-stage"><img src="{esc(gallery_image)}" alt="{esc(media_label)} 추가 이미지" loading="lazy" /></div>')
+        embed_urls = video_urls or ([video_url] if video_url else [])
+        for embed_url in embed_urls:
+            media_parts.append(_embed_stage(embed_url, False))
+        if media_parts:
+            proj_media = "".join(media_parts)
+        else:
+            proj_media = f'<div class="proj-media-empty">{esc(display_title)}</div>'
 
     items = [x for x in d["work"]["items"] if x.get("slug")]
     idx = next((i for i, x in enumerate(items) if x["slug"] == slug), 0)
@@ -766,10 +786,13 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 .project-contact-cta:hover{{background:#333}}
 .project-source-link{{display:inline-block;font-size:12px;color:inherit;text-decoration:underline;text-underline-offset:4px}}
 .project-source-link:hover{{opacity:.65}}
-.proj-media-wrap{{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1}}
-.proj-media-stage{{position:relative;width:100%;background:#ececea;overflow:hidden;aspect-ratio:16/9}}
-.proj-media-stage img,.proj-media-stage video{{width:100%;height:100%;object-fit:cover;display:block}}
+.proj-media-wrap{{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}}
+.proj-media-stage{{position:relative;width:100%;background:#ececea;overflow:hidden}}
+.proj-media-stage img,.proj-media-stage video{{width:100%;height:auto;object-fit:contain;display:block}}
+.proj-media-stage.is-video{{aspect-ratio:16/9}}
+.proj-media-stage.is-video video{{width:100%;height:100%;object-fit:cover}}
 .proj-media-stage iframe{{position:absolute;inset:0;width:100%;height:100%;border:0}}
+.proj-text-block{{max-width:68ch;margin:0 auto;padding:clamp(20px,3vw,36px);background:#f4f4f2;font-size:clamp(15px,1.45vw,19px);line-height:1.8;word-break:keep-all}}
 .proj-media-empty{{height:100%;display:flex;align-items:flex-end;padding:clamp(24px,4vw,56px);
   background:#111;color:#fff;font-size:clamp(30px,5vw,72px);font-weight:300;letter-spacing:-.05em}}
 .proj-nav{{margin-top:clamp(58px,8vw,110px)!important;padding:30px 0!important}}
@@ -812,7 +835,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
   </section>
 
   <div class="proj-media-wrap">
-    <div class="proj-media-stage">{proj_media}</div>
+    {proj_media}
   </div>
 
   <div class="wrap">
