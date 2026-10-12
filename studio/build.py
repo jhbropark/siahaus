@@ -364,7 +364,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         url = (w.get("url") or "").strip()
         video_url = (w.get("video_url") or "").strip()
         image_url = (w.get("image_url") or "").strip()
-        label = f'{w["client"]} — {w["name"]}'
+        label = w.get("display_title") or (f'{w["client"]} — {w["name"]}' if w.get("name") else w["client"])
         # Homepage cards use verified still images only.
         # This prevents iframe/video loading failures and text-bearing fallbacks.
         if image_url:
@@ -618,8 +618,8 @@ def build_project_jsonld(d: dict, w: dict) -> str:
         "@type": "CreativeWork",
         "@id": url + "#work",
         "url": url,
-        "name": f'{w["client"]} \u2014 {w["name"]}',
-        "headline": w["name"],
+        "name": (w.get("display_title") or (f'{w["client"]} \u2014 {w["name"]}' if w.get("name") else w["client"])),
+        "headline": (w.get("display_title") or w["name"] or w["client"]),
         "inLanguage": s["lang"],
         "creator": {"@id": s["org_id"]},
         "isPartOf": {"@id": s["url"] + "#website"},
@@ -648,17 +648,18 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     t = d["strings"]
     slug = w["slug"]
     url = f'{s["url"]}projects/{slug}'
-    title = f'{w["client"]} \u2014 {w["name"]} | {s["name"]}'
+    display_title = w.get("display_title") or (f'{w["client"]} \u2014 {w["name"]}' if w.get("name") else w["client"])
+    title = f'{display_title} | {s["name"]}'
     if w.get("description"):
         desc = w["description"].split(". ")[0].strip().rstrip(".") + "."
         if len(desc) > 300:
             desc = desc[:297].rstrip() + "\u2026"
     else:
-        desc = f'{w["client"]} \u00b7 {w["name"]}'
+        desc = display_title
     if w["context"]:
         desc += f' \u00b7 {w["context"]}'
 
-    featured = w["client"]
+    featured = display_title
     nav = "".join(
         f'<a href="/#{i}">{esc(t[k])}</a>'
         for i, k in [("work", "nav_work"), ("fields", "nav_fields"),
@@ -679,11 +680,15 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     contact_cta = (f'<a class="project-contact-cta" href="mailto:{esc(s["email"])}?subject={esc(contact_subject)}">'
                    f'{esc(t["cta_contact"])} ↗</a>')
 
+    source_url = (w.get("source") or "").strip()
+    source_cta = (f'<a class="project-source-link" href="{esc(source_url)}" target="_blank" '
+                  f'rel="noopener noreferrer">원문 프로젝트 ↗</a>') if source_url else ""
+
     video_url = (w.get("video_url") or "").strip()
     video_urls = [str(x).strip() for x in (w.get("video_urls") or []) if str(x).strip()]
     image_url = (w.get("image_url") or "").strip()
     gallery_images = [str(x).strip() for x in (w.get("gallery_images") or []) if str(x).strip()]
-    media_label = f'{w["client"]} — {w["name"]}'
+    media_label = display_title
     media_parts = []
     if image_url:
         media_parts.append(f'<img src="{esc(image_url)}" alt="{esc(media_label)} 대표 이미지" loading="eager" />')
@@ -705,7 +710,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     if media_parts:
         proj_media = "".join(media_parts)
     else:
-        proj_media = f'<div class="proj-media-empty">{esc(w["name"])}</div>'
+        proj_media = f'<div class="proj-media-empty">{esc(display_title)}</div>'
 
     items = [x for x in d["work"]["items"] if x.get("slug")]
     idx = next((i for i, x in enumerate(items) if x["slug"] == slug), 0)
@@ -758,6 +763,8 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 .back-link{{margin-top:0!important}}
 .project-contact-cta{{display:inline-block;padding:10px 14px;background:#050505;color:#fff;font-size:12px;letter-spacing:.02em}}
 .project-contact-cta:hover{{background:#333}}
+.project-source-link{{display:inline-block;font-size:12px;color:inherit;text-decoration:underline;text-underline-offset:4px}}
+.project-source-link:hover{{opacity:.65}}
 .proj-media-wrap{{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1}}
 .proj-media-stage{{position:relative;width:100%;background:#ececea;overflow:hidden;aspect-ratio:16/9}}
 .proj-media-stage img,.proj-media-stage video{{width:100%;height:100%;object-fit:cover;display:block}}
@@ -791,13 +798,14 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     <div class="wrap">
       <p class="eyebrow">PROJECT</p>
       <h1 class="proj-client">{esc(w["client"])}</h1>
-      <p class="proj-name">{esc(w["name"])}</p>
+      {f'<p class="proj-name">{esc(w["name"])}</p>' if w.get("name") else ""}
       {ctx_html}
       {year_html}
       {desc_html}
       <div class="project-actions">
         <a class="back-link" href="/#work">\u2190 {esc(t["nav_work"])}</a>
         {contact_cta}
+        {source_cta}
       </div>
     </div>
   </section>

@@ -104,9 +104,89 @@
   "work": {
     "eyebrow": "SELECTED WORK",
     "title": "실적",
-    "lead": "2018년부터 축적된 48개 프로젝트입니다.",
+    "lead": "Behance 최신 레퍼런스 5개와 48개 프로젝트입니다.",
     "note": "프로젝트별 대표 이미지와 제작 과정의 주요 장면을 담았습니다.",
     "items": [
+      {
+        "client": "2026 Kim Tschang-Yeul Atelier",
+        "name": "",
+        "context": "",
+        "year": "2026",
+        "slug": "behance-01",
+        "display_title": "2026 Kim Tschang-Yeul Atelier",
+        "description": "",
+        "url": "/projects/behance-01",
+        "image_url": "/assets/projects/behance-01/cover.jpg",
+        "category": "BEHANCE",
+        "gallery_images": [
+          "/assets/projects/behance-01/cover.jpg"
+        ],
+        "source": "https://www.behance.net/gallery/248940463/2026-Kim-Tschang-Yeul-Atelier"
+      },
+      {
+        "client": "This is the first IP gallery project by SIAHAUS \"ARFA\"",
+        "name": "",
+        "context": "",
+        "year": "",
+        "slug": "behance-02",
+        "display_title": "This is the first IP gallery project by SIAHAUS \"ARFA\"",
+        "description": "",
+        "url": "/projects/behance-02",
+        "image_url": "/assets/projects/behance-02/cover.png",
+        "category": "BEHANCE",
+        "gallery_images": [
+          "/assets/projects/behance-02/cover.png"
+        ],
+        "source": "https://www.behance.net/gallery/248714797/This-is-the-first-IP-gallery-project-by-SIAHAUS-ARFA"
+      },
+      {
+        "client": "2025 SWL Kinetic Display Media Art ' ARIA'",
+        "name": "",
+        "context": "",
+        "year": "2025",
+        "slug": "behance-03",
+        "display_title": "2025 SWL Kinetic Display Media Art ' ARIA'",
+        "description": "",
+        "url": "/projects/behance-03",
+        "image_url": "/assets/projects/behance-03/cover.png",
+        "category": "BEHANCE",
+        "gallery_images": [
+          "/assets/projects/behance-03/cover.png"
+        ],
+        "source": "https://www.behance.net/gallery/248045121/2025-SWL-Kinetic-Display-Media-Art-ARIA"
+      },
+      {
+        "client": "2025 GRAND JOSAN Anamorphic media facade",
+        "name": "",
+        "context": "",
+        "year": "2025",
+        "slug": "behance-04",
+        "display_title": "2025 GRAND JOSAN Anamorphic media facade",
+        "description": "",
+        "url": "/projects/behance-04",
+        "image_url": "/assets/projects/behance-04/cover.jpg",
+        "category": "BEHANCE",
+        "gallery_images": [
+          "/assets/projects/behance-04/cover.jpg"
+        ],
+        "source": "https://www.behance.net/gallery/248318473/2025-GRAND-JOSAN-Anamorphic-media-facade"
+      },
+      {
+        "client": "시공간의 만개(滿開): 서울의 맥박",
+        "name": "",
+        "context": "",
+        "year": "",
+        "slug": "behance-05",
+        "display_title": "시공간의 만개(滿開): 서울의 맥박",
+        "description": "",
+        "url": "/projects/behance-05",
+        "image_url": "/assets/projects/behance-05/cover.png",
+        "category": "BEHANCE",
+        "gallery_images": [
+          "/assets/projects/behance-05/cover.png"
+        ],
+        "source": "https://www.behance.net/gallery/247968473/-()-"
+      },
       {
         "client": "가평 더",
         "name": "힐링스테이파크 9Block",
@@ -814,18 +894,19 @@
         ]
       },
       {
-        "client": "휠라 전동",
-        "name": "바텐 리볼빙 월",
-        "context": "",
+        "client": "휠라 신사옥",
+        "name": "MISTO HOLDINGS Office",
+        "context": "서울특별시 성북구 보문동 · 지하 3층–지상 10층 · PM",
         "year": "",
         "slug": "project-52",
-        "description": "",
+        "description": "고객: 미스토홀딩스\n주관: 알스퀘어\n역할: PM\n주요 특징:\n휠라의 브랜드 헤리티지와 스포티한 감성, 컬러 포인트를 공간에 반영했습니다.\n1층에 조성된 헤리티지 라운지 등 임직원 업무 효율과 브랜드 아이덴티티를 강화하는 오피스로 설계했습니다.\n흩어져 있던 휠라 전 조직을 한 공간에 통합했습니다.",
         "url": "/projects/project-52",
         "image_url": "/assets/projects/project-52/01.jpg",
-        "category": "PROJECT",
+        "category": "SPACE",
         "gallery_images": [
           "/assets/projects/project-52/01.jpg"
-        ]
+        ],
+        "source": "https://www.rsquaredesign.co.kr/project-interior/?bmode=view&idx=168787015"
       },
       {
         "client": "KTX 용산역",

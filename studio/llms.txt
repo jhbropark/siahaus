@@ -16,8 +16,13 @@ SIA.HAUS의 파이프라인은 기획, 프리프로덕션, 프로덕션, 운영 
 
 ## 실적
 
-2018년부터 축적된 48개 프로젝트입니다.
+Behance 최신 레퍼런스 5개와 48개 프로젝트입니다.
 
+- 2026 Kim Tschang-Yeul Atelier — 2026
+- This is the first IP gallery project by SIAHAUS "ARFA" — 
+- 2025 SWL Kinetic Display Media Art ' ARIA' — 2025
+- 2025 GRAND JOSAN Anamorphic media facade — 2025
+- 시공간의 만개(滿開): 서울의 맥박 — 
 - 가평 더 — 힐링스테이파크 9Block
 - 광명동굴 레인보우 — 팩토리
 - 그랜드 조선 — 부산 미디어파사드
@@ -60,7 +65,7 @@ SIA.HAUS의 파이프라인은 기획, 프리프로덕션, 프로덕션, 운영 
 - 한국콘텐츠진흥원 뉴미디어 — 퍼포먼스
 - 현대모비스 M.Vision — X
 - 현대자동차 HMGICS — 2023
-- 휠라 전동 — 바텐 리볼빙 월
+- 휠라 신사옥 — MISTO HOLDINGS Office · 서울특별시 성북구 보문동 · 지하 3층–지상 10층 · PM
 - KTX 용산역 — LED전광판
 - LDF 하우스 — 미디어파사드 2023
 - LG ISE — 2025 아웃도어 디스플레이
