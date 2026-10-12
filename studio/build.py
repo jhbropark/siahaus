@@ -384,6 +384,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         return f'<div class="work-card">{inner}</div>'
 
     works = "".join(work_card(w) for w in d["work"]["items"])
+    work_lead = f'<p class="lead">{esc(d["work"]["lead"])}</p>' if d["work"].get("lead") else ""
 
     faqs = "".join(
         f'<div class="faq-item" id="faq-{esc(i["id"])}"><h3>{esc(i["q"])}</h3>'
@@ -522,7 +523,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
       <div class="sec-head">
         <p class="eyebrow">{esc(d["work"]["eyebrow"])}</p>
         <h2>{esc(d["work"]["title"])}</h2>
-        <p class="lead">{esc(d["work"]["lead"])}</p>
+        {work_lead}
       </div>
       <div class="work-grid">{works}</div>
       <p class="work-note">{esc(d["work"]["note"])}</p>
