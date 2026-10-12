@@ -104,7 +104,7 @@
   "work": {
     "eyebrow": "SELECTED WORK",
     "title": "실적",
-    "lead": "2018년부터 축적된 57개 프로젝트입니다.",
+    "lead": "2018년부터 축적된 48개 프로젝트입니다.",
     "note": "프로젝트별 대표 이미지와 제작 과정의 주요 장면을 담았습니다.",
     "items": [
       {
@@ -143,52 +143,6 @@
           "/assets/projects/project-02/04.jpg",
           "/assets/projects/project-02/05.jpg",
           "/assets/projects/project-02/06.jpg"
-        ]
-      },
-      {
-        "client": "광화시대",
-        "name": "Media Art",
-        "context": "",
-        "year": "",
-        "slug": "project-03",
-        "description": "",
-        "url": "/projects/project-03",
-        "image_url": "/assets/projects/project-03/01.jpg",
-        "category": "PROJECT",
-        "gallery_images": [
-          "/assets/projects/project-03/01.jpg",
-          "/assets/projects/project-03/02.jpg",
-          "/assets/projects/project-03/03.jpg",
-          "/assets/projects/project-03/04.jpg",
-          "/assets/projects/project-03/05.jpg"
-        ]
-      },
-      {
-        "client": "국립극장",
-        "name": "가무악칠채",
-        "context": "",
-        "year": "",
-        "slug": "project-04",
-        "description": "",
-        "url": "/projects/project-04",
-        "image_url": "/assets/projects/project-04/01.jpg",
-        "category": "PROJECT",
-        "gallery_images": [
-          "/assets/projects/project-04/01.jpg"
-        ]
-      },
-      {
-        "client": "국립아시아문화전당 판타스틱",
-        "name": "씨어터",
-        "context": "",
-        "year": "",
-        "slug": "project-05",
-        "description": "",
-        "url": "/projects/project-05",
-        "image_url": "/assets/projects/project-05/01.jpg",
-        "category": "PROJECT",
-        "gallery_images": [
-          "/assets/projects/project-05/01.jpg"
         ]
       },
       {
@@ -415,22 +369,6 @@
         ]
       },
       {
-        "client": "별마당 도서관",
-        "name": "열린아트전",
-        "context": "",
-        "year": "",
-        "slug": "project-20",
-        "description": "",
-        "url": "/projects/project-20",
-        "image_url": "/assets/projects/project-20/01.jpg",
-        "category": "PROJECT",
-        "gallery_images": [
-          "/assets/projects/project-20/01.jpg",
-          "/assets/projects/project-20/02.jpg",
-          "/assets/projects/project-20/03.jpg"
-        ]
-      },
-      {
         "client": "부산 사상역",
         "name": "프로젝션 맵핑",
         "context": "",
@@ -606,20 +544,6 @@
         ]
       },
       {
-        "client": "아더 스페이스",
-        "name": "3.0",
-        "context": "",
-        "year": "",
-        "slug": "project-31",
-        "description": "",
-        "url": "/projects/project-31",
-        "image_url": "/assets/projects/project-31/01.jpg",
-        "category": "PROJECT",
-        "gallery_images": [
-          "/assets/projects/project-31/01.jpg"
-        ]
-      },
-      {
         "client": "아이벡스 스튜디오",
         "name": "광명 이터니티 콘서트",
         "context": "",
@@ -707,34 +631,6 @@
         ]
       },
       {
-        "client": "예술의전당",
-        "name": "모먼트",
-        "context": "",
-        "year": "",
-        "slug": "project-37",
-        "description": "",
-        "url": "/projects/project-37",
-        "image_url": "/assets/projects/project-37/01.jpg",
-        "category": "PROJECT",
-        "gallery_images": [
-          "/assets/projects/project-37/01.jpg"
-        ]
-      },
-      {
-        "client": "웨사",
-        "name": "페스티벌",
-        "context": "",
-        "year": "",
-        "slug": "project-38",
-        "description": "",
-        "url": "/projects/project-38",
-        "image_url": "/assets/projects/project-38/01.jpg",
-        "category": "PROJECT",
-        "gallery_images": [
-          "/assets/projects/project-38/01.jpg"
-        ]
-      },
-      {
         "client": "인천공항 입국장",
         "name": "전통문화 미디어",
         "context": "",
@@ -764,26 +660,6 @@
           "/assets/projects/project-40/01.jpg",
           "/assets/projects/project-40/02.jpg",
           "/assets/projects/project-40/03.jpg"
-        ]
-      },
-      {
-        "client": "일상비일상의틈 LG",
-        "name": "U+",
-        "context": "",
-        "year": "",
-        "slug": "project-41",
-        "description": "",
-        "url": "/projects/project-41",
-        "image_url": "/assets/projects/project-41/01.jpg",
-        "category": "PROJECT",
-        "gallery_images": [
-          "/assets/projects/project-41/01.jpg",
-          "/assets/projects/project-41/02.jpg",
-          "/assets/projects/project-41/03.jpg",
-          "/assets/projects/project-41/04.jpg",
-          "/assets/projects/project-41/05.jpg",
-          "/assets/projects/project-41/06.jpg",
-          "/assets/projects/project-41/07.jpg"
         ]
       },
       {
@@ -849,20 +725,6 @@
         "category": "PROJECT",
         "gallery_images": [
           "/assets/projects/project-45/01.jpg"
-        ]
-      },
-      {
-        "client": "파라다이스문화재단 인스케이프",
-        "name": "크로마",
-        "context": "",
-        "year": "",
-        "slug": "project-46",
-        "description": "",
-        "url": "/projects/project-46",
-        "image_url": "/assets/projects/project-46/01.jpg",
-        "category": "PROJECT",
-        "gallery_images": [
-          "/assets/projects/project-46/01.jpg"
         ]
       },
       {
