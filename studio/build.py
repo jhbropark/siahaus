@@ -673,7 +673,8 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 
     year_html = f'<span class="proj-year">{esc(w["year"])}</span>' if w["year"] else ""
     ctx_html = f'<span class="proj-ctx">{esc(w["context"])}</span>' if w["context"] else ""
-    desc_html = f'<p class="proj-desc">{esc(w["description"])}</p>' if w.get("description") else ""
+    desc_text = esc(w["description"]).replace("\n", "<br>") if w.get("description") else ""
+    desc_html = f'<p class="proj-desc">{desc_text}</p>' if desc_text else ""
     contact_subject = f'{w["client"]} 프로젝트 문의'
     contact_cta = (f'<a class="project-contact-cta" href="mailto:{esc(s["email"])}?subject={esc(contact_subject)}">'
                    f'{esc(t["cta_contact"])} ↗</a>')
@@ -691,7 +692,8 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
             media_parts.append(f'<img src="{esc(gallery_image)}" alt="{esc(media_label)} 추가 이미지" loading="lazy" />')
     embed_urls = video_urls or ([video_url] if video_url else [])
     for embed_url in embed_urls:
-        if "player.vimeo.com" in embed_url or "youtube.com/embed" in embed_url:
+        if ("player.vimeo.com" in embed_url or "youtube.com/embed" in embed_url
+                or "facebook.com/plugins/video.php" in embed_url):
             media_parts.append(
                 f'<iframe src="{esc(embed_url)}" title="{esc(media_label)} 영상" '
                 f'loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe>'

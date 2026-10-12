@@ -663,19 +663,23 @@
         ]
       },
       {
-        "client": "좋아람 웹툰",
-        "name": "LED 미디어타워",
-        "context": "",
-        "year": "",
+        "client": "좋알람",
+        "name": "Netflix Pop-up",
+        "context": "롯데월드타워 월드파크 잔디광장 · 2019.08.18–09.01 · 16:00–22:00",
+        "year": "2019",
         "slug": "project-42",
-        "description": "",
+        "description": "《좋아하면 울리는》 시즌1 공개 기념 Netflix 팝업스토어입니다.\n장소: 서울 송파구 롯데월드타워 월드파크 잔디광장\n기간: 2019년 8월 18일–9월 1일\n운영 시간: 16:00–22:00 (낮시간 자유 관람)\n내용: 반경 10m 안에 좋아하는 사람이 들어오면 알람이 울리는 ‘좋알람’ 앱을 실제로 체험하는 부스와 이벤트를 진행했습니다.",
         "url": "/projects/project-42",
         "image_url": "/assets/projects/project-42/01.jpg",
-        "category": "PROJECT",
+        "category": "BRAND",
         "gallery_images": [
           "/assets/projects/project-42/01.jpg",
           "/assets/projects/project-42/02.jpg",
           "/assets/projects/project-42/03.jpg"
+        ],
+        "source": "https://www.facebook.com/NetflixKR/videos/%EC%A2%8B%EC%95%84%ED%95%98%EB%A9%B4-%EC%9A%B8%EB%A6%AC%EB%8A%94-%EB%8A%A6-%EC%97%AC%EB%A6%84-%EC%84%A4%EB%A0%98-%EA%B0%80%EB%93%9D%ED%95%9C-%EC%9D%B4-%EA%B3%B3%EC%97%90%EC%84%9C-%EB%82%B4-%EC%A2%8B%EC%95%8C%EB%9E%8C%EC%9D%84-%EC%9A%B8%EB%A0%A4%EC%A4%98/878062519232978/?locale=ko_KR",
+        "video_urls": [
+          "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2FNetflixKR%2Fvideos%2F878062519232978%2F&show_text=0&width=1280"
         ]
       },
       {
