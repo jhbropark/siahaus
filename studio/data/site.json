@@ -104,232 +104,938 @@
   "work": {
     "eyebrow": "SELECTED WORK",
     "title": "실적",
-    "lead": "2018년부터 축적된 작업입니다.",
-    "note": "연도는 확인된 것만 표기합니다.",
+    "lead": "2018년부터 축적된 57개 프로젝트입니다.",
+    "note": "프로젝트별 대표 이미지와 제작 과정의 주요 장면을 담았습니다.",
     "items": [
       {
-        "client": "KIA",
-        "name": "Journey of Reflection",
-        "context": "Milan Design Week",
-        "year": "2026",
-        "slug": "kia-milan",
-        "description": "2026 밀라노 디자인 위크에서 공개된 기아의 EV 비전 전시 프로젝트. 브랜드 철학인 '오퍼짓 유나이티드(Opposites United)'를 기반으로 미래 모빌리티에 대한 비전을 공간 경험으로 구현하였다. 빛, 소재, 건축적 구조를 활용한 몰입형 전시를 통해 Vision Meta Turismo를 비롯한 차세대 EV 콘셉트를 선보이며, 기아가 추구하는 혁신과 지속가능한 미래 가치를 전달하였습니다.",
-        "source": "project/uploads/sia.haus (hmp) brief -ing.pdf p.8",
-        "url": "/projects/kia-milan",
-        "image_url": "/assets/projects/page_008.png",
-        "category": "BRAND",
+        "client": "가평 더",
+        "name": "힐링스테이파크 9Block",
+        "context": "",
+        "year": "",
+        "slug": "project-01",
+        "description": "",
+        "url": "/projects/project-01",
+        "image_url": "/assets/projects/project-01/01.jpg",
+        "category": "PROJECT",
         "gallery_images": [
-          "https://worldwide.kia.com/asset/image/26-journey-of-reflection/section-view-26-intro-1.webp",
-          "https://worldwide.kia.com/asset/image/26-journey-of-reflection/section-view-26-intro-2.webp",
-          "https://worldwide.kia.com/asset/image/26-journey-of-reflection/section-view-26-hero-pc.webp",
-          "https://worldwide.kia.com/asset/image/26-journey-of-reflection/section-view-26-intro-3.webp",
-          "https://worldwide.kia.com/asset/image/26-journey-of-reflection/section-view-26-intro-4.webp"
+          "/assets/projects/project-01/01.jpg",
+          "/assets/projects/project-01/02.jpg",
+          "/assets/projects/project-01/03.jpg",
+          "/assets/projects/project-01/04.jpg",
+          "/assets/projects/project-01/05.jpg",
+          "/assets/projects/project-01/06.jpg"
         ]
       },
       {
-        "client": "김창열 아틀리에",
-        "name": "Kim Tschang-Yeul Atelier",
+        "client": "광명동굴 레인보우",
+        "name": "팩토리",
         "context": "",
-        "year": "2026",
-        "slug": "waterdrops",
-        "url": "/projects/waterdrops",
-        "image_url": "/assets/projects/kim-tschang-yeul.webp",
-        "video_url": "https://player.vimeo.com/video/1190121726?background=1&autoplay=1&loop=1&muted=1",
-        "category": "ART",
+        "year": "",
+        "slug": "project-02",
+        "description": "",
+        "url": "/projects/project-02",
+        "image_url": "/assets/projects/project-02/01.jpg",
+        "category": "PROJECT",
         "gallery_images": [
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/4af9d1248940463.69fd5485c0696.png",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/683358248940463.69fd5485bf92d.png",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/6fb283248940463.69fd5485c0e35.png",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/fde090248940463.6a014cf8b8aeb.png",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/318472248940463.69fd548653356.png",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ebd6e5248940463.6a014cf94b989.gif",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/d84366248940463.69fddd364b580.png",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/dbaca6248940463.69fddd364bcab.png"
+          "/assets/projects/project-02/01.jpg",
+          "/assets/projects/project-02/02.jpg",
+          "/assets/projects/project-02/03.jpg",
+          "/assets/projects/project-02/04.jpg",
+          "/assets/projects/project-02/05.jpg",
+          "/assets/projects/project-02/06.jpg"
         ]
       },
       {
-        "client": "베니스 비엔날레",
-        "name": "Time for Trees",
+        "client": "광화시대",
+        "name": "Media Art",
         "context": "",
-        "year": "2025",
-        "slug": "venice-biennale",
-        "description": "2년마다 열리는 세계 최대 규모의 전시, 베니스 비엔날레에서 'Time for Trees' 프로젝트의 성공적인 구현을 위해 기술적 기반을 다졌습니다. 디지털 인터랙션 콜라보레이터들과 협력하여 작품이 의도한 메시지를 최첨단 기술로 시각화할 수 있도록 지원했습니다.",
-        "source": "project/uploads/sia.haus (hmp) brief -ing.pdf p.16",
-        "url": "/projects/venice-biennale",
-        "image_url": "/assets/projects/page_016.png",
-        "category": "ART",
+        "year": "",
+        "slug": "project-03",
+        "description": "",
+        "url": "/projects/project-03",
+        "image_url": "/assets/projects/project-03/01.jpg",
+        "category": "PROJECT",
         "gallery_images": [
-          "https://www.studioheech.com/files/gimgs/79_H005.jpg",
-          "https://www.studioheech.com/files/gimgs/79_H003.jpg",
-          "https://www.studioheech.com/files/gimgs/79_03_v3.jpg",
-          "https://www.studioheech.com/files/gimgs/79_0001.jpg",
-          "https://www.studioheech.com/files/gimgs/79_0003.jpg",
-          "https://www.studioheech.com/files/gimgs/79_0002.jpg",
-          "https://www.studioheech.com/files/gimgs/79_05_01.jpg",
-          "https://www.studioheech.com/files/gimgs/79_09_01.jpg"
-        ],
-        "video_urls": [
-          "https://player.vimeo.com/video/1083994856?autoplay=1&muted=1&loop=1",
-          "https://player.vimeo.com/video/1091452298?autoplay=1&muted=1&loop=1"
+          "/assets/projects/project-03/01.jpg",
+          "/assets/projects/project-03/02.jpg",
+          "/assets/projects/project-03/03.jpg",
+          "/assets/projects/project-03/04.jpg",
+          "/assets/projects/project-03/05.jpg"
+        ]
+      },
+      {
+        "client": "국립극장",
+        "name": "가무악칠채",
+        "context": "",
+        "year": "",
+        "slug": "project-04",
+        "description": "",
+        "url": "/projects/project-04",
+        "image_url": "/assets/projects/project-04/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-04/01.jpg"
+        ]
+      },
+      {
+        "client": "국립아시아문화전당 판타스틱",
+        "name": "씨어터",
+        "context": "",
+        "year": "",
+        "slug": "project-05",
+        "description": "",
+        "url": "/projects/project-05",
+        "image_url": "/assets/projects/project-05/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-05/01.jpg"
         ]
       },
       {
         "client": "그랜드 조선",
-        "name": "미디어 파사드",
+        "name": "부산 미디어파사드",
         "context": "",
-        "year": "2025",
-        "slug": "busan",
-        "url": "/projects/busan",
-        "image_url": "/assets/projects/grand-josun.jpg",
-        "video_url": "https://player.vimeo.com/video/1186891802?background=1&autoplay=1&loop=1&muted=1",
-        "category": "SPACE",
+        "year": "",
+        "slug": "project-06",
+        "description": "",
+        "url": "/projects/project-06",
+        "image_url": "/assets/projects/project-06/01.jpg",
+        "category": "PROJECT",
         "gallery_images": [
-          "https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/054e80248318473.69f84c24e478d.jpg",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d23da4248318473.69ef4a54b50a2.png",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/7ecbcf248318473.69ef4a54b4806.png",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f23456248318473.69f41119c1780.png",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/36de7a248318473.69f41119c13bd.png",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d4a133248318473.69f4111a4244b.png",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/582e44248318473.69f4111a42a7e.png",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/39c554248318473.69f4111a935e5.gif"
+          "/assets/projects/project-06/01.jpg"
         ]
       },
       {
-        "client": "ARIA",
-        "name": "SWL 키네틱 디스플레이",
+        "client": "기아 EV6",
+        "name": "그린랜드",
         "context": "",
-        "year": "2025",
-        "slug": "aria-swl",
-        "url": "/projects/aria-swl",
-        "image_url": "/assets/projects/aria-swl.jpg",
-        "category": "SPACE",
+        "year": "",
+        "slug": "project-07",
+        "description": "",
+        "url": "/projects/project-07",
+        "image_url": "/assets/projects/project-07/01.jpg",
+        "category": "PROJECT",
         "gallery_images": [
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/35876e248045121.69eb5882865f0.jpg",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/9b3970248045121.69eb58312ece8.gif",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/6957b0248045121.69eb3bf28db7a.jpg",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/03f3fd248045121.69eb4c748000d.gif",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/211188248045121.69eb58312e748.jpg",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/disp/06fc8e248045121.69eb4c79544a6.gif",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400/7ce18f248045121.69eb4c7954a20.gif",
-          "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/7589db248045121.69eb5833edc48.png"
-        ],
-        "video_url": "https://player.vimeo.com/video/1186182295?background=1&autoplay=1&loop=1&muted=1"
-      },
-      {
-        "client": "The Hyundai Seoul",
-        "name": "Entropy of Nature",
-        "context": "",
-        "year": "2024",
-        "slug": "hyundai-seoul",
-        "url": "/projects/hyundai-seoul",
-        "image_url": "/assets/projects/hyundai-seoul.png",
-        "video_url": "https://www.youtube.com/embed/uAT6FHRSi9o?autoplay=1&mute=1&loop=1&playlist=uAT6FHRSi9o&controls=0&rel=0",
-        "category": "ART",
-        "video_urls": [
-          "https://www.youtube.com/embed/uAT6FHRSi9o?autoplay=1&mute=1&loop=1&playlist=uAT6FHRSi9o&controls=0&rel=0",
-          "https://www.youtube.com/embed/UGamgyQi-cM?autoplay=1&mute=1&loop=1&playlist=UGamgyQi-cM&controls=0&rel=0",
-          "https://www.youtube.com/embed/TxNLgM_qDVM?start=41&autoplay=1&mute=1&loop=1&playlist=TxNLgM_qDVM&controls=0&rel=0",
-          "https://www.youtube.com/embed/mcGGZZNfNU0?autoplay=1&mute=1&loop=1&playlist=mcGGZZNfNU0&controls=0&rel=0"
+          "/assets/projects/project-07/01.jpg",
+          "/assets/projects/project-07/02.jpg"
         ]
       },
       {
-        "client": "롯데월드타워 잠실",
-        "name": "미디어 파사드",
-        "context": "819㎡ · 21m × 39m",
-        "year": "",
-        "slug": "lotte-world-tower",
-        "description": "유동 인구가 집중되는 롯데백화점 잠실점의 외관을 첨단 디지털 기술로 재해석했습니다. 약 819㎡(가로 21m, 세로 39m) 면적의 초대형 화면은 RGB LED PIXEL DMX 기술을 통해 생동감 넘치는 고해상도 콘텐츠를 송출합니다. 특히 단순한 스크린 설치를 넘어 조형미를 고려한 입구 가랜드와 테마 조명을 함께 설계하여, 공간 전체를 하나의 거대한 예술 작품으로 승화시켰습니다.",
-        "source": "project/uploads/sia.haus (hmp) brief -ing.pdf p.71",
-        "url": "/projects/lotte-world-tower",
-        "image_url": "/assets/projects/page_071.png",
-        "category": "PUBLIC"
-      },
-      {
-        "client": "LG NLC",
-        "name": "History Walk",
+        "client": "기아 EV6",
+        "name": "비비드 시드니 2023",
         "context": "",
         "year": "",
-        "slug": "lg-nlc",
-        "description": "LG그룹의 미래 인재 육성을 위한 교육 및 리더십 허브 구축 프로젝트. 서울 남산에 조성된 NLC는 그룹 신임 임원 및 핵심 인재 교육을 위한 복합 교육 공간으로, 학습·교류·전시 기능을 통합한 새로운 교육 플랫폼이다. 그룹의 역사와 비전을 공유하는 전시 공간과 글로벌 비즈니스 환경에 대응하는 리더십 프로그램을 통해 LG의 미래 성장 동력을 지원을 의미하는 콘텐츠를 제작하였습니다.",
-        "source": "project/uploads/sia.haus (hmp) brief -ing.pdf p.10",
-        "url": "/projects/lg-nlc",
-        "image_url": "/assets/projects/page_010.png",
-        "category": "BRAND"
-      },
-      {
-        "client": "FILA Holdings",
-        "name": "Heritage Lounge",
-        "context": "",
-        "year": "",
-        "slug": "fila-heritage",
-        "description": "휠라홀딩스 1층에는 브랜드의 헤리티지가 가득 담긴 '헤리티지 라운지'가 있습니다. 이 공간은 100년이 넘는 휠라의 역사가 한눈에 보이는 곳 입니다. 브랜드의 헤리티지를 강조하기 위해 단순한 역사 전시가 아니라 현대적인 기술에 아날로그적인 감성을 더했습니다. 플립 아트 보드를 활용하여 아날로그 적인 감성을 더했습니다. 역사 깊은 휠라가 진취적이고 적극적인 기업임을 연출한 공간 입니다.",
-        "source": "project/uploads/sia.haus (hmp) brief -ing.pdf p.20",
-        "url": "/projects/fila-heritage",
-        "image_url": "/assets/projects/page_020.png",
-        "category": "BRAND"
-      },
-      {
-        "client": "Netflix",
-        "name": "Love Alarm 존",
-        "context": "",
-        "year": "",
-        "slug": "netflix-love-alarm",
-        "description": "넷플릭스 오리지널 드라마와 웹툰으로 사랑받은 '좋아하면 울리는(좋알람)'의 세계관을 롯데월드타워 광장 한가운데에 오프라인으로 재현했습니다. 단순히 조형물을 설치하는 것을 넘어, IP의 핵심 아이콘인 '좋알람' 앱을 상징하는 LED 미디어 타워를 제작하여 팬들에게는 감동을, 일반 방문객에게는 신선한 시각적 재미를 선사하며 캠페인의 성공적인 런칭을 이끌었습니다.",
-        "source": "project/uploads/sia.haus (hmp) brief -ing.pdf p.61",
-        "url": "/projects/netflix-love-alarm",
-        "image_url": "/assets/projects/netflix-love-alarm-representative.png",
-        "category": "BRAND",
+        "slug": "project-08",
+        "description": "",
+        "url": "/projects/project-08",
+        "image_url": "/assets/projects/project-08/01.jpg",
+        "category": "PROJECT",
         "gallery_images": [
-          "/assets/projects/netflix-love-alarm-representative.png",
-          "/assets/projects/netflix-love-alarm-1.png",
-          "/assets/projects/netflix-love-alarm-2.png"
+          "/assets/projects/project-08/01.jpg"
         ]
       },
       {
-        "client": "삼성",
-        "name": "LUX Soundroom",
-        "context": "Moscone West Convention Center, San Francisco",
-        "year": "2018",
-        "slug": "samsung-lux",
-        "description": "공간의 특성을 반영한 전략적 사운드 설계를 통해 마케팅 효과를 극대화했습니다. 스테레오 사운드 원칙에 기반한 그룹별 기기 배치를 통해 소리의 왜곡을 최소화하였으며, 특히 'Galaxy Home' 멀티 스테레오 피쳐 리스닝이 가능하도록 구현하여 상업적 활용도를 높였습니다. 고난도 사운드 마스터링 과정에서 확보한 안정성을 바탕으로 대규모 글로벌 컨벤션 환경에서도 완벽한 퍼포먼스를 증명했습니다.",
-        "source": "project/uploads/sia.haus (hmp) brief -ing.pdf p.69",
-        "url": "/projects/samsung-lux",
-        "category": "BRAND",
-        "image_url": "/assets/projects/samsung-notion.png",
-        "video_url": "https://www.youtube.com/embed/8BQEu7_OHVg?autoplay=1&mute=1&loop=1&playlist=8BQEu7_OHVg&controls=0&rel=0"
+        "client": "기아 EV6",
+        "name": "팝업스토어",
+        "context": "",
+        "year": "",
+        "slug": "project-09",
+        "description": "",
+        "url": "/projects/project-09",
+        "image_url": "/assets/projects/project-09/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-09/01.jpg"
+        ]
+      },
+      {
+        "client": "기장 카페",
+        "name": "마리솔 프로젝션 맵핑",
+        "context": "",
+        "year": "",
+        "slug": "project-10",
+        "description": "",
+        "url": "/projects/project-10",
+        "image_url": "/assets/projects/project-10/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-10/01.jpg",
+          "/assets/projects/project-10/02.jpg",
+          "/assets/projects/project-10/03.jpg",
+          "/assets/projects/project-10/04.jpg",
+          "/assets/projects/project-10/05.jpg",
+          "/assets/projects/project-10/06.jpg",
+          "/assets/projects/project-10/07.jpg"
+        ]
+      },
+      {
+        "client": "뉴발란스 플래그쉽",
+        "name": "강남점",
+        "context": "",
+        "year": "",
+        "slug": "project-11",
+        "description": "",
+        "url": "/projects/project-11",
+        "image_url": "/assets/projects/project-11/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-11/01.jpg",
+          "/assets/projects/project-11/02.jpg",
+          "/assets/projects/project-11/03.jpg"
+        ]
+      },
+      {
+        "client": "대만 ACTIVA",
+        "name": "타이난",
+        "context": "",
+        "year": "",
+        "slug": "project-12",
+        "description": "",
+        "url": "/projects/project-12",
+        "image_url": "/assets/projects/project-12/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-12/01.jpg",
+          "/assets/projects/project-12/02.jpg",
+          "/assets/projects/project-12/03.jpg",
+          "/assets/projects/project-12/04.jpg",
+          "/assets/projects/project-12/05.jpg"
+        ]
+      },
+      {
+        "client": "대명 오션월드",
+        "name": "라이팅 페스티벌",
+        "context": "",
+        "year": "",
+        "slug": "project-13",
+        "description": "",
+        "url": "/projects/project-13",
+        "image_url": "/assets/projects/project-13/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-13/01.jpg",
+          "/assets/projects/project-13/02.jpg",
+          "/assets/projects/project-13/03.jpg",
+          "/assets/projects/project-13/04.jpg"
+        ]
+      },
+      {
+        "client": "더현대 서울",
+        "name": "엔트로피 오브 네이처",
+        "context": "",
+        "year": "",
+        "slug": "project-14",
+        "description": "",
+        "url": "/projects/project-14",
+        "image_url": "/assets/projects/project-14/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-14/01.jpg"
+        ]
+      },
+      {
+        "client": "덕평휴게소",
+        "name": "별빛정원우주",
+        "context": "",
+        "year": "",
+        "slug": "project-15",
+        "description": "",
+        "url": "/projects/project-15",
+        "image_url": "/assets/projects/project-15/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-15/01.jpg",
+          "/assets/projects/project-15/02.jpg",
+          "/assets/projects/project-15/03.jpg",
+          "/assets/projects/project-15/04.jpg",
+          "/assets/projects/project-15/05.jpg",
+          "/assets/projects/project-15/06.jpg",
+          "/assets/projects/project-15/07.jpg"
+        ]
+      },
+      {
+        "client": "롯데백화점 본점",
+        "name": "미디어파사드 2023",
+        "context": "",
+        "year": "",
+        "slug": "project-16",
+        "description": "",
+        "url": "/projects/project-16",
+        "image_url": "/assets/projects/project-16/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-16/01.jpg"
+        ]
+      },
+      {
+        "client": "롯데월드몰 에비뉴엘",
+        "name": "CLUSTER",
+        "context": "",
+        "year": "",
+        "slug": "project-17",
+        "description": "",
+        "url": "/projects/project-17",
+        "image_url": "/assets/projects/project-17/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-17/01.jpg",
+          "/assets/projects/project-17/02.jpg",
+          "/assets/projects/project-17/03.jpg",
+          "/assets/projects/project-17/04.jpg",
+          "/assets/projects/project-17/05.jpg"
+        ]
+      },
+      {
+        "client": "베니스",
+        "name": "비엔날레",
+        "context": "",
+        "year": "",
+        "slug": "project-18",
+        "description": "",
+        "url": "/projects/project-18",
+        "image_url": "/assets/projects/project-18/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-18/01.jpg"
+        ]
+      },
+      {
+        "client": "별마당 도서관",
+        "name": "빛의도시",
+        "context": "",
+        "year": "",
+        "slug": "project-19",
+        "description": "",
+        "url": "/projects/project-19",
+        "image_url": "/assets/projects/project-19/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-19/01.jpg",
+          "/assets/projects/project-19/02.jpg"
+        ]
+      },
+      {
+        "client": "별마당 도서관",
+        "name": "열린아트전",
+        "context": "",
+        "year": "",
+        "slug": "project-20",
+        "description": "",
+        "url": "/projects/project-20",
+        "image_url": "/assets/projects/project-20/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-20/01.jpg",
+          "/assets/projects/project-20/02.jpg",
+          "/assets/projects/project-20/03.jpg"
+        ]
+      },
+      {
+        "client": "부산 사상역",
+        "name": "프로젝션 맵핑",
+        "context": "",
+        "year": "",
+        "slug": "project-21",
+        "description": "",
+        "url": "/projects/project-21",
+        "image_url": "/assets/projects/project-21/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-21/01.jpg",
+          "/assets/projects/project-21/02.jpg",
+          "/assets/projects/project-21/03.jpg",
+          "/assets/projects/project-21/04.jpg",
+          "/assets/projects/project-21/05.jpg"
+        ]
+      },
+      {
+        "client": "샌프란시스코 LUX",
+        "name": "SOUND ROOM",
+        "context": "",
+        "year": "",
+        "slug": "project-22",
+        "description": "",
+        "url": "/projects/project-22",
+        "image_url": "/assets/projects/project-22/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-22/01.jpg",
+          "/assets/projects/project-22/02.jpg",
+          "/assets/projects/project-22/03.jpg",
+          "/assets/projects/project-22/04.jpg",
+          "/assets/projects/project-22/05.jpg",
+          "/assets/projects/project-22/06.jpg",
+          "/assets/projects/project-22/07.jpg"
+        ]
       },
       {
         "client": "서울라이트",
-        "name": "광화문",
-        "context": "서울시 광화문광장",
-        "year": "2023",
-        "slug": "seoullight",
-        "url": "/projects/seoullight",
-        "category": "PUBLIC",
-        "image_url": "/assets/projects/seoullight-notion.png",
-        "video_url": "https://www.youtube.com/embed/xCu0MJrX-Mg?autoplay=1&mute=1&loop=1&playlist=xCu0MJrX-Mg&controls=0&rel=0",
+        "name": "광화",
+        "context": "",
+        "year": "",
+        "slug": "project-23",
+        "description": "",
+        "url": "/projects/project-23",
+        "image_url": "/assets/projects/project-23/01.jpg",
+        "category": "PROJECT",
         "gallery_images": [
-          "https://static.wixstatic.com/media/d82cd5_39d5652da99e43bdb16337e872b9cd41~mv2.png",
-          "https://static.wixstatic.com/media/d82cd5_51f24b7fd61c48a78f7515c56fcd271b~mv2.png",
-          "https://static.wixstatic.com/media/4d207c_7cde9b0e809140759e9e44bdb5c246c1~mv2.png",
-          "https://static.wixstatic.com/media/4d207c_eb6cab3c00334470bf29f8f504f0d8d3~mv2.png",
-          "https://static.wixstatic.com/media/4d207c_41c514683a6c4a62ae8557ac06f35078~mv2.png",
-          "https://static.wixstatic.com/media/4d207c_d5e3cec3b79f439782eee93a70fd142e~mv2.png",
-          "https://static.wixstatic.com/media/4d207c_fb1d488b1ae040b6a8d15366ce30214a~mv2.png",
-          "https://static.wixstatic.com/media/4d207c_7b1b216a8bc94c71b86b1322b5ecf1af~mv2.png"
+          "/assets/projects/project-23/01.jpg",
+          "/assets/projects/project-23/02.jpg",
+          "/assets/projects/project-23/03.jpg",
+          "/assets/projects/project-23/04.jpg"
         ]
       },
       {
-        "client": "SM · RIIZE",
-        "name": "Lucky MV",
+        "client": "서울라이트 광화",
+        "name": "2023",
         "context": "",
         "year": "",
-        "slug": "sm-riize",
-        "description": "SM엔터테인먼트 보이그룹 RIIZE의 'Lucky' 뮤직비디오 비주얼 콘텐츠 작업. 아이돌 IP의 세계관을 영상 언어로 확장하여, 무대·뮤직비디오 장면에 어울리는 몰입형 비주얼을 구현했습니다. 음악과 영상, 공간감이 하나로 맞물리도록 설계하여 K-팝 IP의 시각적 완성도를 끌어올렸습니다.",
-        "source": "project/uploads/sia.haus (hmp) brief -ing.pdf p.22",
-        "url": "/projects/sm-riize",
-        "image_url": "/assets/projects/page_022.png",
-        "category": "BRAND"
+        "slug": "project-24",
+        "description": "",
+        "url": "/projects/project-24",
+        "image_url": "/assets/projects/project-24/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-24/01.jpg",
+          "/assets/projects/project-24/02.jpg"
+        ]
+      },
+      {
+        "client": "송도컨벤시아 스마트마이스",
+        "name": "라운지",
+        "context": "",
+        "year": "",
+        "slug": "project-25",
+        "description": "",
+        "url": "/projects/project-25",
+        "image_url": "/assets/projects/project-25/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-25/01.jpg",
+          "/assets/projects/project-25/02.jpg",
+          "/assets/projects/project-25/03.jpg"
+        ]
+      },
+      {
+        "client": "수원 스마트시티",
+        "name": "소통박스",
+        "context": "",
+        "year": "",
+        "slug": "project-26",
+        "description": "",
+        "url": "/projects/project-26",
+        "image_url": "/assets/projects/project-26/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-26/01.jpg",
+          "/assets/projects/project-26/02.jpg",
+          "/assets/projects/project-26/03.jpg",
+          "/assets/projects/project-26/04.jpg",
+          "/assets/projects/project-26/05.jpg",
+          "/assets/projects/project-26/06.jpg"
+        ]
+      },
+      {
+        "client": "수원화성",
+        "name": "미디어아트쇼",
+        "context": "",
+        "year": "",
+        "slug": "project-27",
+        "description": "",
+        "url": "/projects/project-27",
+        "image_url": "/assets/projects/project-27/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-27/01.jpg",
+          "/assets/projects/project-27/02.jpg"
+        ]
+      },
+      {
+        "client": "순천시 관광안내소",
+        "name": "CMS 2023",
+        "context": "",
+        "year": "",
+        "slug": "project-28",
+        "description": "",
+        "url": "/projects/project-28",
+        "image_url": "/assets/projects/project-28/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-28/01.jpg"
+        ]
+      },
+      {
+        "client": "순천시청 홀로그램",
+        "name": "디스플레이",
+        "context": "",
+        "year": "",
+        "slug": "project-29",
+        "description": "",
+        "url": "/projects/project-29",
+        "image_url": "/assets/projects/project-29/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-29/01.jpg",
+          "/assets/projects/project-29/02.jpg",
+          "/assets/projects/project-29/03.jpg",
+          "/assets/projects/project-29/04.jpg",
+          "/assets/projects/project-29/05.jpg"
+        ]
+      },
+      {
+        "client": "신세계백화점 본점",
+        "name": "미디어파사드",
+        "context": "",
+        "year": "",
+        "slug": "project-30",
+        "description": "",
+        "url": "/projects/project-30",
+        "image_url": "/assets/projects/project-30/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-30/01.jpg",
+          "/assets/projects/project-30/02.jpg",
+          "/assets/projects/project-30/03.jpg",
+          "/assets/projects/project-30/04.jpg",
+          "/assets/projects/project-30/05.jpg",
+          "/assets/projects/project-30/06.jpg",
+          "/assets/projects/project-30/07.jpg",
+          "/assets/projects/project-30/08.jpg",
+          "/assets/projects/project-30/09.jpg",
+          "/assets/projects/project-30/10.jpg"
+        ]
+      },
+      {
+        "client": "아더 스페이스",
+        "name": "3.0",
+        "context": "",
+        "year": "",
+        "slug": "project-31",
+        "description": "",
+        "url": "/projects/project-31",
+        "image_url": "/assets/projects/project-31/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-31/01.jpg"
+        ]
+      },
+      {
+        "client": "아이벡스 스튜디오",
+        "name": "광명 이터니티 콘서트",
+        "context": "",
+        "year": "",
+        "slug": "project-32",
+        "description": "",
+        "url": "/projects/project-32",
+        "image_url": "/assets/projects/project-32/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-32/01.jpg"
+        ]
+      },
+      {
+        "client": "알리페이 플러스",
+        "name": "팝업",
+        "context": "",
+        "year": "",
+        "slug": "project-33",
+        "description": "",
+        "url": "/projects/project-33",
+        "image_url": "/assets/projects/project-33/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-33/01.jpg"
+        ]
+      },
+      {
+        "client": "에버랜드 썸머",
+        "name": "워터 펀 페스티벌",
+        "context": "",
+        "year": "",
+        "slug": "project-34",
+        "description": "",
+        "url": "/projects/project-34",
+        "image_url": "/assets/projects/project-34/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-34/01.jpg",
+          "/assets/projects/project-34/02.jpg",
+          "/assets/projects/project-34/03.jpg",
+          "/assets/projects/project-34/04.jpg",
+          "/assets/projects/project-34/05.jpg"
+        ]
+      },
+      {
+        "client": "여의도 IFC몰",
+        "name": "일루미네이션",
+        "context": "",
+        "year": "",
+        "slug": "project-35",
+        "description": "",
+        "url": "/projects/project-35",
+        "image_url": "/assets/projects/project-35/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-35/01.jpg",
+          "/assets/projects/project-35/02.jpg",
+          "/assets/projects/project-35/03.jpg",
+          "/assets/projects/project-35/04.jpg",
+          "/assets/projects/project-35/05.jpg",
+          "/assets/projects/project-35/06.jpg"
+        ]
+      },
+      {
+        "client": "영종도 파라다이스시티",
+        "name": "일루미네이션",
+        "context": "",
+        "year": "",
+        "slug": "project-36",
+        "description": "",
+        "url": "/projects/project-36",
+        "image_url": "/assets/projects/project-36/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-36/01.jpg",
+          "/assets/projects/project-36/02.jpg",
+          "/assets/projects/project-36/03.jpg",
+          "/assets/projects/project-36/04.jpg",
+          "/assets/projects/project-36/05.jpg",
+          "/assets/projects/project-36/06.jpg",
+          "/assets/projects/project-36/07.jpg",
+          "/assets/projects/project-36/08.jpg",
+          "/assets/projects/project-36/09.jpg"
+        ]
+      },
+      {
+        "client": "예술의전당",
+        "name": "모먼트",
+        "context": "",
+        "year": "",
+        "slug": "project-37",
+        "description": "",
+        "url": "/projects/project-37",
+        "image_url": "/assets/projects/project-37/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-37/01.jpg"
+        ]
+      },
+      {
+        "client": "웨사",
+        "name": "페스티벌",
+        "context": "",
+        "year": "",
+        "slug": "project-38",
+        "description": "",
+        "url": "/projects/project-38",
+        "image_url": "/assets/projects/project-38/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-38/01.jpg"
+        ]
+      },
+      {
+        "client": "인천공항 입국장",
+        "name": "전통문화 미디어",
+        "context": "",
+        "year": "",
+        "slug": "project-39",
+        "description": "",
+        "url": "/projects/project-39",
+        "image_url": "/assets/projects/project-39/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-39/01.jpg",
+          "/assets/projects/project-39/02.jpg",
+          "/assets/projects/project-39/03.jpg"
+        ]
+      },
+      {
+        "client": "인천애뜰 열린광장",
+        "name": "LED Furniture",
+        "context": "",
+        "year": "",
+        "slug": "project-40",
+        "description": "",
+        "url": "/projects/project-40",
+        "image_url": "/assets/projects/project-40/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-40/01.jpg",
+          "/assets/projects/project-40/02.jpg",
+          "/assets/projects/project-40/03.jpg"
+        ]
+      },
+      {
+        "client": "일상비일상의틈 LG",
+        "name": "U+",
+        "context": "",
+        "year": "",
+        "slug": "project-41",
+        "description": "",
+        "url": "/projects/project-41",
+        "image_url": "/assets/projects/project-41/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-41/01.jpg",
+          "/assets/projects/project-41/02.jpg",
+          "/assets/projects/project-41/03.jpg",
+          "/assets/projects/project-41/04.jpg",
+          "/assets/projects/project-41/05.jpg",
+          "/assets/projects/project-41/06.jpg",
+          "/assets/projects/project-41/07.jpg"
+        ]
+      },
+      {
+        "client": "좋아람 웹툰",
+        "name": "LED 미디어타워",
+        "context": "",
+        "year": "",
+        "slug": "project-42",
+        "description": "",
+        "url": "/projects/project-42",
+        "image_url": "/assets/projects/project-42/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-42/01.jpg",
+          "/assets/projects/project-42/02.jpg",
+          "/assets/projects/project-42/03.jpg"
+        ]
+      },
+      {
+        "client": "중국 항저우",
+        "name": "타워",
+        "context": "",
+        "year": "",
+        "slug": "project-43",
+        "description": "",
+        "url": "/projects/project-43",
+        "image_url": "/assets/projects/project-43/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-43/01.jpg",
+          "/assets/projects/project-43/02.jpg",
+          "/assets/projects/project-43/03.jpg",
+          "/assets/projects/project-43/04.jpg"
+        ]
+      },
+      {
+        "client": "코엑스 마곡",
+        "name": "르웨스트 CP1 Block",
+        "context": "",
+        "year": "",
+        "slug": "project-44",
+        "description": "",
+        "url": "/projects/project-44",
+        "image_url": "/assets/projects/project-44/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-44/01.jpg",
+          "/assets/projects/project-44/02.jpg",
+          "/assets/projects/project-44/03.jpg",
+          "/assets/projects/project-44/04.jpg",
+          "/assets/projects/project-44/05.jpg"
+        ]
+      },
+      {
+        "client": "코엑스 SLW",
+        "name": "키네틱 디스플레이",
+        "context": "",
+        "year": "",
+        "slug": "project-45",
+        "description": "",
+        "url": "/projects/project-45",
+        "image_url": "/assets/projects/project-45/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-45/01.jpg"
+        ]
+      },
+      {
+        "client": "파라다이스문화재단 인스케이프",
+        "name": "크로마",
+        "context": "",
+        "year": "",
+        "slug": "project-46",
+        "description": "",
+        "url": "/projects/project-46",
+        "image_url": "/assets/projects/project-46/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-46/01.jpg"
+        ]
+      },
+      {
+        "client": "파크원",
+        "name": "타워2",
+        "context": "",
+        "year": "",
+        "slug": "project-47",
+        "description": "",
+        "url": "/projects/project-47",
+        "image_url": "/assets/projects/project-47/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-47/01.jpg",
+          "/assets/projects/project-47/02.jpg"
+        ]
+      },
+      {
+        "client": "풀무원 안산",
+        "name": "콤플렉스 Natural gravity",
+        "context": "",
+        "year": "",
+        "slug": "project-48",
+        "description": "",
+        "url": "/projects/project-48",
+        "image_url": "/assets/projects/project-48/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-48/01.jpg",
+          "/assets/projects/project-48/02.jpg"
+        ]
+      },
+      {
+        "client": "한국콘텐츠진흥원 뉴미디어",
+        "name": "퍼포먼스",
+        "context": "",
+        "year": "",
+        "slug": "project-49",
+        "description": "",
+        "url": "/projects/project-49",
+        "image_url": "/assets/projects/project-49/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-49/01.jpg",
+          "/assets/projects/project-49/02.jpg",
+          "/assets/projects/project-49/03.jpg",
+          "/assets/projects/project-49/04.jpg",
+          "/assets/projects/project-49/05.jpg",
+          "/assets/projects/project-49/06.jpg",
+          "/assets/projects/project-49/07.jpg",
+          "/assets/projects/project-49/08.jpg",
+          "/assets/projects/project-49/09.jpg"
+        ]
+      },
+      {
+        "client": "현대모비스 M.Vision",
+        "name": "X",
+        "context": "",
+        "year": "",
+        "slug": "project-50",
+        "description": "",
+        "url": "/projects/project-50",
+        "image_url": "/assets/projects/project-50/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-50/01.jpg",
+          "/assets/projects/project-50/02.jpg",
+          "/assets/projects/project-50/03.jpg"
+        ]
+      },
+      {
+        "client": "현대자동차 HMGICS",
+        "name": "2023",
+        "context": "",
+        "year": "",
+        "slug": "project-51",
+        "description": "",
+        "url": "/projects/project-51",
+        "image_url": "/assets/projects/project-51/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-51/01.jpg"
+        ]
+      },
+      {
+        "client": "휠라 전동",
+        "name": "바텐 리볼빙 월",
+        "context": "",
+        "year": "",
+        "slug": "project-52",
+        "description": "",
+        "url": "/projects/project-52",
+        "image_url": "/assets/projects/project-52/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-52/01.jpg"
+        ]
+      },
+      {
+        "client": "KTX 용산역",
+        "name": "LED전광판",
+        "context": "",
+        "year": "",
+        "slug": "project-53",
+        "description": "",
+        "url": "/projects/project-53",
+        "image_url": "/assets/projects/project-53/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-53/01.jpg",
+          "/assets/projects/project-53/02.jpg",
+          "/assets/projects/project-53/03.jpg"
+        ]
+      },
+      {
+        "client": "LDF 하우스",
+        "name": "미디어파사드 2023",
+        "context": "",
+        "year": "",
+        "slug": "project-54",
+        "description": "",
+        "url": "/projects/project-54",
+        "image_url": "/assets/projects/project-54/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-54/01.jpg"
+        ]
+      },
+      {
+        "client": "LG ISE",
+        "name": "2025 아웃도어 디스플레이",
+        "context": "",
+        "year": "",
+        "slug": "project-55",
+        "description": "",
+        "url": "/projects/project-55",
+        "image_url": "/assets/projects/project-55/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-55/01.jpg"
+        ]
+      },
+      {
+        "client": "N서울타워 NSMR",
+        "name": "ZONE",
+        "context": "",
+        "year": "",
+        "slug": "project-56",
+        "description": "",
+        "url": "/projects/project-56",
+        "image_url": "/assets/projects/project-56/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-56/01.jpg",
+          "/assets/projects/project-56/02.jpg",
+          "/assets/projects/project-56/03.jpg",
+          "/assets/projects/project-56/04.jpg",
+          "/assets/projects/project-56/05.jpg"
+        ]
+      },
+      {
+        "client": "SM 라이즈",
+        "name": "럭키튠",
+        "context": "",
+        "year": "",
+        "slug": "project-57",
+        "description": "",
+        "url": "/projects/project-57",
+        "image_url": "/assets/projects/project-57/01.jpg",
+        "category": "PROJECT",
+        "gallery_images": [
+          "/assets/projects/project-57/01.jpg"
+        ]
       }
     ]
   },
