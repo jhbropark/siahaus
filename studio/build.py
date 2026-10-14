@@ -272,6 +272,42 @@ h2{font-size:clamp(22px,3vw,38px);font-weight:400;letter-spacing:-0.03em;
 @media(max-width:820px){.work-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.work-grid{grid-template-columns:1fr}}
 
+/* case studies */
+.case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(18px,2vw,28px)}
+.case-card{display:block;background:var(--surface);overflow:hidden;border:1px solid var(--line);transition:transform .25s ease,box-shadow .25s ease}
+.case-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.08)}
+.case-card-media{aspect-ratio:16/10;background:#e8e8e6;overflow:hidden}
+.case-card-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+.case-card:hover .case-card-media img{transform:scale(1.03)}
+.case-card-placeholder{height:100%;display:flex;align-items:flex-end;padding:22px;font-size:24px;line-height:1.1;background:#111;color:#fff}
+.case-card-body{padding:clamp(20px,2.5vw,32px)}
+.case-card-label,.case-detail-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--text-faint);text-transform:uppercase}
+.case-card h3{margin-top:12px;font-size:clamp(20px,2.2vw,30px);font-weight:400;line-height:1.12;letter-spacing:-.03em;color:var(--text-strong)}
+.case-card p{margin-top:14px;font-size:14px;line-height:1.7;color:var(--text-subtle);max-width:58ch}
+.case-card-link{display:inline-block;margin-top:22px;font-size:12px;color:var(--text-strong);text-decoration:underline;text-underline-offset:4px}
+/* project brief */
+.brief-form{border-top:1px solid var(--line);padding-top:clamp(24px,3vw,36px)}
+.brief-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px}
+.brief-form label{display:block;font-size:12px;color:var(--text-subtle)}
+.brief-form input,.brief-form select,.brief-form textarea{width:100%;margin-top:8px;border:1px solid var(--line);background:var(--surface);border-radius:0;padding:12px 13px;font:inherit;font-size:14px;color:var(--text-strong);outline:none}
+.brief-form input:focus,.brief-form select:focus,.brief-form textarea:focus{border-color:var(--text-strong);background:var(--white)}
+.brief-form textarea{resize:vertical;min-height:130px}
+.brief-full{display:block;margin-top:18px}
+.brief-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}
+.brief-submit{border:0;background:var(--black);color:var(--white);padding:13px 18px;font:inherit;font-size:12px;cursor:pointer}
+.brief-submit:hover{background:#333}
+.brief-note{font-size:12px;color:var(--text-faint);max-width:62ch}
+/* project case study */
+.project-case-study{padding:clamp(64px,9vw,128px) 0 0}
+.project-case-study .wrap{max-width:1000px}
+.project-case-study h2{max-width:18ch;margin-top:12px;font-size:clamp(30px,4.5vw,62px);line-height:1.02;letter-spacing:-.05em}
+.case-detail-summary{max-width:65ch;margin-top:20px;font-size:clamp(16px,1.6vw,21px);line-height:1.7;color:var(--text-muted)}
+.case-detail-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);margin-top:48px}
+.case-detail-item{background:var(--bg);padding:26px 24px;min-height:150px}
+.case-detail-item p{margin-top:12px;font-size:15px;line-height:1.7;color:var(--text-subtle)}
+.project-case-study .project-contact-cta{margin-top:30px}
+@media(max-width:820px){.case-grid{grid-template-columns:1fr}.case-detail-grid{grid-template-columns:1fr}.brief-grid{grid-template-columns:1fr}}
+
 /* faq */
 .faq-list{border-top:1px solid var(--line)}
 .faq-item{padding:clamp(22px,3vw,32px) 0;border-bottom:1px solid var(--line)}
@@ -324,8 +360,9 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
     # media.work nav: Projects / Studies / About / mailto
     nav = "".join(
         f'<a href="#{i}">{esc(t[k])}</a>'
-        for i, k in [("work", "nav_work"), ("fields", "nav_fields"),
-                     ("faq", "nav_faq"), ("contact", "nav_contact")]
+        for i, k in [("work", "nav_work"), ("case-studies", "nav_case"),
+                     ("fields", "nav_fields"), ("faq", "nav_faq"),
+                     ("brief", "nav_brief"), ("contact", "nav_contact")]
     )
     nav += f'<a class="mailto" href="mailto:{esc(s["email"])}">{esc(s["email"])}</a>'
 
@@ -385,6 +422,36 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
 
     works = "".join(work_card(w) for w in d["work"]["items"])
     work_lead = f'<p class="lead">{esc(d["work"]["lead"])}</p>' if d["work"].get("lead") else ""
+    fields_lead = f'<p class="lead">{esc(d["fields"]["lead"])}</p>' if d["fields"].get("lead") else ""
+
+    work_by_slug = {w.get("slug"): w for w in d["work"]["items"] if w.get("slug")}
+    case_cards = []
+    for c in d.get("case_studies", {}).get("items", []):
+        w = work_by_slug.get(c.get("slug"), {})
+        href = w.get("url") or (f'/projects/{c.get("slug")}' if c.get("slug") else "")
+        image = (w.get("image_url") or "").strip()
+        media = f'<img src="{esc(image)}" alt="{esc(c.get("title", ""))} 대표 이미지" loading="lazy" />' if image else f'<div class="case-card-placeholder">{esc(c.get("title", ""))}</div>'
+        case_cards.append(f'<a class="case-card" href="{esc(href)}"><div class="case-card-media">{media}</div><div class="case-card-body"><span class="case-card-label">{esc(c.get("label", "CASE STUDY"))}</span><h3>{esc(c.get("title", ""))}</h3><p>{esc(c.get("summary", ""))}</p><span class="case-card-link">상세 케이스스터디 ↗</span></div></a>')
+    case_cards_html = "".join(case_cards)
+    case_lead = f'<p class="lead">{esc(d["case_studies"]["lead"])}</p>' if d.get("case_studies", {}).get("lead") else ""
+
+    brief_data = d.get("brief", {})
+    brief_options = "".join(f'<option value="{esc(x)}">{esc(x)}</option>' for x in brief_data.get("purposes", []))
+    brief_action = f'mailto:{esc(s["email"])}?subject=SIA.HAUS%20프로젝트%20브리프'
+    brief_form = f'''<form class="brief-form" action="{brief_action}" method="post" enctype="text/plain">
+        <div class="brief-grid">
+          <label>회사·기관명 <input type="text" name="회사·기관명" autocomplete="organization" required /></label>
+          <label>담당자명 <input type="text" name="담당자명" autocomplete="name" required /></label>
+          <label>이메일 <input type="email" name="이메일" autocomplete="email" required /></label>
+          <label>연락처 <input type="tel" name="연락처" autocomplete="tel" /></label>
+          <label>프로젝트 목적 <select name="프로젝트 목적" required><option value="">선택해 주세요</option>{brief_options}</select></label>
+          <label>공간·장소 <input type="text" name="공간·장소" placeholder="예: 호텔 외벽, 전시장, 팝업스토어" /></label>
+          <label>희망 일정 <input type="text" name="희망 일정" placeholder="예: 2027년 3월 오픈" /></label>
+          <label>예산 범위 <input type="text" name="예산 범위" placeholder="공개 가능한 범위" /></label>
+        </div>
+        <label class="brief-full">프로젝트 설명 <textarea name="프로젝트 설명" rows="6" placeholder="만들고 싶은 경험, 필요한 산출물, 참고 링크를 자유롭게 적어주세요." required></textarea></label>
+        <div class="brief-actions"><button type="submit" class="brief-submit">{esc(brief_data.get("submit", "브리프 보내기"))} ↗</button><p class="brief-note">{esc(brief_data.get("note", ""))}</p></div>
+      </form>'''
 
     faqs = "".join(
         f'<div class="faq-item" id="faq-{esc(i["id"])}"><h3>{esc(i["q"])}</h3>'
@@ -513,6 +580,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
       <div class="sec-head">
         <p class="eyebrow">{esc(d["fields"]["eyebrow"])}</p>
         <h2>{esc(d["fields"]["title"])}</h2>
+        {fields_lead}
       </div>
       <div class="fields">{fields}</div>
     </div>
@@ -527,6 +595,28 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
       </div>
       <div class="work-grid">{works}</div>
       <p class="work-note">{esc(d["work"]["note"])}</p>
+    </div>
+  </section>
+
+  <section id="case-studies">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">{esc(d["case_studies"]["eyebrow"])}</p>
+        <h2>{esc(d["case_studies"]["title"])}</h2>
+        {case_lead}
+      </div>
+      <div class="case-grid">{case_cards_html}</div>
+    </div>
+  </section>
+
+  <section id="brief">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">{esc(d["brief"]["eyebrow"])}</p>
+        <h2>{esc(d["brief"]["title"])}</h2>
+        <p class="lead">{esc(d["brief"]["lead"])}</p>
+      </div>
+      {brief_form}
     </div>
   </section>
 
@@ -663,8 +753,9 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     featured = display_title
     nav = "".join(
         f'<a href="/#{i}">{esc(t[k])}</a>'
-        for i, k in [("work", "nav_work"), ("fields", "nav_fields"),
-                     ("faq", "nav_faq"), ("contact", "nav_contact")]
+        for i, k in [("work", "nav_work"), ("case-studies", "nav_case"),
+                     ("fields", "nav_fields"), ("faq", "nav_faq"),
+                     ("brief", "nav_brief"), ("contact", "nav_contact")]
     )
     nav += f'<a class="mailto" href="mailto:{esc(s["email"])}">{esc(s["email"])}</a>'
 
@@ -678,7 +769,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     desc_text = esc(w["description"]).replace("\n", "<br>") if w.get("description") else ""
     desc_html = f'<p class="proj-desc">{desc_text}</p>' if desc_text else ""
     contact_subject = f'{w["client"]} 프로젝트 문의'
-    contact_cta = (f'<a class="project-contact-cta" href="mailto:{esc(s["email"])}?subject={esc(contact_subject)}">'
+    contact_cta = (f'<a class="project-contact-cta" href="/#brief">'
                    f'{esc(t["cta_contact"])} ↗</a>')
 
     source_url = (w.get("source") or "").strip()
@@ -732,6 +823,12 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
             proj_media = "".join(media_parts)
         else:
             proj_media = f'<div class="proj-media-empty">{esc(display_title)}</div>'
+
+    case_study = next((c for c in d.get("case_studies", {}).get("items", []) if c.get("slug") == slug), None)
+    case_study_html = ""
+    if case_study:
+        case_sections = "".join(f'<div class="case-detail-item"><span class="case-detail-label">{esc(x.get("label", ""))}</span><p>{esc(x.get("text", ""))}</p></div>' for x in case_study.get("sections", []))
+        case_study_html = f'''<section class="project-case-study"><div class="wrap"><p class="eyebrow">CASE STUDY</p><h2>{esc(case_study.get("title", display_title))}</h2><p class="case-detail-summary">{esc(case_study.get("summary", ""))}</p><div class="case-detail-grid">{case_sections}</div><a class="project-contact-cta" href="/#brief">프로젝트 브리프 작성 ↗</a></div></section>'''
 
     items = [x for x in d["work"]["items"] if x.get("slug")]
     idx = next((i for i, x in enumerate(items) if x["slug"] == slug), 0)
@@ -838,6 +935,8 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     {proj_media}
   </div>
 
+  {case_study_html}
+
   <div class="wrap">
     <nav class="proj-nav">
       {prev_link}
@@ -874,6 +973,15 @@ def build_llms(d: dict, launched: bool) -> str:
         bits = [b for b in (w["name"], w["context"], w["year"]) if b]
         lines.append(f'- {w["client"]} — ' + " · ".join(bits))
     lines.append("")
+
+    if d.get("case_studies", {}).get("items"):
+        lines += [f'## {d["case_studies"]["title"]}', "", d["case_studies"].get("lead", ""), ""]
+        for c in d["case_studies"]["items"]:
+            lines.append(f'### {c["title"]}')
+            lines += ["", c.get("summary", "")]
+            for part in c.get("sections", []):
+                lines.append(f'- **{part["label"]}** — {part["text"]}')
+            lines.append("")
 
     items = faq_items(d, launched)
     if items:
