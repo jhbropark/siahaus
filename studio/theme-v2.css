@@ -23,7 +23,11 @@ main{display:flex;flex-direction:column}
 #structure{order:3}
 #fields{order:4}
 #faq{order:5}
-#contact{order:6}
+#brief{order:6}
+#contact{order:7}
+#case-studies{order:8}
+
+
 
 .wrap{max-width:1720px;padding-left:var(--v2-pad);padding-right:var(--v2-pad)}
 section{padding:clamp(84px,10vw,168px) 0}
