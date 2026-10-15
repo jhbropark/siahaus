@@ -4,7 +4,7 @@
   var MEASUREMENT_ID = 'G-FFGE099JDE';
   var FORM_ID = 'siahaus-project-brief';
   var FORM_ENDPOINT = 'https://formspree.io/f/xaeqleva';
-  var LEAD_RELAY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxpBsNwD0Am6Z5_pO-v2Lq2SXrV59by7oXHLQQWWpHGKdMrD8dS3UpwqURuWLBNQ2JZ/exec';
+  var LEAD_RELAY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyNd7HahWaM1sArcknVzvSKrEyhp0sm7Q2NdUlBPSj86HASOzk8MAQuco0LNqwvK-Xi/exec';
   var ATTRIBUTION_KEY = 'siahaus_attribution_v1';
   var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
 
