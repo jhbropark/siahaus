@@ -939,16 +939,6 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     </nav>
   </div>
 
-  <section id="case-studies">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">{esc(d["case_studies"]["eyebrow"])}</p>
-        <h2>{esc(d["case_studies"]["title"])}</h2>
-        {case_lead}
-      </div>
-      <div class="case-grid">{case_cards_html}</div>
-    </div>
-  </section>
 </main>
 
 <footer class="site">
