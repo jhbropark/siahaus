@@ -256,4 +256,20 @@ footer.site{background:#111;padding:34px 0}
 .case-detail-item p{margin-top:12px;font-size:15px;line-height:1.7;color:var(--text-subtle)}
 .project-case-study .project-contact-cta{margin-top:30px}
 @media(max-width:820px){.case-grid{grid-template-columns:1fr}.case-detail-grid{grid-template-columns:1fr}.brief-grid{grid-template-columns:1fr}}
-
+/* mobile QA patch: accessible navigation, touch targets, and denser conversion spacing */
+@media(max-width:820px){
+  header.site{height:auto}
+  .hdr{height:auto;min-height:64px;flex-wrap:wrap;align-content:center;row-gap:0;padding-top:10px;padding-bottom:8px}
+  nav.main{display:flex;flex:0 0 100%;order:2;min-width:0;margin-left:0;gap:18px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;padding:10px 0 2px;scrollbar-width:none}
+  nav.main::-webkit-scrollbar{display:none}
+  nav.main a{flex:0 0 auto}
+  .hero{padding-top:84px!important}
+  .hero .wrap{min-height:calc(100svh - 84px)}
+  .work-card-type{font-size:11px!important}
+  .field-en{font-size:11px!important}
+  .brief-form label{font-size:13px}
+  .brief-note{font-size:13px}
+  .brief-submit{min-height:44px;font-size:13px}
+  .project-contact-cta{min-height:44px;display:inline-flex;align-items:center;font-size:13px}
+  #contact{padding:72px 0}
+}
