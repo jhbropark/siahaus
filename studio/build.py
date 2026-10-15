@@ -24,6 +24,8 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).parent
+ANALYTICS_TAGS = ('<script defer src="/_vercel/insights/script.js"></script>'
+                  '<script defer src="/site-analytics.js"></script>')
 # 파일 하나가 로케일 하나입니다. site.json 이 기준이고 나머지는 있으면 함께 빌드합니다.
 DATA_FILES = [ROOT / "data" / "site.json"] + sorted(
     p for p in (ROOT / "data").glob("site.*.json") if p.name != "site.json"
@@ -526,6 +528,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
 <meta name="twitter:image" content="{esc(s["url"] + "og-default.svg")}" />
 <style>{CSS}</style>
 <link rel="stylesheet" href="/theme-v2.css" />
+{ANALYTICS_TAGS}
 <script type="application/ld+json">
 {build_jsonld(d, launched)}
 </script>
@@ -893,6 +896,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
   .proj-media-wrap{{margin-top:0}}
 }}</style>
 <link rel="stylesheet" href="/theme-v2.css" />
+{ANALYTICS_TAGS}
 </head>
 <body>
 <a class="skip" href="#main">{esc(t["skip"])}</a>
@@ -1043,7 +1047,7 @@ def main() -> int:
         for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', doc, re.S):
             json.loads(m.group(1))
         # 실행 스크립트가 섞여 들어가지 않았는지 확인 — 이 사이트의 전제입니다.
-        for m in re.finditer(r'<script(?![^>]*type="application/ld\+json")[^>]*>', doc):
+        for m in re.finditer(r'<script(?![^>]*type="application/ld\+json")(?![^>]*src="/_vercel/insights/script\.js")(?![^>]*src="/site-analytics\.js")[^>]*>', doc):
             raise SystemExit(f"실행 스크립트가 들어갔습니다: {m.group(0)}")
 
         out[path + "index.html"] = doc
@@ -1057,7 +1061,7 @@ def main() -> int:
             # JSON-LD 검증 (도입하면)
             for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', proj_doc, re.S):
                 json.loads(m.group(1))
-            for m in re.finditer(r'<script(?![^>]*type="application/ld\+json")[^>]*>', proj_doc):
+            for m in re.finditer(r'<script(?![^>]*type="application/ld\+json")(?![^>]*src="/_vercel/insights/script\.js")(?![^>]*src="/site-analytics\.js")[^>]*>', proj_doc):
                 raise SystemExit(f"실행 스크립트가 들어갔습니다: {m.group(0)}")
             out[path + f'projects/{w["slug"]}/index.html'] = proj_doc
 
