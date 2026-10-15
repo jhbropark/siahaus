@@ -145,5 +145,6 @@
       ]
     }
   ],
+  "buildCommand": "python build.py && rm -rf data",
   "outputDirectory": "."
 }
