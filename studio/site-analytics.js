@@ -4,6 +4,7 @@
   var MEASUREMENT_ID = 'G-FFGE099JDE';
   var FORM_ID = 'siahaus-project-brief';
   var FORM_ENDPOINT = 'https://formspree.io/f/xaeqleva';
+  var LEAD_RELAY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxpBsNwD0Am6Z5_pO-v2Lq2SXrV59by7oXHLQQWWpHGKdMrD8dS3UpwqURuWLBNQ2JZ/exec';
   var ATTRIBUTION_KEY = 'siahaus_attribution_v1';
   var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
 
@@ -100,6 +101,9 @@
           headers: { Accept: 'application/json' }
         });
         if (!response.ok) throw new Error('form_submit_failed');
+        var relayPayload = new URLSearchParams();
+        data.forEach(function (value, key) { if (typeof value === 'string') relayPayload.append(key, value); });
+        try { navigator.sendBeacon(LEAD_RELAY_ENDPOINT, relayPayload); } catch (_) {}
         track('generate_lead', {
           submission_status: 'success',
           lead_source: 'website',
