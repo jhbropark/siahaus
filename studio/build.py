@@ -88,6 +88,12 @@ def build_jsonld(d: dict, launched: bool) -> str:
         "url": s["url"],
         "description": definition(d, launched),
         "email": s["email"],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "project inquiries",
+            "email": s["email"],
+            "areaServed": s["area_served"],
+        },
         "foundingLocation": {"@type": "Place", "name": s["founding_location"]},
         "address": {
             "@type": "PostalAddress",
@@ -119,7 +125,48 @@ def build_jsonld(d: dict, launched: bool) -> str:
         "publisher": {"@id": s["org_id"]},
     }
 
-    graph = [org, website]
+    webpage = {
+        "@type": "WebPage",
+        "@id": s["url"] + "#webpage",
+        "url": s["url"],
+        "name": d["meta"]["title"],
+        "description": d["meta"]["description"],
+        "inLanguage": s["lang"],
+        "isPartOf": {"@id": s["url"] + "#website"},
+        "about": {"@id": s["org_id"]},
+        "mainEntity": {"@id": s["org_id"]},
+    }
+
+    graph = [org, website, webpage]
+
+    case_list = []
+    for c in d.get("case_studies", {}).get("items", []):
+        slug = c.get("slug")
+        if not slug:
+            continue
+        case_url = s["url"] + "projects/" + slug
+        case_list.append({
+            "@type": "ListItem",
+            "position": len(case_list) + 1,
+            "item": {
+                "@type": "CreativeWork",
+                "@id": case_url + "#work",
+                "url": case_url,
+                "name": c.get("title", ""),
+                "description": c.get("summary", ""),
+                "creator": {"@id": s["org_id"]},
+                "isPartOf": {"@id": s["url"] + "#website"},
+            },
+        })
+    if case_list:
+        graph.append({
+            "@type": "ItemList",
+            "@id": s["url"] + "#case-studies",
+            "name": d.get("case_studies", {}).get("title", ""),
+            "itemListOrder": "https://schema.org/ItemListOrderAscending",
+            "numberOfItems": len(case_list),
+            "itemListElement": case_list,
+        })
 
     items = faq_items(d, launched)
     if items:
@@ -544,6 +591,9 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
 <meta property="og:image:alt" content="{esc(d["meta"]["title"])}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="{esc(s["url"] + "og-default.svg")}" />
+<meta name="twitter:title" content="{esc(d["meta"]["title"])}" />
+<meta name="twitter:description" content="{esc(d["meta"]["description"])}" />
+<meta name="twitter:image:alt" content="{esc(d["meta"]["title"])}" />
 <style>{CSS}</style>
 <link rel="stylesheet" href="/theme-v2.css" />
 {ANALYTICS_TAGS}
@@ -568,7 +618,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-v2">
-        <h1 class="hero-title">{esc(d["hero"].get("display_title", d["hero"]["headline"]))}</h1>
+        <p class="hero-title">{esc(d["hero"].get("display_title", d["hero"]["headline"]))}</p>
         <p class="hero-subtitle">{esc(d["hero"]["headline"])}</p>
         <div class="hero-actions">
           <a class="hero-action" href="#work">{esc(d["hero"].get("cta_primary", t["cta_work"]))} ↘</a>
@@ -887,6 +937,9 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 <meta property="og:image:alt" content="{esc(title)}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="{esc(s["url"] + "og-default.svg")}" />
+<meta name="twitter:title" content="{esc(title)}" />
+<meta name="twitter:description" content="{esc(desc)}" />
+<meta name="twitter:image:alt" content="{esc(title)}" />
 <script type="application/ld+json">
 {build_project_jsonld(d, w)}
 </script>
