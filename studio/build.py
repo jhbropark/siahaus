@@ -23,8 +23,13 @@ import sys
 from datetime import date
 from pathlib import Path
 
+
+# Keep build validation readable on Windows machines using a legacy code page.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 ROOT = Path(__file__).parent
-ANALYTICS_TAGS = ('<script defer src="/_vercel/insights/script.js"></script>'
+ANALYTICS_TAGS = ('<script defer src="/_vercel/insights/script.js"></script>\n'
                   '<script defer src="/site-analytics.js"></script>')
 # 파일 하나가 로케일 하나입니다. site.json 이 기준이고 나머지는 있으면 함께 빌드합니다.
 DATA_FILES = [ROOT / "data" / "site.json"] + sorted(
@@ -439,20 +444,33 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
 
     brief_data = d.get("brief", {})
     brief_options = "".join(f'<option value="{esc(x)}">{esc(x)}</option>' for x in brief_data.get("purposes", []))
-    brief_action = f'mailto:{esc(s["email"])}?subject=SIA.HAUS%20프로젝트%20브리프'
-    brief_form = f'''<form class="brief-form" action="{brief_action}" method="post" enctype="text/plain">
+    brief_action = "https://formspree.io/f/xaeqleva"
+    brief_form = f'''<form class="brief-form" action="{brief_action}" method="POST" accept-charset="UTF-8">
+        <input type="hidden" name="_subject" value="[SIA.HAUS] 프로젝트 브리프" />
+        <input type="hidden" name="form_id" value="siahaus-project-brief" />
+        <input type="hidden" name="source" value="website" />
+        <input type="hidden" name="landing_page" />
+        <input type="hidden" name="page_url" />
+        <input type="hidden" name="referrer" />
+        <input type="hidden" name="first_seen_at" />
+        <input type="hidden" name="last_seen_at" />
+        <input type="hidden" name="utm_source" />
+        <input type="hidden" name="utm_medium" />
+        <input type="hidden" name="utm_campaign" />
+        <input type="hidden" name="utm_content" />
+        <input type="hidden" name="utm_term" />
         <div class="brief-grid">
-          <label>회사·기관명 <input type="text" name="회사·기관명" autocomplete="organization" required /></label>
-          <label>담당자명 <input type="text" name="담당자명" autocomplete="name" required /></label>
-          <label>이메일 <input type="email" name="이메일" autocomplete="email" required /></label>
-          <label>연락처 <input type="tel" name="연락처" autocomplete="tel" /></label>
-          <label>프로젝트 목적 <select name="프로젝트 목적" required><option value="">선택해 주세요</option>{brief_options}</select></label>
-          <label>공간·장소 <input type="text" name="공간·장소" placeholder="예: 호텔 외벽, 전시장, 팝업스토어" /></label>
-          <label>희망 일정 <input type="text" name="희망 일정" placeholder="예: 2027년 3월 오픈" /></label>
-          <label>예산 범위 <input type="text" name="예산 범위" placeholder="공개 가능한 범위" /></label>
+          <label>회사·기관명 <input type="text" name="company" autocomplete="organization" required /></label>
+          <label>담당자명 <input type="text" name="contact_name" autocomplete="name" required /></label>
+          <label>이메일 <input type="email" name="email" autocomplete="email" required /></label>
+          <label>연락처 <input type="tel" name="phone" autocomplete="tel" /></label>
+          <label>프로젝트 목적 <select name="purpose" required><option value="">선택해 주세요</option>{brief_options}</select></label>
+          <label>공간·장소 <input type="text" name="location" placeholder="예: 호텔 외벽, 전시장, 팝업스토어" /></label>
+          <label>희망 일정 <input type="text" name="timeline" placeholder="예: 2027년 3월 오픈" /></label>
+          <label>예산 범위 <input type="text" name="budget" placeholder="공개 가능한 범위" /></label>
         </div>
-        <label class="brief-full">프로젝트 설명 <textarea name="프로젝트 설명" rows="6" placeholder="만들고 싶은 경험, 필요한 산출물, 참고 링크를 자유롭게 적어주세요." required></textarea></label>
-        <div class="brief-actions"><button type="submit" class="brief-submit">{esc(brief_data.get("submit", "브리프 보내기"))} ↗</button><p class="brief-note">{esc(brief_data.get("note", ""))}</p></div>
+        <label class="brief-full">프로젝트 설명 <textarea name="description" rows="6" placeholder="만들고 싶은 경험, 필요한 산출물, 참고 링크를 자유롭게 적어주세요." required></textarea></label>
+        <div class="brief-actions"><button type="submit" class="brief-submit">{esc(brief_data.get("submit", "브리프 보내기"))} ↗</button><p class="brief-note" role="status">{esc(brief_data.get("note", ""))}</p></div>
       </form>'''
 
     faqs = "".join(
@@ -601,8 +619,6 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
     </div>
   </section>
 
-
-
   <section id="brief">
     <div class="wrap">
       <div class="sec-head">
@@ -647,6 +663,17 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
       </dl>
     </div>
   </section>
+
+  <section id="case-studies">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">{esc(d["case_studies"].get("eyebrow", "CASE STUDIES"))}</p>
+        <h2>{esc(d["case_studies"].get("title", ""))}</h2>
+        {case_lead}
+      </div>
+      <div class="case-grid">{case_cards_html}</div>
+    </div>
+  </section>
 </main>
 
 <footer class="site">
@@ -658,7 +685,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
       </div>
       <div>
         <dt>Information</dt>
-        <dd><a href="https://docs.google.com/presentation/d/171DjianF251m7syNLfqL5QrkOTJxo29TOQLVexNRJJ8/edit?usp=sharing" target="_blank" rel="noopener">breif</a></dd>
+        <dd><a href="https://docs.google.com/presentation/d/171DjianF251m7syNLfqL5QrkOTJxo29TOQLVexNRJJ8/edit?usp=sharing" target="_blank" rel="noopener">brief</a></dd>
       </div>
       <div>
         <dt>Studio</dt>
@@ -735,7 +762,8 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     url = f'{s["url"]}projects/{slug}'
     display_title = w.get("display_title") or (f'{w["client"]} \u2014 {w["name"]}' if w.get("name") else w["client"])
     title = f'{display_title} | {s["name"]}'
-    if w.get("description"):
+    has_body = bool(str(w.get("description") or "").strip())
+    if has_body:
         desc = w["description"].split(". ")[0].strip().rstrip(".") + "."
         if len(desc) > 300:
             desc = desc[:297].rstrip() + "\u2026"
@@ -760,7 +788,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 
     year_html = f'<span class="proj-year">{esc(w["year"])}</span>' if w["year"] else ""
     ctx_html = f'<span class="proj-ctx">{esc(w["context"])}</span>' if w["context"] else ""
-    desc_text = esc(w["description"]).replace("\n", "<br>") if w.get("description") else ""
+    desc_text = esc(w["description"]).replace("\n", "<br>") if has_body else ""
     desc_html = f'<p class="proj-desc">{desc_text}</p>' if desc_text else ""
     contact_subject = f'{w["client"]} 프로젝트 문의'
     contact_cta = (f'<a class="project-contact-cta" href="/#brief">'
@@ -847,6 +875,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}" />
+{'<meta name="robots" content="noindex,follow" />' if not has_body else ""}
 <link rel="canonical" href="{esc(url)}" />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="{esc(s["name"])}" />
@@ -1059,7 +1088,7 @@ def main() -> int:
     project_urls = []
     for d2 in docs:
         for w2 in d2["work"]["items"]:
-            if w2.get("slug"):
+            if w2.get("slug") and str(w2.get("description") or "").strip():
                 project_urls.append(d2["site"]["url"] + "projects/" + w2["slug"] )
     out["sitemap.xml"] = build_sitemap(locales, today, project_urls)
 
