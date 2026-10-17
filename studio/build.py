@@ -508,6 +508,8 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
     work_by_slug = {w.get("slug"): w for w in d["work"]["items"] if w.get("slug")}
     case_cards = []
     for c in d.get("case_studies", {}).get("items", []):
+        if c.get("slug") in d.get("archive_only_slugs", []):
+            continue
         w = work_by_slug.get(c.get("slug"), {})
         href = w.get("url") or (f'/projects/{c.get("slug")}' if c.get("slug") else "")
         image = (w.get("image_url") or "").strip()
@@ -814,7 +816,8 @@ def build_project_jsonld(d: dict, w: dict) -> str:
         "isPartOf": {"@id": s["url"] + "#website"},
     }
     case_study = next((c for c in d.get("case_studies", {}).get("items", []) if c.get("slug") == w.get("slug")), None)
-    visible_description = w.get("description") or (case_study.get("summary") if case_study else "")
+    archive_only = w.get("slug") in d.get("archive_only_slugs", [])
+    visible_description = w.get("description") or ((case_study.get("summary") if case_study else "") if not archive_only else "")
     if visible_description:
         work["description"] = visible_description
     if w.get("year"):
@@ -841,10 +844,11 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     url = f'{s["url"]}projects/{slug}'
     display_title = w.get("display_title") or (f'{w["client"]} \u2014 {w["name"]}' if w.get("name") else w["client"])
     case_study = next((c for c in d.get("case_studies", {}).get("items", []) if c.get("slug") == slug), None)
+    archive_only = slug in d.get("archive_only_slugs", [])
     is_behance = slug.startswith("behance-")
-    project_type = "rich-gallery" if is_behance else ("featured-case" if case_study else "archive")
+    project_type = "archive" if archive_only else ("rich-gallery" if is_behance else ("featured-case" if case_study else "archive"))
     hero_title = display_title if not w.get("name") else w["client"]
-    hero_description = str(w.get("description") or (case_study.get("summary") if case_study else "") or "").strip()
+    hero_description = str(w.get("description") or ((case_study.get("summary") if case_study else "") if not archive_only else "") or "").strip()
     has_body = bool(hero_description)
     title = f'{display_title} | {s["name"]}'
     if has_body:
@@ -995,7 +999,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
         proj_media = _collapse(media_parts)
 
     case_study_html = ""
-    if case_study:
+    if case_study and not archive_only:
         case_sections = "".join(f'<div class="case-detail-item"><span class="case-detail-label">{esc(x.get("label", ""))}</span><p>{esc(x.get("text", ""))}</p></div>' for x in case_study.get("sections", []))
         case_study_html = f'''<section class="project-case-study"><div class="wrap"><p class="eyebrow">CASE STUDY</p><h2>{esc(case_study.get("title", display_title))}</h2><p class="case-detail-summary">{esc(case_study.get("summary", ""))}</p><div class="case-detail-grid">{case_sections}</div><a class="project-contact-cta" href="/#brief">프로젝트 브리프 작성 ↗</a></div></section>'''
 

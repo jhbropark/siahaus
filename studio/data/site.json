@@ -43,9 +43,9 @@
     "project-23",
     "project-30",
     "project-42",
-    "project-45",
-    "project-52"
+    "project-45"
   ],
+  "archive_only_slugs": ["project-52"],
   "archive": {
     "eyebrow": "FULL ARCHIVE",
     "title": "전체 프로젝트",
