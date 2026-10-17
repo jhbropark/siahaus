@@ -888,8 +888,9 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
             return (f'<div class="proj-media-stage is-video">'
                     f'<iframe src="{esc(embed_url)}" title="{esc(media_label)} 영상" '
                     f'loading="{loading}" allow="autoplay; fullscreen" allowfullscreen></iframe></div>')
+        preload = "none" if embed_url.startswith("/assets/") else "metadata"
         return (f'<div class="proj-media-stage is-video">'
-                f'<video src="{esc(embed_url)}" muted loop autoplay playsinline preload="metadata"></video></div>')
+                f'<video src="{esc(embed_url)}" muted loop autoplay playsinline preload="{preload}"></video></div>')
     if media_blocks:
         stages = []
         for i, b in enumerate(media_blocks):
@@ -922,7 +923,10 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
             media_parts.append(f'<div class="proj-media-stage"><img src="{esc(image_url)}" alt="{esc(media_label)} 대표 이미지" loading="eager" decoding="async" /></div>')
         for gallery_image in gallery_images:
             if gallery_image != image_url:
-                media_parts.append(f'<div class="proj-media-stage"><img src="{esc(gallery_image)}" alt="{esc(media_label)} 추가 이미지" loading="lazy" decoding="async" /></div>')
+                if gallery_image.lower().endswith((".mp4", ".webm")):
+                    media_parts.append(_embed_stage(gallery_image, False))
+                else:
+                    media_parts.append(f'<div class="proj-media-stage"><img src="{esc(gallery_image)}" alt="{esc(media_label)} 추가 이미지" loading="lazy" decoding="async" /></div>')
         embed_urls = video_urls or ([video_url] if video_url else [])
         for embed_url in embed_urls:
             media_parts.append(_embed_stage(embed_url, False))
