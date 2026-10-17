@@ -20,12 +20,13 @@ main{display:flex;flex-direction:column}
 .hero{order:1}
 .intro{display:none!important}
 #work{order:2}
-#structure{order:3}
-#fields{order:4}
-#faq{order:5}
-#brief{order:6}
-#contact{order:7}
-#case-studies{order:8}
+#archive{order:3}
+#case-studies{order:4}
+#structure{order:5}
+#fields{order:6}
+#brief{order:7}
+#faq{order:8}
+#contact{order:9}
 
 
 
@@ -37,7 +38,7 @@ header.site{height:64px;background:rgba(255,255,255,.9);backdrop-filter:blur(18p
   -webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(0,0,0,.08)}
 .hdr{height:64px}
 .logo{font-size:14px;font-weight:600;letter-spacing:.015em}
-nav.main{gap:30px;font-size:13px}
+nav.main{gap:30px;font-size:13px;color:#666}
 nav.main a{transition:color .25s ease}
 nav.main a:hover{color:#000}
 
@@ -56,8 +57,9 @@ nav.main a:hover{color:#000}
   color:rgba(255,255,255,.72);margin-bottom:20px}
 .hero-title{font-size:var(--v2-display);line-height:.86;letter-spacing:-.065em;font-weight:300;
   color:#fff;max-width:11ch;text-wrap:balance}
-.hero-subtitle{margin-top:24px;max-width:42ch;color:rgba(255,255,255,.84);
+.hero-subtitle{margin-top:18px;max-width:42ch;color:rgba(255,255,255,.84);
   font-size:clamp(16px,1.5vw,22px);line-height:1.5;font-weight:300;word-break:keep-all}
+.hero-role{margin-top:12px;max-width:48ch;color:rgba(255,255,255,.62);font-size:12px;letter-spacing:.04em;word-break:keep-all}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
 .hero-action{display:inline-flex;align-items:center;justify-content:center;min-height:44px;
   padding:0 18px;border:1px solid rgba(255,255,255,.42);color:#fff;font-size:13px;
@@ -81,6 +83,16 @@ nav.main a:hover{color:#000}
 
 /* P1 + P3 — portfolio is the product */
 #work{background:#fff;padding-top:clamp(92px,10vw,160px)}
+#archive{background:var(--v2-paper);padding:clamp(64px,8vw,112px) 0}
+.archive-disclosure{border-top:1px solid var(--v2-line);border-bottom:1px solid var(--v2-line)}
+.archive-disclosure summary{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;font-size:16px;list-style:none}
+.archive-disclosure summary::-webkit-details-marker{display:none}
+.archive-disclosure summary span{font-size:20px;transition:transform .25s ease}
+.archive-disclosure[open] summary span{transform:rotate(90deg)}
+.archive-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--v2-line)}
+.archive-row{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid var(--v2-line);font-size:14px;color:#222}
+.archive-row span:last-child{color:#777;font-size:11px;letter-spacing:.08em;white-space:nowrap}
+.archive-row:hover{color:#000}
 .work-grid{display:grid!important;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(18px,2vw,34px)}
 .work-card{display:block;grid-column:span 4;background:transparent!important;overflow:visible!important}
 .work-card:nth-child(1){grid-column:span 7}
@@ -109,7 +121,7 @@ nav.main a:hover{color:#000}
 /* P2 — reduce explanation; retain proof */
 #structure{background:var(--v2-paper);padding:clamp(68px,8vw,112px) 0}
 #structure .sec-head{margin-bottom:34px}
-#structure .lead{display:none}
+#structure .lead{display:block}
 #structure .steps{background:transparent;border-top:1px solid var(--v2-line);column-gap:24px;row-gap:0}
 #structure .step{background:transparent;padding:24px 0;border-bottom:1px solid var(--v2-line);
   display:grid;grid-template-columns:70px minmax(0,1fr) auto;align-items:baseline}
@@ -121,7 +133,7 @@ nav.main a:hover{color:#000}
 #fields .sec-head{margin-bottom:30px}
 .field-row{padding:clamp(20px,2.6vw,34px) 0}
 .field-name{font-size:clamp(26px,3.2vw,46px);font-weight:300;letter-spacing:-.045em}
-.field-desc{display:none}
+.field-desc{display:block}
 .field-en{font-size:10px;letter-spacing:.12em}
 
 /* FAQ becomes supporting information, not the homepage hero */
@@ -133,7 +145,7 @@ nav.main a:hover{color:#000}
 .faq-item p{font-size:13px;line-height:1.7;color:#666;word-break:keep-all}
 
 /* P4 — one decisive conversion zone */
-#contact{background:var(--v2-black);color:#fff;padding:clamp(96px,12vw,184px) 0}
+#contact{background:var(--v2-black);color:#fff;padding:clamp(76px,9vw,132px) 0}
 #contact .eyebrow{color:rgba(255,255,255,.46)}
 #contact .sec-head{margin-bottom:50px}
 #contact .sec-head h2{color:#fff;max-width:min(100%,520px);font-size:clamp(26px,3.5vw,52px);line-height:1.15;word-break:keep-all}
@@ -152,22 +164,30 @@ nav.main a:hover{color:#000}
 footer.site{background:#111;padding:34px 0}
 
 /* P3 — project detail: media first, no dead whitespace */
-.proj-hero{padding:clamp(92px,8vw,124px) 0 clamp(28px,4vw,48px)!important}
-.proj-hero .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(320px,1.2fr);
-  gap:clamp(48px,8vw,120px);align-items:end}
-.proj-hero .eyebrow{grid-column:1/-1}
-.proj-client{grid-column:1;font-size:clamp(46px,7vw,104px)!important;line-height:.9!important;
+.proj-hero{padding:clamp(68px,7vw,96px) 0 clamp(24px,3vw,40px)!important}
+.proj-hero .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(320px,1.15fr);
+  gap:clamp(36px,7vw,104px);align-items:end}
+.proj-main{grid-column:1;min-width:0}
+.proj-hero .eyebrow{margin-bottom:18px}
+.proj-client{margin:0;font-size:clamp(46px,7vw,104px)!important;line-height:.9!important;
   letter-spacing:-.06em!important;font-weight:300!important}
-.proj-name,.proj-ctx,.proj-year{grid-column:1}
-.proj-desc{grid-column:2;grid-row:2/7;margin:0!important;align-self:end;max-width:48ch!important;
+.proj-meta{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:22px;color:#666;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em}
+.proj-name,.proj-ctx,.proj-year{display:inline-block}
+.proj-summary{grid-column:2;align-self:end;min-width:0}
+.proj-desc{margin:0!important;max-width:48ch!important;
   font-size:clamp(15px,1.45vw,19px)!important;line-height:1.75!important;word-break:keep-all}
-.project-actions{grid-column:2;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:24px}
+.project-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px}
 .back-link{margin-top:0!important}
 .project-contact-cta{display:inline-block;padding:10px 14px;background:#050505;color:#fff;font-size:12px;letter-spacing:.02em}
 .project-contact-cta:hover{background:#333}
-.proj-media-wrap{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1}
-.proj-media-stage{position:relative;width:100%;background:#ececea;overflow:hidden;aspect-ratio:16/9}
-.proj-media-stage img,.proj-media-stage video{width:100%;height:100%;object-fit:cover;display:block}
+.proj-media-wrap{max-width:1720px;margin:clamp(-28px,-2vw,-12px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
+.project-media-more{border-top:1px solid var(--v2-line);border-bottom:1px solid var(--v2-line)}
+.project-media-more summary{display:flex;justify-content:space-between;align-items:center;padding:18px 0;cursor:pointer;font-size:13px;list-style:none}
+.project-media-more summary::-webkit-details-marker{display:none}
+.project-media-more summary span{color:#777;font-family:var(--font-mono);font-size:10px}
+.project-media-more-list{display:flex;flex-direction:column;gap:clamp(16px,2vw,28px);padding-top:clamp(16px,2vw,28px)}
+.proj-media-stage{position:relative;width:100%;background:#ececea;overflow:hidden;aspect-ratio:16/10}
+.proj-media-stage img,.proj-media-stage video{width:100%;height:100%;object-fit:contain;display:block}
 .proj-media-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .proj-media-empty{height:100%;display:flex;align-items:flex-end;padding:clamp(24px,4vw,56px);
   background:#111;color:#fff;font-size:clamp(30px,5vw,72px);font-weight:300;letter-spacing:-.05em}
@@ -194,7 +214,7 @@ footer.site{background:#111;padding:34px 0}
 }
 
 @media(max-width:900px){
-  .project-actions{grid-column:1;margin-top:28px}
+  .project-actions{margin-top:26px}
   .proj-media-wrap{margin-top:0}
   .hero-meta{display:none}
   .sec-head{grid-template-columns:1fr}
@@ -202,9 +222,9 @@ footer.site{background:#111;padding:34px 0}
   .work-card,.work-card:nth-child(n){grid-column:span 6}
   #contact .contact-grid{grid-template-columns:1fr}
   .faq-list{grid-template-columns:1fr}
-  .proj-hero .wrap{grid-template-columns:1fr}
-  .proj-client,.proj-name,.proj-ctx,.proj-year,.proj-desc,.back-link{grid-column:1;grid-row:auto}
-  .proj-desc{margin-top:28px!important}
+  .proj-hero .wrap{grid-template-columns:1fr;gap:0}
+  .proj-main,.proj-summary{grid-column:1}
+  .proj-summary{margin-top:30px}
 }
 @media(max-width:640px){
   .hero-title{font-size:clamp(52px,18vw,82px)}
@@ -260,16 +280,20 @@ footer.site{background:#111;padding:34px 0}
 @media(max-width:820px){
   header.site{height:auto}
   .hdr{height:auto;min-height:64px;flex-wrap:wrap;align-content:center;row-gap:0;gap:0;padding-top:10px;padding-bottom:8px}
-  nav.main{display:flex;flex:0 0 100%;order:2;min-width:0;margin-left:0;gap:18px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;padding:10px 0 2px;scrollbar-width:none}
-  nav.main::-webkit-scrollbar{display:none}
+  nav.main{display:flex;flex:0 0 100%;order:2;min-width:0;margin-left:0;gap:18px;overflow:visible;white-space:nowrap;padding:10px 0 2px}
   nav.main a{flex:0 0 auto}
+  nav.main a:not([href="#work"]):not([href="#case-studies"]):not([href="#brief"]):not(.mailto){display:none}
   .hero{padding-top:84px!important}
   .hero .wrap{min-height:calc(100svh - 84px)}
+  .hero-role{font-size:11px;line-height:1.5}
   .work-card-type{font-size:11px!important}
   .field-en{font-size:11px!important}
   .brief-form label{font-size:13px}
   .brief-note{font-size:13px}
   .brief-submit{min-height:44px;font-size:13px}
   .project-contact-cta{min-height:44px;display:inline-flex;align-items:center;font-size:13px}
+  .archive-list{grid-template-columns:1fr}
+  .archive-row{display:block}
+  .archive-row span:last-child{display:block;margin-top:5px}
   #contact{padding:72px 0}
 }

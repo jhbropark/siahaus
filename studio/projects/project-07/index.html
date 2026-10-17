@@ -263,24 +263,29 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 .foot-grid dd{line-height:1.8}
 .foot-grid a{color:var(--footer-muted)}
 .foot-grid a:hover{color:var(--footer-text)}
+.foot-grid>div:nth-child(5){grid-column:span 2}
+.foot-grid>div:nth-child(5) a{display:inline-block;color:var(--footer-text);font-size:clamp(14px,1.2vw,18px);letter-spacing:-.02em}
 .foot-copy{margin-top:clamp(24px,3vw,40px);padding-top:16px;
   border-top:1px solid rgba(255,255,255,0.08);font-size:11px;
   color:rgba(255,255,255,0.4)}
-@media(max-width:960px){.foot-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:960px){.foot-grid{grid-template-columns:repeat(3,1fr)}.foot-grid>div:nth-child(5){grid-column:span 1}}
 @media(max-width:520px){.foot-grid{grid-template-columns:repeat(2,1fr)}}
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 
-.proj-hero{padding:clamp(92px,8vw,124px) 0 clamp(28px,4vw,48px)!important}
-.proj-hero .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(320px,1.2fr);
-  gap:clamp(48px,8vw,120px);align-items:end}
-.proj-hero .eyebrow{grid-column:1/-1}
-.proj-client{grid-column:1;font-size:clamp(46px,7vw,104px)!important;line-height:.9!important;
+.proj-hero{padding:clamp(68px,7vw,96px) 0 clamp(24px,3vw,40px)!important}
+.proj-hero .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(320px,1.15fr);
+  gap:clamp(36px,7vw,104px);align-items:end}
+.proj-main{grid-column:1;min-width:0}
+.proj-hero .eyebrow{margin-bottom:18px}
+.proj-client{margin:0;font-size:clamp(46px,7vw,104px)!important;line-height:.9!important;
   letter-spacing:-.06em!important;font-weight:300!important}
-.proj-name,.proj-ctx,.proj-year{grid-column:1}
-.proj-desc{grid-column:2;grid-row:2/7;margin:0!important;align-self:end;max-width:48ch!important;
+.proj-meta{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:22px;color:#666;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em}
+.proj-name,.proj-ctx,.proj-year{display:inline-block}
+.proj-summary{grid-column:2;align-self:end;min-width:0}
+.proj-desc{margin:0!important;max-width:48ch!important;
   font-size:clamp(15px,1.45vw,19px)!important;line-height:1.75!important;word-break:keep-all}
-.project-actions{grid-column:2;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:24px}
+.project-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px}
 .back-link{margin-top:0!important}
 .project-contact-cta{display:inline-block;padding:10px 14px;background:#050505;color:#fff;font-size:12px;letter-spacing:.02em}
 .project-contact-cta:hover{background:#333}
@@ -288,7 +293,7 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 .project-source-link:hover{opacity:.65}
 .proj-media-wrap{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
 .proj-media-stage{position:relative;width:100%;background:#ececea;overflow:hidden}
-.proj-media-stage img,.proj-media-stage video{width:100%;height:auto;object-fit:contain;display:block}
+.proj-media-stage img,.proj-media-stage video{width:100%;height:auto;object-fit:contain;display:block;aspect-ratio:16/10;background:#ececea}
 .proj-media-stage.is-video{aspect-ratio:16/9}
 .proj-media-stage.is-video video{width:100%;height:100%;object-fit:cover}
 .proj-media-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
@@ -298,10 +303,10 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 .proj-nav{margin-top:clamp(58px,8vw,110px)!important;padding:30px 0!important}
 .proj-nav-link{font-size:13px!important}
 @media(max-width:900px){
-  .proj-hero .wrap{grid-template-columns:1fr}
-  .proj-client,.proj-name,.proj-ctx,.proj-year,.proj-desc,.back-link{grid-column:1;grid-row:auto}
-  .proj-desc{margin-top:28px!important}
-  .project-actions{grid-column:1;margin-top:28px}
+  .proj-hero .wrap{grid-template-columns:1fr;gap:0}
+  .proj-main,.proj-summary{grid-column:1}
+  .proj-summary{margin-top:30px}
+  .project-actions{margin-top:26px}
   .proj-media-wrap{margin-top:0}
 }</style>
 <link rel="stylesheet" href="/theme-v2.css" />
@@ -322,22 +327,22 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 <main id="main">
   <section class="proj-hero">
     <div class="wrap">
-      <p class="eyebrow">PROJECT</p>
-      <h1 class="proj-client">기아 EV6</h1>
-      <p class="proj-name">그린랜드</p>
-      
-      
-      
-      <div class="project-actions">
-        <a class="back-link" href="/#work">← 실적</a>
-        <a class="project-contact-cta" href="/#brief">프로젝트 문의 ↗</a>
-        
+      <div class="proj-main">
+        <p class="eyebrow">PROJECT</p>
+        <h1 class="proj-client">기아 EV6</h1>
+        <div class="proj-meta"><span class="proj-name">그린랜드</span></div>
+        <div class="project-actions">
+          <a class="back-link" href="/#work">← 실적</a>
+          <a class="project-contact-cta" href="/#brief">프로젝트 문의 ↗</a>
+          
+        </div>
       </div>
+      <div class="proj-summary"></div>
     </div>
   </section>
 
   <div class="proj-media-wrap">
-    <div class="proj-media-stage"><img src="/assets/projects/project-07/01.jpg" alt="기아 EV6 — 그린랜드 대표 이미지" loading="eager" /></div><div class="proj-media-stage"><img src="/assets/projects/project-07/02.jpg" alt="기아 EV6 — 그린랜드 추가 이미지" loading="lazy" /></div>
+    <div class="proj-media-stage"><img src="/assets/projects/project-07/01.jpg" alt="기아 EV6 — 그린랜드 대표 이미지" loading="eager" decoding="async" /></div><div class="proj-media-stage"><img src="/assets/projects/project-07/02.jpg" alt="기아 EV6 — 그린랜드 추가 이미지" loading="lazy" decoding="async" /></div>
   </div>
 
   

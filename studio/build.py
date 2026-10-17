@@ -394,10 +394,12 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 .foot-grid dd{line-height:1.8}
 .foot-grid a{color:var(--footer-muted)}
 .foot-grid a:hover{color:var(--footer-text)}
+.foot-grid>div:nth-child(5){grid-column:span 2}
+.foot-grid>div:nth-child(5) a{display:inline-block;color:var(--footer-text);font-size:clamp(14px,1.2vw,18px);letter-spacing:-.02em}
 .foot-copy{margin-top:clamp(24px,3vw,40px);padding-top:16px;
   border-top:1px solid rgba(255,255,255,0.08);font-size:11px;
   color:rgba(255,255,255,0.4)}
-@media(max-width:960px){.foot-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:960px){.foot-grid{grid-template-columns:repeat(3,1fr)}.foot-grid>div:nth-child(5){grid-column:span 1}}
 @media(max-width:520px){.foot-grid{grid-template-columns:repeat(2,1fr)}}
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -460,7 +462,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         # This prevents iframe/video loading failures and text-bearing fallbacks.
         if image_url:
             media = (f'<div class="work-card-media">'
-                     f'<img src="{esc(image_url)}" alt="{esc(label)} 대표 이미지" loading="lazy" />'
+                     f'<img src="{esc(image_url)}" alt="{esc(label)} 대표 이미지" loading="lazy" decoding="async" />'
                      f'</div>')
         else:
             media = ''
@@ -474,9 +476,34 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
             return f'<a class="work-card" href="{esc(url)}" aria-label="{esc(label + " 프로젝트 상세 보기")}">{inner}</a>'
         return f'<div class="work-card">{inner}</div>'
 
-    works = "".join(work_card(w) for w in d["work"]["items"])
+    selected_slugs = set(d.get("selected_work_slugs", []))
+    selected_items = [w for w in d["work"]["items"] if w.get("slug") in selected_slugs]
+    if not selected_items:
+        selected_items = d["work"]["items"][:12]
+    archive_items = [w for w in d["work"]["items"] if w not in selected_items]
+    works = "".join(work_card(w) for w in selected_items)
     work_lead = f'<p class="lead">{esc(d["work"]["lead"])}</p>' if d["work"].get("lead") else ""
     fields_lead = f'<p class="lead">{esc(d["fields"]["lead"])}</p>' if d["fields"].get("lead") else ""
+    archive_data = d.get("archive", {})
+    archive_rows = "".join(
+        f'<a class="archive-row" href="{esc(w.get("url") or ("/projects/" + w.get("slug", "")))}">'
+        f'<span>{esc(w.get("display_title") or (f"{w["client"]} — {w["name"]}" if w.get("name") else w["client"]))}</span>'
+        f'<span>{esc(" · ".join(x for x in [w.get("category", "PROJECT"), w.get("year", "")] if x))}</span></a>'
+        for w in archive_items if w.get("slug")
+    )
+    archive_section = f'''<section id="archive">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">{esc(archive_data.get("eyebrow", "FULL ARCHIVE"))}</p>
+        <h2>{esc(archive_data.get("title", "전체 프로젝트"))}</h2>
+        <p class="lead">{esc(archive_data.get("lead", ""))}</p>
+      </div>
+      <details class="archive-disclosure">
+        <summary>{esc(archive_data.get("toggle", "전체 프로젝트 보기"))} <span>↘</span></summary>
+        <div class="archive-list">{archive_rows}</div>
+      </details>
+    </div>
+  </section>'''
 
     work_by_slug = {w.get("slug"): w for w in d["work"]["items"] if w.get("slug")}
     case_cards = []
@@ -484,7 +511,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         w = work_by_slug.get(c.get("slug"), {})
         href = w.get("url") or (f'/projects/{c.get("slug")}' if c.get("slug") else "")
         image = (w.get("image_url") or "").strip()
-        media = f'<img src="{esc(image)}" alt="{esc(c.get("title", ""))} 대표 이미지" loading="lazy" />' if image else f'<div class="case-card-placeholder">{esc(c.get("title", ""))}</div>'
+        media = f'<img src="{esc(image)}" alt="{esc(c.get("title", ""))} 대표 이미지" loading="lazy" decoding="async" />' if image else f'<div class="case-card-placeholder">{esc(c.get("title", ""))}</div>'
         case_cards.append(f'<a class="case-card" href="{esc(href)}"><div class="case-card-media">{media}</div><div class="case-card-body"><span class="case-card-label">{esc(c.get("label", "CASE STUDY"))}</span><h3>{esc(c.get("title", ""))}</h3><p>{esc(c.get("summary", ""))}</p><span class="case-card-link">상세 케이스스터디 ↗</span></div></a>')
     case_cards_html = "".join(case_cards)
     case_lead = f'<p class="lead">{esc(d["case_studies"]["lead"])}</p>' if d.get("case_studies", {}).get("lead") else ""
@@ -510,11 +537,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
           <label>회사·기관명 <input type="text" name="company" autocomplete="organization" required /></label>
           <label>담당자명 <input type="text" name="contact_name" autocomplete="name" required /></label>
           <label>이메일 <input type="email" name="email" autocomplete="email" required /></label>
-          <label>연락처 <input type="tel" name="phone" autocomplete="tel" /></label>
           <label>프로젝트 목적 <select name="purpose" required><option value="">선택해 주세요</option>{brief_options}</select></label>
-          <label>공간·장소 <input type="text" name="location" placeholder="예: 호텔 외벽, 전시장, 팝업스토어" /></label>
-          <label>희망 일정 <input type="text" name="timeline" placeholder="예: 2027년 3월 오픈" /></label>
-          <label>예산 범위 <input type="text" name="budget" placeholder="공개 가능한 범위" /></label>
         </div>
         <label class="brief-full">프로젝트 설명 <textarea name="description" rows="6" placeholder="만들고 싶은 경험, 필요한 산출물, 참고 링크를 자유롭게 적어주세요." required></textarea></label>
         <div class="brief-actions"><button type="submit" class="brief-submit">{esc(brief_data.get("submit", "브리프 보내기"))} ↗</button><p class="brief-note" role="status">{esc(brief_data.get("note", ""))}</p></div>
@@ -618,8 +641,10 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-v2">
-        <p class="hero-title">{esc(d["hero"].get("display_title", d["hero"]["headline"]))}</p>
+        <p class="hero-kicker">{esc(d["hero"].get("role", "서울 기반 미디어아트 스튜디오"))}</p>
+        <h1 class="hero-title">{esc(d["hero"].get("display_title", d["hero"]["headline"]))}</h1>
         <p class="hero-subtitle">{esc(d["hero"]["headline"])}</p>
+        <p class="hero-role">{esc(d["hero"].get("service_line", ""))}</p>
         <div class="hero-actions">
           <a class="hero-action" href="#work">{esc(d["hero"].get("cta_primary", t["cta_work"]))} ↘</a>
           <a class="hero-action secondary" href="#contact">{esc(d["hero"].get("cta_secondary", t["cta_contact"]))} ↗</a>
@@ -631,7 +656,32 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
 
   <section class="intro">
     <div class="wrap">
-      <h1>{esc(definition(d, launched))}</h1>
+      <p class="intro-copy">{esc(definition(d, launched))}</p>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">{esc(d["work"]["eyebrow"])}</p>
+        <h2>{esc(d["work"]["title"])}</h2>
+        {work_lead}
+      </div>
+      <div class="work-grid">{works}</div>
+      <p class="work-note">{esc(d["work"]["note"])}</p>
+    </div>
+  </section>
+
+  {archive_section}
+
+  <section id="case-studies">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">{esc(d["case_studies"].get("eyebrow", "CASE STUDIES"))}</p>
+        <h2>{esc(d["case_studies"].get("title", ""))}</h2>
+        {case_lead}
+      </div>
+      <div class="case-grid">{case_cards_html}</div>
     </div>
   </section>
 
@@ -654,18 +704,6 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         {fields_lead}
       </div>
       <div class="fields">{fields}</div>
-    </div>
-  </section>
-
-  <section id="work">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">{esc(d["work"]["eyebrow"])}</p>
-        <h2>{esc(d["work"]["title"])}</h2>
-        {work_lead}
-      </div>
-      <div class="work-grid">{works}</div>
-      <p class="work-note">{esc(d["work"]["note"])}</p>
     </div>
   </section>
 
@@ -711,17 +749,6 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
           <dd>{links}</dd>
         </div>
       </dl>
-    </div>
-  </section>
-
-  <section id="case-studies">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">{esc(d["case_studies"].get("eyebrow", "CASE STUDIES"))}</p>
-        <h2>{esc(d["case_studies"].get("title", ""))}</h2>
-        {case_lead}
-      </div>
-      <div class="case-grid">{case_cards_html}</div>
     </div>
   </section>
 </main>
@@ -879,20 +906,33 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
                 src = str(b.get("src") or "").strip()
                 if src:
                     loading = "eager" if i == 0 else "lazy"
-                    stages.append(f'<div class="proj-media-stage"><img src="{esc(src)}" alt="{esc(media_label)} 이미지 {i + 1}" loading="{loading}" /></div>')
-        proj_media = "".join(stages) if stages else f'<div class="proj-media-empty">{esc(display_title)}</div>'
+                    stages.append(f'<div class="proj-media-stage"><img src="{esc(src)}" alt="{esc(media_label)} 이미지 {i + 1}" loading="{loading}" decoding="async" /></div>')
+        if stages:
+            visible_stages = "".join(stages[:12])
+            hidden_stages = "".join(stages[12:])
+            more_stages = (f'<details class="project-media-more"><summary>{esc(t.get("gallery_more", "전체 이미지 보기"))} '
+                           f'<span>{len(stages) - 12}장</span></summary><div class="project-media-more-list">{hidden_stages}</div></details>'
+                           if hidden_stages else "")
+            proj_media = visible_stages + more_stages
+        else:
+            proj_media = f'<div class="proj-media-empty">{esc(display_title)}</div>'
     else:
         media_parts = []
         if image_url:
-            media_parts.append(f'<div class="proj-media-stage"><img src="{esc(image_url)}" alt="{esc(media_label)} 대표 이미지" loading="eager" /></div>')
+            media_parts.append(f'<div class="proj-media-stage"><img src="{esc(image_url)}" alt="{esc(media_label)} 대표 이미지" loading="eager" decoding="async" /></div>')
         for gallery_image in gallery_images:
             if gallery_image != image_url:
-                media_parts.append(f'<div class="proj-media-stage"><img src="{esc(gallery_image)}" alt="{esc(media_label)} 추가 이미지" loading="lazy" /></div>')
+                media_parts.append(f'<div class="proj-media-stage"><img src="{esc(gallery_image)}" alt="{esc(media_label)} 추가 이미지" loading="lazy" decoding="async" /></div>')
         embed_urls = video_urls or ([video_url] if video_url else [])
         for embed_url in embed_urls:
             media_parts.append(_embed_stage(embed_url, False))
         if media_parts:
-            proj_media = "".join(media_parts)
+            visible_parts = "".join(media_parts[:12])
+            hidden_parts = "".join(media_parts[12:])
+            more_parts = (f'<details class="project-media-more"><summary>{esc(t.get("gallery_more", "전체 이미지 보기"))} '
+                          f'<span>{len(media_parts) - 12}장</span></summary><div class="project-media-more-list">{hidden_parts}</div></details>'
+                          if hidden_parts else "")
+            proj_media = visible_parts + more_parts
         else:
             proj_media = f'<div class="proj-media-empty">{esc(display_title)}</div>'
 
@@ -944,16 +984,19 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 {build_project_jsonld(d, w)}
 </script>
 <style>{CSS}
-.proj-hero{{padding:clamp(92px,8vw,124px) 0 clamp(28px,4vw,48px)!important}}
-.proj-hero .wrap{{display:grid;grid-template-columns:minmax(0,.8fr) minmax(320px,1.2fr);
-  gap:clamp(48px,8vw,120px);align-items:end}}
-.proj-hero .eyebrow{{grid-column:1/-1}}
-.proj-client{{grid-column:1;font-size:clamp(46px,7vw,104px)!important;line-height:.9!important;
+.proj-hero{{padding:clamp(68px,7vw,96px) 0 clamp(24px,3vw,40px)!important}}
+.proj-hero .wrap{{display:grid;grid-template-columns:minmax(0,.85fr) minmax(320px,1.15fr);
+  gap:clamp(36px,7vw,104px);align-items:end}}
+.proj-main{{grid-column:1;min-width:0}}
+.proj-hero .eyebrow{{margin-bottom:18px}}
+.proj-client{{margin:0;font-size:clamp(46px,7vw,104px)!important;line-height:.9!important;
   letter-spacing:-.06em!important;font-weight:300!important}}
-.proj-name,.proj-ctx,.proj-year{{grid-column:1}}
-.proj-desc{{grid-column:2;grid-row:2/7;margin:0!important;align-self:end;max-width:48ch!important;
+.proj-meta{{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:22px;color:#666;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em}}
+.proj-name,.proj-ctx,.proj-year{{display:inline-block}}
+.proj-summary{{grid-column:2;align-self:end;min-width:0}}
+.proj-desc{{margin:0!important;max-width:48ch!important;
   font-size:clamp(15px,1.45vw,19px)!important;line-height:1.75!important;word-break:keep-all}}
-.project-actions{{grid-column:2;display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:24px}}
+.project-actions{{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px}}
 .back-link{{margin-top:0!important}}
 .project-contact-cta{{display:inline-block;padding:10px 14px;background:#050505;color:#fff;font-size:12px;letter-spacing:.02em}}
 .project-contact-cta:hover{{background:#333}}
@@ -961,7 +1004,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 .project-source-link:hover{{opacity:.65}}
 .proj-media-wrap{{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}}
 .proj-media-stage{{position:relative;width:100%;background:#ececea;overflow:hidden}}
-.proj-media-stage img,.proj-media-stage video{{width:100%;height:auto;object-fit:contain;display:block}}
+.proj-media-stage img,.proj-media-stage video{{width:100%;height:auto;object-fit:contain;display:block;aspect-ratio:16/10;background:#ececea}}
 .proj-media-stage.is-video{{aspect-ratio:16/9}}
 .proj-media-stage.is-video video{{width:100%;height:100%;object-fit:cover}}
 .proj-media-stage iframe{{position:absolute;inset:0;width:100%;height:100%;border:0}}
@@ -971,10 +1014,10 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 .proj-nav{{margin-top:clamp(58px,8vw,110px)!important;padding:30px 0!important}}
 .proj-nav-link{{font-size:13px!important}}
 @media(max-width:900px){{
-  .proj-hero .wrap{{grid-template-columns:1fr}}
-  .proj-client,.proj-name,.proj-ctx,.proj-year,.proj-desc,.back-link{{grid-column:1;grid-row:auto}}
-  .proj-desc{{margin-top:28px!important}}
-  .project-actions{{grid-column:1;margin-top:28px}}
+  .proj-hero .wrap{{grid-template-columns:1fr;gap:0}}
+  .proj-main,.proj-summary{{grid-column:1}}
+  .proj-summary{{margin-top:30px}}
+  .project-actions{{margin-top:26px}}
   .proj-media-wrap{{margin-top:0}}
 }}</style>
 <link rel="stylesheet" href="/theme-v2.css" />
@@ -994,17 +1037,17 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 <main id="main">
   <section class="proj-hero">
     <div class="wrap">
-      <p class="eyebrow">PROJECT</p>
-      <h1 class="proj-client">{esc(w["client"])}</h1>
-      {f'<p class="proj-name">{esc(w["name"])}</p>' if w.get("name") else ""}
-      {ctx_html}
-      {year_html}
-      {desc_html}
-      <div class="project-actions">
-        <a class="back-link" href="/#work">\u2190 {esc(t["nav_work"])}</a>
-        {contact_cta}
-        {source_cta}
+      <div class="proj-main">
+        <p class="eyebrow">PROJECT</p>
+        <h1 class="proj-client">{esc(w["client"])}</h1>
+        <div class="proj-meta">{f'<span class="proj-name">{esc(w["name"])}</span>' if w.get("name") else ""}{ctx_html}{year_html}</div>
+        <div class="project-actions">
+          <a class="back-link" href="/#work">\u2190 {esc(t["nav_work"])}</a>
+          {contact_cta}
+          {source_cta}
+        </div>
       </div>
+      <div class="proj-summary">{desc_html}</div>
     </div>
   </section>
 
