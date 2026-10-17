@@ -55,7 +55,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "2025 GRAND JOSAN Anamorphic media facade",
+          "name": "Grand Josun Busan: 건축과 빛이 만나는 외벽",
           "item": "https://www.sia.haus/projects/behance-04"
         }
       ]
@@ -278,13 +278,17 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 .proj-hero{padding:clamp(68px,7vw,96px) 0 clamp(24px,3vw,40px)!important}
 .proj-hero .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(320px,1.15fr);
   gap:clamp(36px,7vw,104px);align-items:end}
+.proj-hero.project-type-archive .wrap{grid-template-columns:1fr;align-items:start}
 .proj-main{grid-column:1;min-width:0}
 .proj-hero .eyebrow{margin-bottom:18px}
 .proj-client{margin:0;font-size:clamp(46px,7vw,104px)!important;line-height:.9!important;
   letter-spacing:-.06em!important;font-weight:300!important}
+.project-type-archive .proj-client{font-size:clamp(42px,6vw,82px)!important}
 .proj-meta{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:22px;color:#666;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em}
-.proj-name,.proj-ctx,.proj-year{display:inline-block}
+.proj-name,.proj-ctx,.proj-year,.proj-category{display:inline-block}
+.proj-year.is-unknown{color:#999}
 .proj-summary{grid-column:2;align-self:end;min-width:0}
+.project-type-archive .proj-summary{display:none}
 .proj-desc{margin:0!important;max-width:48ch!important;
   font-size:clamp(15px,1.45vw,19px)!important;line-height:1.75!important;word-break:keep-all}
 .project-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px}
@@ -293,15 +297,24 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 .project-contact-cta:hover{background:#333}
 .project-source-link{display:inline-block;font-size:12px;color:inherit;text-decoration:underline;text-underline-offset:4px}
 .project-source-link:hover{opacity:.65}
-.proj-media-wrap{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
+.proj-media-wrap{max-width:1720px;margin:clamp(-28px,-2vw,-12px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
 .proj-media-stage{position:relative;width:100%;background:#ececea;overflow:hidden}
-.proj-media-stage img,.proj-media-stage video{width:100%;height:auto;object-fit:contain;display:block;aspect-ratio:16/10;background:#ececea}
+.proj-media-stage img{width:100%;height:auto;object-fit:contain;display:block;background:#ececea}
 .proj-media-stage.is-video{aspect-ratio:16/9}
-.proj-media-stage.is-video video{width:100%;height:100%;object-fit:cover}
+.proj-media-stage.is-video video{width:100%;height:100%;object-fit:cover;display:block}
 .proj-media-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.media-chapter{display:flex;flex-direction:column;gap:14px}
+.media-chapter-label{margin:0;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:#777;text-transform:uppercase}
+.media-chapter-list{display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
 .proj-text-block{max-width:68ch;margin:0 auto;padding:clamp(20px,3vw,36px);background:#f4f4f2;font-size:clamp(15px,1.45vw,19px);line-height:1.8;word-break:keep-all}
 .proj-media-empty{height:100%;display:flex;align-items:flex-end;padding:clamp(24px,4vw,56px);
   background:#111;color:#fff;font-size:clamp(30px,5vw,72px);font-weight:300;letter-spacing:-.05em}
+.project-related{padding:clamp(64px,8vw,112px) 0 0}
+.related-project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line)}
+.related-project-card{display:flex;flex-direction:column;gap:12px;padding:24px;background:var(--bg);color:inherit;min-height:150px}
+.related-project-card strong{font-size:clamp(18px,2vw,28px);font-weight:400;letter-spacing:-.035em}
+.related-project-card span:last-child{margin-top:auto;font-size:12px;color:var(--text-muted)}
+.related-project-type{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--text-faint)}
 .proj-nav{margin-top:clamp(58px,8vw,110px)!important;padding:30px 0!important}
 .proj-nav-link{font-size:13px!important}
 @media(max-width:900px){
@@ -327,12 +340,12 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 </header>
 
 <main id="main">
-  <section class="proj-hero">
+  <section class="proj-hero project-type-rich-gallery">
     <div class="wrap">
       <div class="proj-main">
-        <p class="eyebrow">PROJECT</p>
-        <h1 class="proj-client">2025 GRAND JOSAN Anamorphic media facade</h1>
-        <div class="proj-meta"><span class="proj-year">2025</span></div>
+        <p class="eyebrow">RICH GALLERY</p>
+        <h1 class="proj-client">Grand Josun Busan: 건축과 빛이 만나는 외벽</h1>
+        <div class="proj-meta"><span class="proj-category">BEHANCE</span><span class="proj-year">2025</span></div>
         <div class="project-actions">
           <a class="back-link" href="/#work">← 실적</a>
           <a class="project-contact-cta" href="/#brief">프로젝트 문의 ↗</a>
@@ -344,17 +357,13 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
   </section>
 
   <div class="proj-media-wrap">
-    <div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/054e80248318473.69f84c24e478d.jpg" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 이미지 1" loading="eager" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/0c4f07248318473.69f4111e08e9f.jpg" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 이미지 2" loading="lazy" decoding="async" /></div><div class="proj-media-stage is-video"><iframe src="https://player.vimeo.com/video/1186891802?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1" title="Grand Josun Busan: 건축과 빛이 만나는 외벽 영상" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/b6b774248318473.6a06c6aab8e4b.jpg" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 이미지 4" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d23da4248318473.69ef4a54b50a2.png" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 이미지 5" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/7ecbcf248318473.69ef4a54b4806.png" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 이미지 6" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f23456248318473.69f41119c1780.png" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 이미지 7" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/36de7a248318473.69f41119c13bd.png" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 이미지 8" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/7b23a7248318473.69f4111e08783.jpg" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 이미지 9" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d4a133248318473.69f4111a4244b.png" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 이미지 10" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/582e44248318473.69f4111a42a7e.png" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 이미지 11" loading="lazy" decoding="async" /></div><div class="proj-media-stage is-video"><video src="/assets/projects/behance-04/media/39c554248318473.69f4111a935e5.mp4" muted loop autoplay playsinline preload="none"></video></div><details class="project-media-more"><summary>전체 이미지 보기 <span>4장</span></summary><div class="project-media-more-list"><div class="proj-media-stage is-video"><video src="/assets/projects/behance-04/media/663b83248318473.69f4111c56fa1.mp4" muted loop autoplay playsinline preload="none"></video></div><div class="proj-media-stage is-video"><video src="/assets/projects/behance-04/media/959abb248318473.69f4111c57780.mp4" muted loop autoplay playsinline preload="none"></video></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/c6c35f248318473.69fd670a6a67d.jpg" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 이미지 15" loading="lazy" decoding="async" /></div><div class="proj-text-block">Grand Josun Busan 외벽의 커브드 LED 미디어파사드를 활용해, 건축과 결합되는 아나몰픽 비주얼 콘텐츠를 연출한 프로젝트입니다. 해운대라는 장소적 맥락 속에서, 자연의 흐름과 도시의 빛이 교차하는 새로운 공공 시각 경험을 제안합니다.</div></div></details>
+    <section class="media-chapter"><p class="media-chapter-label">작품 소개</p><div class="media-chapter-list"><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs_webp/054e80248318473.69f84c24e478d.jpg" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 작품 소개 이미지 1" loading="eager" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/0c4f07248318473.69f4111e08e9f.jpg" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 작품 소개 이미지 2" loading="lazy" decoding="async" /></div><div class="proj-media-stage is-video"><iframe src="https://player.vimeo.com/video/1186891802?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;loop=1&amp;muted=1" title="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 작품 소개" loading="lazy" allow="autoplay; fullscreen" allowfullscreen></iframe></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/b6b774248318473.6a06c6aab8e4b.jpg" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 작품 소개 이미지 4" loading="lazy" decoding="async" /></div></div></section><details class="project-media-more"><summary>전체 이미지 보기 <span>12개 미디어</span></summary><div class="project-media-more-list"><section class="media-chapter"><p class="media-chapter-label">공간 · 과정</p><div class="media-chapter-list"><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d23da4248318473.69ef4a54b50a2.png" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 공간 · 과정 이미지 5" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/7ecbcf248318473.69ef4a54b4806.png" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 공간 · 과정 이미지 6" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/f23456248318473.69f41119c1780.png" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 공간 · 과정 이미지 7" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/36de7a248318473.69f41119c13bd.png" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 공간 · 과정 이미지 8" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/7b23a7248318473.69f4111e08783.jpg" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 공간 · 과정 이미지 9" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/d4a133248318473.69f4111a4244b.png" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 공간 · 과정 이미지 10" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/582e44248318473.69f4111a42a7e.png" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 공간 · 과정 이미지 11" loading="lazy" decoding="async" /></div><div class="proj-media-stage is-video"><video src="/assets/projects/behance-04/media/39c554248318473.69f4111a935e5.mp4" poster="/assets/projects/behance-04/media/39c554248318473.69f4111a935e5.jpg" muted loop playsinline preload="none" data-autoplay="true" aria-label="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 공간 · 과정"></video></div></div></section><section class="media-chapter"><p class="media-chapter-label">결과 장면</p><div class="media-chapter-list"><div class="proj-media-stage is-video"><video src="/assets/projects/behance-04/media/663b83248318473.69f4111c56fa1.mp4" poster="/assets/projects/behance-04/media/663b83248318473.69f4111c56fa1.jpg" muted loop playsinline preload="none" data-autoplay="true" aria-label="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 결과 장면"></video></div><div class="proj-media-stage is-video"><video src="/assets/projects/behance-04/media/959abb248318473.69f4111c57780.mp4" poster="/assets/projects/behance-04/media/959abb248318473.69f4111c57780.jpg" muted loop playsinline preload="none" data-autoplay="true" aria-label="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 결과 장면"></video></div><div class="proj-media-stage"><img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/c6c35f248318473.69fd670a6a67d.jpg" alt="Grand Josun Busan: 건축과 빛이 만나는 외벽 · 결과 장면 이미지 15" loading="lazy" decoding="async" /></div><div class="proj-text-block">Grand Josun Busan 외벽의 커브드 LED 미디어파사드를 활용해, 건축과 결합되는 아나몰픽 비주얼 콘텐츠를 연출한 프로젝트입니다. 해운대라는 장소적 맥락 속에서, 자연의 흐름과 도시의 빛이 교차하는 새로운 공공 시각 경험을 제안합니다.</div></div></section></div></details>
   </div>
 
   <section class="project-case-study"><div class="wrap"><p class="eyebrow">CASE STUDY</p><h2>Grand Josun Busan: 건축과 빛이 만나는 외벽</h2><p class="case-detail-summary">해운대의 장소성과 커브드 LED 미디어파사드를 결합해, 자연의 흐름과 도시의 빛이 교차하는 공공 시각 경험을 제안했습니다.</p><div class="case-detail-grid"><div class="case-detail-item"><span class="case-detail-label">목표</span><p>호텔 외벽을 단순한 디스플레이가 아닌 장소 경험의 일부로 전환합니다.</p></div><div class="case-detail-item"><span class="case-detail-label">접근</span><p>커브드 LED의 구조와 해운대의 장소적 맥락을 고려해 아나몰픽 비주얼 콘텐츠를 연출했습니다.</p></div><div class="case-detail-item"><span class="case-detail-label">결과</span><p>Grand Josun Busan 외벽 미디어파사드 프로젝트로 공개되었습니다.</p></div></div><a class="project-contact-cta" href="/#brief">프로젝트 브리프 작성 ↗</a></div></section>
 
-  <div class="wrap">
-    <nav class="proj-nav">
-      <a class="proj-nav-link" href="/projects/behance-03/">← 2025 SWL Kinetic Display Media Art &#x27; ARIA&#x27;</a>
-      <a class="proj-nav-link" href="/projects/behance-05/">시공간의 만개(滿開): 서울의 맥박 →</a>
-    </nav>
-  </div>
+  
+  <div class="wrap"><nav class="proj-nav"><a class="proj-nav-link" href="/projects/behance-03/">← ARIA: AI 도시, 미래 서울</a><a class="proj-nav-link" href="/projects/behance-05/">서울의 맥박: 도시에 생명력을 더하는 장면 →</a></nav></div>
 
 </main>
 

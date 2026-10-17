@@ -813,8 +813,10 @@ def build_project_jsonld(d: dict, w: dict) -> str:
         "creator": {"@id": s["org_id"]},
         "isPartOf": {"@id": s["url"] + "#website"},
     }
-    if w.get("description"):
-        work["description"] = w["description"]
+    case_study = next((c for c in d.get("case_studies", {}).get("items", []) if c.get("slug") == w.get("slug")), None)
+    visible_description = w.get("description") or (case_study.get("summary") if case_study else "")
+    if visible_description:
+        work["description"] = visible_description
     if w.get("year"):
         work["dateCreated"] = w["year"]
     if w.get("context"):
@@ -824,7 +826,7 @@ def build_project_jsonld(d: dict, w: dict) -> str:
         "@type": "BreadcrumbList",
         "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": s["name"], "item": s["url"]},
-            {"@type": "ListItem", "position": 2, "name": w["client"], "item": url},
+            {"@type": "ListItem", "position": 2, "name": (w.get("display_title") or (f'{w["client"]} — {w["name"]}' if w.get("name") else w["client"])), "item": url},
         ],
     }
     return json.dumps({"@context": "https://schema.org", "@graph": [work, crumbs]},
@@ -838,15 +840,20 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     slug = w["slug"]
     url = f'{s["url"]}projects/{slug}'
     display_title = w.get("display_title") or (f'{w["client"]} \u2014 {w["name"]}' if w.get("name") else w["client"])
+    case_study = next((c for c in d.get("case_studies", {}).get("items", []) if c.get("slug") == slug), None)
+    is_behance = slug.startswith("behance-")
+    project_type = "rich-gallery" if is_behance else ("featured-case" if case_study else "archive")
+    hero_title = display_title if not w.get("name") else w["client"]
+    hero_description = str(w.get("description") or (case_study.get("summary") if case_study else "") or "").strip()
+    has_body = bool(hero_description)
     title = f'{display_title} | {s["name"]}'
-    has_body = bool(str(w.get("description") or "").strip())
     if has_body:
-        desc = w["description"].split(". ")[0].strip().rstrip(".") + "."
+        desc = hero_description.split(". ")[0].strip().rstrip(".") + "."
         if len(desc) > 300:
             desc = desc[:297].rstrip() + "\u2026"
     else:
         desc = display_title
-    if w["context"]:
+    if w.get("context"):
         desc += f' \u00b7 {w["context"]}'
 
     featured = display_title
@@ -863,11 +870,18 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
         for o in locales if o["locale"] != s["locale"]
     )
 
-    year_html = f'<span class="proj-year">{esc(w["year"])}</span>' if w["year"] else ""
-    ctx_html = f'<span class="proj-ctx">{esc(w["context"])}</span>' if w["context"] else ""
-    desc_text = esc(w["description"]).replace("\n", "<br>") if has_body else ""
+    year_html = f'<span class="proj-year">{esc(w["year"])}</span>' if w.get("year") else '<span class="proj-year is-unknown">연도 미상</span>'
+    ctx_html = f'<span class="proj-ctx">{esc(w["context"])}</span>' if w.get("context") else ""
+    category_html = f'<span class="proj-category">{esc(w.get("category", "PROJECT"))}</span>'
+    desc_text = esc(hero_description).replace("\n", "<br>") if has_body else ""
     desc_html = f'<p class="proj-desc">{desc_text}</p>' if desc_text else ""
-    contact_subject = f'{w["client"]} 프로젝트 문의'
+    eyebrow_labels = {
+        "featured-case": t.get("project_type_featured", "FEATURED CASE STUDY"),
+        "rich-gallery": t.get("project_type_gallery", "RICH GALLERY"),
+        "archive": t.get("project_type_archive", "ARCHIVE PROJECT"),
+    }
+    project_eyebrow = eyebrow_labels[project_type]
+    contact_subject = f'{display_title} 프로젝트 문의'
     contact_cta = (f'<a class="project-contact-cta" href="/#brief">'
                    f'{esc(t["cta_contact"])} ↗</a>')
 
@@ -881,24 +895,78 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     gallery_images = [str(x).strip() for x in (w.get("gallery_images") or []) if str(x).strip()]
     media_label = display_title
     media_blocks = [b for b in (w.get("media_blocks") or []) if isinstance(b, dict)]
-    def _embed_stage(embed_url: str, eager: bool) -> str:
+    intro_label = t.get("media_chapter_intro", "작품 소개")
+    process_label = t.get("media_chapter_process", "공간 · 과정")
+    output_label = t.get("media_chapter_output", "결과 장면")
+
+    def _poster_for(embed_url: str) -> str:
+        if embed_url.startswith("/assets/") and embed_url.lower().endswith(".mp4"):
+            poster_path = (ROOT / embed_url.lstrip("/")).with_suffix(".jpg")
+            if poster_path.exists():
+                return embed_url.rsplit(".", 1)[0] + ".jpg"
+        return ""
+
+    def _embed_stage(embed_url: str, eager: bool, role_label: str = "영상") -> str:
         loading = "eager" if eager else "lazy"
         if ("player.vimeo.com" in embed_url or "youtube.com/embed" in embed_url
                 or "facebook.com/plugins/video.php" in embed_url):
             return (f'<div class="proj-media-stage is-video">'
-                    f'<iframe src="{esc(embed_url)}" title="{esc(media_label)} 영상" '
+                    f'<iframe src="{esc(embed_url)}" title="{esc(media_label)} · {esc(role_label)}" '
                     f'loading="{loading}" allow="autoplay; fullscreen" allowfullscreen></iframe></div>')
         preload = "none" if embed_url.startswith("/assets/") else "metadata"
+        poster = _poster_for(embed_url)
+        poster_attr = f' poster="{esc(poster)}"' if poster else ""
         return (f'<div class="proj-media-stage is-video">'
-                f'<video src="{esc(embed_url)}" muted loop autoplay playsinline preload="{preload}"></video></div>')
+                f'<video src="{esc(embed_url)}"{poster_attr} muted loop playsinline preload="{preload}" '
+                f'data-autoplay="true" aria-label="{esc(media_label)} · {esc(role_label)}"></video></div>')
+
+    def _image_stage(src: str, index: int, total: int, loading: str = "lazy") -> str:
+        if project_type == "rich-gallery":
+            role = intro_label if index < 4 else (process_label if index < min(12, total) else output_label)
+            alt = f"{media_label} · {role} 이미지 {index + 1}"
+        else:
+            role = "대표 이미지" if index == 0 else "프로젝트 이미지"
+            alt = f"{media_label} · {role} {index + 1}"
+        return (f'<div class="proj-media-stage"><img src="{esc(src)}" alt="{esc(alt)}" '
+                f'loading="{loading}" decoding="async" /></div>')
+
+    def _chapter(label: str, items: list[str]) -> str:
+        if not items:
+            return ""
+        return (f'<section class="media-chapter"><p class="media-chapter-label">{esc(label)}</p>'
+                f'<div class="media-chapter-list">{"".join(items)}</div></section>')
+
+    def _collapse(items: list[str], label: str = "") -> str:
+        if not items:
+            return f'<div class="proj-media-empty">{esc(display_title)}</div>'
+        if project_type == "rich-gallery":
+            intro_end = min(4, len(items))
+            process_end = min(12, len(items))
+            intro_html = _chapter(intro_label, items[:intro_end])
+            process_html = _chapter(process_label, items[intro_end:process_end])
+            output_html = _chapter(output_label, items[process_end:])
+            hidden_html = process_html + output_html
+            more = (f'<details class="project-media-more"><summary>{esc(t.get("gallery_more", "전체 이미지 보기"))} '
+                    f'<span>{len(items) - intro_end}개 미디어</span></summary><div class="project-media-more-list">{hidden_html}</div></details>'
+                    if hidden_html else "")
+            return intro_html + more
+        visible = "".join(items[:12])
+        hidden = "".join(items[12:])
+        more = (f'<details class="project-media-more"><summary>{esc(t.get("gallery_more", "전체 이미지 보기"))} '
+                f'<span>{len(items) - 12}개 미디어</span></summary><div class="project-media-more-list">{hidden}</div></details>'
+                if hidden else "")
+        return visible + more
+
     if media_blocks:
         stages = []
+        total_blocks = len(media_blocks)
         for i, b in enumerate(media_blocks):
             kind = str(b.get("kind") or "").strip().lower()
+            role = intro_label if i < 4 else (process_label if i < min(12, total_blocks) else output_label)
             if kind == "video":
                 src = str(b.get("src") or "").strip()
                 if src:
-                    stages.append(_embed_stage(src, i == 0))
+                    stages.append(_embed_stage(src, i == 0, role))
             elif kind == "text":
                 txt = esc(str(b.get("text") or "").strip()).replace("\n", "<br>")
                 if txt:
@@ -906,41 +974,26 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
             else:
                 src = str(b.get("src") or "").strip()
                 if src:
-                    loading = "eager" if i == 0 else "lazy"
-                    stages.append(f'<div class="proj-media-stage"><img src="{esc(src)}" alt="{esc(media_label)} 이미지 {i + 1}" loading="{loading}" decoding="async" /></div>')
-        if stages:
-            visible_stages = "".join(stages[:12])
-            hidden_stages = "".join(stages[12:])
-            more_stages = (f'<details class="project-media-more"><summary>{esc(t.get("gallery_more", "전체 이미지 보기"))} '
-                           f'<span>{len(stages) - 12}장</span></summary><div class="project-media-more-list">{hidden_stages}</div></details>'
-                           if hidden_stages else "")
-            proj_media = visible_stages + more_stages
-        else:
-            proj_media = f'<div class="proj-media-empty">{esc(display_title)}</div>'
+                    stages.append(_image_stage(src, i, total_blocks, "eager" if i == 0 else "lazy"))
+        proj_media = _collapse(stages)
     else:
         media_parts = []
+        media_index = 0
         if image_url:
-            media_parts.append(f'<div class="proj-media-stage"><img src="{esc(image_url)}" alt="{esc(media_label)} 대표 이미지" loading="eager" decoding="async" /></div>')
+            media_parts.append(_image_stage(image_url, media_index, max(1, len(gallery_images)), "eager"))
+            media_index += 1
         for gallery_image in gallery_images:
             if gallery_image != image_url:
                 if gallery_image.lower().endswith((".mp4", ".webm")):
-                    media_parts.append(_embed_stage(gallery_image, False))
+                    media_parts.append(_embed_stage(gallery_image, False, "프로젝트 영상"))
                 else:
-                    media_parts.append(f'<div class="proj-media-stage"><img src="{esc(gallery_image)}" alt="{esc(media_label)} 추가 이미지" loading="lazy" decoding="async" /></div>')
+                    media_parts.append(_image_stage(gallery_image, media_index, max(1, len(gallery_images)), "lazy"))
+                media_index += 1
         embed_urls = video_urls or ([video_url] if video_url else [])
         for embed_url in embed_urls:
-            media_parts.append(_embed_stage(embed_url, False))
-        if media_parts:
-            visible_parts = "".join(media_parts[:12])
-            hidden_parts = "".join(media_parts[12:])
-            more_parts = (f'<details class="project-media-more"><summary>{esc(t.get("gallery_more", "전체 이미지 보기"))} '
-                          f'<span>{len(media_parts) - 12}장</span></summary><div class="project-media-more-list">{hidden_parts}</div></details>'
-                          if hidden_parts else "")
-            proj_media = visible_parts + more_parts
-        else:
-            proj_media = f'<div class="proj-media-empty">{esc(display_title)}</div>'
+            media_parts.append(_embed_stage(embed_url, False, "프로젝트 영상"))
+        proj_media = _collapse(media_parts)
 
-    case_study = next((c for c in d.get("case_studies", {}).get("items", []) if c.get("slug") == slug), None)
     case_study_html = ""
     if case_study:
         case_sections = "".join(f'<div class="case-detail-item"><span class="case-detail-label">{esc(x.get("label", ""))}</span><p>{esc(x.get("text", ""))}</p></div>' for x in case_study.get("sections", []))
@@ -950,14 +1003,33 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     idx = next((i for i, x in enumerate(items) if x["slug"] == slug), 0)
     prev_item = items[idx - 1] if idx > 0 else None
     next_item = items[idx + 1] if idx < len(items) - 1 else None
+    def _project_label(item: dict) -> str:
+        return item.get("display_title") or (f'{item["client"]} \u2014 {item["name"]}' if item.get("name") else item["client"])
+
+    prev_label = _project_label(prev_item) if prev_item else ""
+    next_label = _project_label(next_item) if next_item else ""
     prev_link = (
         f'<a class="proj-nav-link" href="/projects/{prev_item["slug"]}/">'
-        f'\u2190 {esc(prev_item["client"])}</a>'
+        f'\u2190 {esc(prev_label)}</a>'
     ) if prev_item else '<span></span>'
     next_link = (
         f'<a class="proj-nav-link" href="/projects/{next_item["slug"]}/">'
-        f'{esc(next_item["client"])} \u2192</a>'
+        f'{esc(next_label)} \u2192</a>'
     ) if next_item else '<span></span>'
+    if project_type == "archive":
+        related_cards = "".join(
+            f'<a class="related-project-card" href="/projects/{item["slug"]}/">'
+            f'<span class="related-project-type">{esc(item.get("category", "PROJECT"))}</span>'
+            f'<strong>{esc(_project_label(item))}</strong><span>상세 보기 ↗</span></a>'
+            for item in (prev_item, next_item) if item
+        )
+        related_html = (f'<section class="project-related"><div class="wrap"><p class="eyebrow">'
+                        f'{esc(t.get("related_projects", "관련 프로젝트"))}</p><div class="related-project-grid">'
+                        f'{related_cards}</div></div></section>' if related_cards else "")
+        project_nav_html = ""
+    else:
+        related_html = ""
+        project_nav_html = f'<div class="wrap"><nav class="proj-nav">{prev_link}{next_link}</nav></div>'
 
     return f"""<!DOCTYPE html>
 <html lang="{s["lang"]}">
@@ -991,13 +1063,17 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 .proj-hero{{padding:clamp(68px,7vw,96px) 0 clamp(24px,3vw,40px)!important}}
 .proj-hero .wrap{{display:grid;grid-template-columns:minmax(0,.85fr) minmax(320px,1.15fr);
   gap:clamp(36px,7vw,104px);align-items:end}}
+.proj-hero.project-type-archive .wrap{{grid-template-columns:1fr;align-items:start}}
 .proj-main{{grid-column:1;min-width:0}}
 .proj-hero .eyebrow{{margin-bottom:18px}}
 .proj-client{{margin:0;font-size:clamp(46px,7vw,104px)!important;line-height:.9!important;
   letter-spacing:-.06em!important;font-weight:300!important}}
+.project-type-archive .proj-client{{font-size:clamp(42px,6vw,82px)!important}}
 .proj-meta{{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:22px;color:#666;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em}}
-.proj-name,.proj-ctx,.proj-year{{display:inline-block}}
+.proj-name,.proj-ctx,.proj-year,.proj-category{{display:inline-block}}
+.proj-year.is-unknown{{color:#999}}
 .proj-summary{{grid-column:2;align-self:end;min-width:0}}
+.project-type-archive .proj-summary{{display:none}}
 .proj-desc{{margin:0!important;max-width:48ch!important;
   font-size:clamp(15px,1.45vw,19px)!important;line-height:1.75!important;word-break:keep-all}}
 .project-actions{{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px}}
@@ -1006,15 +1082,24 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 .project-contact-cta:hover{{background:#333}}
 .project-source-link{{display:inline-block;font-size:12px;color:inherit;text-decoration:underline;text-underline-offset:4px}}
 .project-source-link:hover{{opacity:.65}}
-.proj-media-wrap{{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}}
+.proj-media-wrap{{max-width:1720px;margin:clamp(-28px,-2vw,-12px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}}
 .proj-media-stage{{position:relative;width:100%;background:#ececea;overflow:hidden}}
-.proj-media-stage img,.proj-media-stage video{{width:100%;height:auto;object-fit:contain;display:block;aspect-ratio:16/10;background:#ececea}}
+.proj-media-stage img{{width:100%;height:auto;object-fit:contain;display:block;background:#ececea}}
 .proj-media-stage.is-video{{aspect-ratio:16/9}}
-.proj-media-stage.is-video video{{width:100%;height:100%;object-fit:cover}}
+.proj-media-stage.is-video video{{width:100%;height:100%;object-fit:cover;display:block}}
 .proj-media-stage iframe{{position:absolute;inset:0;width:100%;height:100%;border:0}}
+.media-chapter{{display:flex;flex-direction:column;gap:14px}}
+.media-chapter-label{{margin:0;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:#777;text-transform:uppercase}}
+.media-chapter-list{{display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}}
 .proj-text-block{{max-width:68ch;margin:0 auto;padding:clamp(20px,3vw,36px);background:#f4f4f2;font-size:clamp(15px,1.45vw,19px);line-height:1.8;word-break:keep-all}}
 .proj-media-empty{{height:100%;display:flex;align-items:flex-end;padding:clamp(24px,4vw,56px);
   background:#111;color:#fff;font-size:clamp(30px,5vw,72px);font-weight:300;letter-spacing:-.05em}}
+.project-related{{padding:clamp(64px,8vw,112px) 0 0}}
+.related-project-grid{{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line)}}
+.related-project-card{{display:flex;flex-direction:column;gap:12px;padding:24px;background:var(--bg);color:inherit;min-height:150px}}
+.related-project-card strong{{font-size:clamp(18px,2vw,28px);font-weight:400;letter-spacing:-.035em}}
+.related-project-card span:last-child{{margin-top:auto;font-size:12px;color:var(--text-muted)}}
+.related-project-type{{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--text-faint)}}
 .proj-nav{{margin-top:clamp(58px,8vw,110px)!important;padding:30px 0!important}}
 .proj-nav-link{{font-size:13px!important}}
 @media(max-width:900px){{
@@ -1039,12 +1124,12 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 </header>
 
 <main id="main">
-  <section class="proj-hero">
+  <section class="proj-hero project-type-{project_type}">
     <div class="wrap">
       <div class="proj-main">
-        <p class="eyebrow">PROJECT</p>
-        <h1 class="proj-client">{esc(w["client"])}</h1>
-        <div class="proj-meta">{f'<span class="proj-name">{esc(w["name"])}</span>' if w.get("name") else ""}{ctx_html}{year_html}</div>
+        <p class="eyebrow">{esc(project_eyebrow)}</p>
+        <h1 class="proj-client">{esc(hero_title)}</h1>
+        <div class="proj-meta">{category_html}{f'<span class="proj-name">{esc(w["name"])}</span>' if w.get("name") else ""}{ctx_html}{year_html}</div>
         <div class="project-actions">
           <a class="back-link" href="/#work">\u2190 {esc(t["nav_work"])}</a>
           {contact_cta}
@@ -1061,12 +1146,8 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 
   {case_study_html}
 
-  <div class="wrap">
-    <nav class="proj-nav">
-      {prev_link}
-      {next_link}
-    </nav>
-  </div>
+  {related_html}
+  {project_nav_html}
 
 </main>
 
@@ -1187,8 +1268,11 @@ def main() -> int:
     # sitemap 에 프로젝트 URL 포함
     project_urls = []
     for d2 in docs:
+        case_by_slug2 = {c.get("slug"): c for c in d2.get("case_studies", {}).get("items", [])}
         for w2 in d2["work"]["items"]:
-            if w2.get("slug") and str(w2.get("description") or "").strip():
+            case2 = case_by_slug2.get(w2.get("slug"), {})
+            visible_description2 = w2.get("description") or case2.get("summary")
+            if w2.get("slug") and str(visible_description2 or "").strip():
                 project_urls.append(d2["site"]["url"] + "projects/" + w2["slug"] )
     out["sitemap.xml"] = build_sitemap(locales, today, project_urls)
 

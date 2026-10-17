@@ -53,7 +53,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "에버랜드 썸머",
+          "name": "에버랜드 썸머 — 워터 펀 페스티벌",
           "item": "https://www.sia.haus/projects/project-34"
         }
       ]
@@ -276,13 +276,17 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 .proj-hero{padding:clamp(68px,7vw,96px) 0 clamp(24px,3vw,40px)!important}
 .proj-hero .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(320px,1.15fr);
   gap:clamp(36px,7vw,104px);align-items:end}
+.proj-hero.project-type-archive .wrap{grid-template-columns:1fr;align-items:start}
 .proj-main{grid-column:1;min-width:0}
 .proj-hero .eyebrow{margin-bottom:18px}
 .proj-client{margin:0;font-size:clamp(46px,7vw,104px)!important;line-height:.9!important;
   letter-spacing:-.06em!important;font-weight:300!important}
+.project-type-archive .proj-client{font-size:clamp(42px,6vw,82px)!important}
 .proj-meta{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:22px;color:#666;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em}
-.proj-name,.proj-ctx,.proj-year{display:inline-block}
+.proj-name,.proj-ctx,.proj-year,.proj-category{display:inline-block}
+.proj-year.is-unknown{color:#999}
 .proj-summary{grid-column:2;align-self:end;min-width:0}
+.project-type-archive .proj-summary{display:none}
 .proj-desc{margin:0!important;max-width:48ch!important;
   font-size:clamp(15px,1.45vw,19px)!important;line-height:1.75!important;word-break:keep-all}
 .project-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px}
@@ -291,15 +295,24 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 .project-contact-cta:hover{background:#333}
 .project-source-link{display:inline-block;font-size:12px;color:inherit;text-decoration:underline;text-underline-offset:4px}
 .project-source-link:hover{opacity:.65}
-.proj-media-wrap{max-width:1720px;margin:clamp(-96px,-6vw,-48px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
+.proj-media-wrap{max-width:1720px;margin:clamp(-28px,-2vw,-12px) auto 0;padding:0 var(--v2-pad);position:relative;z-index:1;display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
 .proj-media-stage{position:relative;width:100%;background:#ececea;overflow:hidden}
-.proj-media-stage img,.proj-media-stage video{width:100%;height:auto;object-fit:contain;display:block;aspect-ratio:16/10;background:#ececea}
+.proj-media-stage img{width:100%;height:auto;object-fit:contain;display:block;background:#ececea}
 .proj-media-stage.is-video{aspect-ratio:16/9}
-.proj-media-stage.is-video video{width:100%;height:100%;object-fit:cover}
+.proj-media-stage.is-video video{width:100%;height:100%;object-fit:cover;display:block}
 .proj-media-stage iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.media-chapter{display:flex;flex-direction:column;gap:14px}
+.media-chapter-label{margin:0;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;color:#777;text-transform:uppercase}
+.media-chapter-list{display:flex;flex-direction:column;gap:clamp(16px,2vw,28px)}
 .proj-text-block{max-width:68ch;margin:0 auto;padding:clamp(20px,3vw,36px);background:#f4f4f2;font-size:clamp(15px,1.45vw,19px);line-height:1.8;word-break:keep-all}
 .proj-media-empty{height:100%;display:flex;align-items:flex-end;padding:clamp(24px,4vw,56px);
   background:#111;color:#fff;font-size:clamp(30px,5vw,72px);font-weight:300;letter-spacing:-.05em}
+.project-related{padding:clamp(64px,8vw,112px) 0 0}
+.related-project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line)}
+.related-project-card{display:flex;flex-direction:column;gap:12px;padding:24px;background:var(--bg);color:inherit;min-height:150px}
+.related-project-card strong{font-size:clamp(18px,2vw,28px);font-weight:400;letter-spacing:-.035em}
+.related-project-card span:last-child{margin-top:auto;font-size:12px;color:var(--text-muted)}
+.related-project-type{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--text-faint)}
 .proj-nav{margin-top:clamp(58px,8vw,110px)!important;padding:30px 0!important}
 .proj-nav-link{font-size:13px!important}
 @media(max-width:900px){
@@ -325,12 +338,12 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
 </header>
 
 <main id="main">
-  <section class="proj-hero">
+  <section class="proj-hero project-type-archive">
     <div class="wrap">
       <div class="proj-main">
-        <p class="eyebrow">PROJECT</p>
+        <p class="eyebrow">ARCHIVE PROJECT</p>
         <h1 class="proj-client">에버랜드 썸머</h1>
-        <div class="proj-meta"><span class="proj-name">워터 펀 페스티벌</span></div>
+        <div class="proj-meta"><span class="proj-category">PROJECT</span><span class="proj-name">워터 펀 페스티벌</span><span class="proj-year is-unknown">연도 미상</span></div>
         <div class="project-actions">
           <a class="back-link" href="/#work">← 실적</a>
           <a class="project-contact-cta" href="/#brief">프로젝트 문의 ↗</a>
@@ -342,17 +355,13 @@ footer.site{background:var(--footer-bg);padding:clamp(36px,5vw,56px) 0;
   </section>
 
   <div class="proj-media-wrap">
-    <div class="proj-media-stage"><img src="/assets/projects/project-34/01.jpg" alt="에버랜드 썸머 — 워터 펀 페스티벌 대표 이미지" loading="eager" decoding="async" /></div><div class="proj-media-stage"><img src="/assets/projects/project-34/02.jpg" alt="에버랜드 썸머 — 워터 펀 페스티벌 추가 이미지" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="/assets/projects/project-34/03.jpg" alt="에버랜드 썸머 — 워터 펀 페스티벌 추가 이미지" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="/assets/projects/project-34/04.jpg" alt="에버랜드 썸머 — 워터 펀 페스티벌 추가 이미지" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="/assets/projects/project-34/05.jpg" alt="에버랜드 썸머 — 워터 펀 페스티벌 추가 이미지" loading="lazy" decoding="async" /></div>
+    <div class="proj-media-stage"><img src="/assets/projects/project-34/01.jpg" alt="에버랜드 썸머 — 워터 펀 페스티벌 · 대표 이미지 1" loading="eager" decoding="async" /></div><div class="proj-media-stage"><img src="/assets/projects/project-34/02.jpg" alt="에버랜드 썸머 — 워터 펀 페스티벌 · 프로젝트 이미지 2" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="/assets/projects/project-34/03.jpg" alt="에버랜드 썸머 — 워터 펀 페스티벌 · 프로젝트 이미지 3" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="/assets/projects/project-34/04.jpg" alt="에버랜드 썸머 — 워터 펀 페스티벌 · 프로젝트 이미지 4" loading="lazy" decoding="async" /></div><div class="proj-media-stage"><img src="/assets/projects/project-34/05.jpg" alt="에버랜드 썸머 — 워터 펀 페스티벌 · 프로젝트 이미지 5" loading="lazy" decoding="async" /></div>
   </div>
 
   
 
-  <div class="wrap">
-    <nav class="proj-nav">
-      <a class="proj-nav-link" href="/projects/project-33/">← 알리페이 플러스</a>
-      <a class="proj-nav-link" href="/projects/project-35/">여의도 IFC몰 →</a>
-    </nav>
-  </div>
+  <section class="project-related"><div class="wrap"><p class="eyebrow">관련 프로젝트</p><div class="related-project-grid"><a class="related-project-card" href="/projects/project-33/"><span class="related-project-type">PROJECT</span><strong>알리페이 플러스 — 팝업</strong><span>상세 보기 ↗</span></a><a class="related-project-card" href="/projects/project-35/"><span class="related-project-type">PROJECT</span><strong>여의도 IFC몰 — 일루미네이션</strong><span>상세 보기 ↗</span></a></div></div></section>
+  
 
 </main>
 

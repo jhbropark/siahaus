@@ -125,3 +125,21 @@
     });
   });
 })();
+
+(function () {
+  function initProjectVideoMotion() {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var videos = document.querySelectorAll('.proj-media-stage video[data-autoplay]');
+    if (!videos.length || reduce || !('IntersectionObserver' in window)) return;
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var video = entry.target;
+        if (entry.isIntersecting) video.play().catch(function () {});
+        else video.pause();
+      });
+    }, { rootMargin: '180px 0px' });
+    videos.forEach(function (video) { observer.observe(video); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initProjectVideoMotion);
+  else initProjectVideoMotion();
+})();

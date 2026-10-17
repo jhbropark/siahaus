@@ -1846,7 +1846,14 @@
     "footer_note": "SIA.HAUS",
     "nav_case": "케이스스터디",
     "nav_brief": "프로젝트 브리프",
-    "gallery_more": "전체 이미지 보기"
+    "gallery_more": "전체 이미지 보기",
+    "project_type_featured": "FEATURED CASE STUDY",
+    "project_type_gallery": "RICH GALLERY",
+    "project_type_archive": "ARCHIVE PROJECT",
+    "media_chapter_intro": "작품 소개",
+    "media_chapter_process": "공간 · 과정",
+    "media_chapter_output": "결과 장면",
+    "related_projects": "관련 프로젝트"
   },
   "case_studies": {
     "eyebrow": "CASE STUDIES",
