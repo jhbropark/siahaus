@@ -2,6 +2,8 @@
   'use strict';
 
   var MEASUREMENT_ID = 'G-FFGE099JDE';
+  var ADS_ID = 'AW-18499844443';
+  var ADS_CONVERSION = 'AW-18499844443/0FlfCPm9hJwdENvytPVE';
   var FORM_ID = 'siahaus-project-brief';
   var FORM_ENDPOINT = 'https://formspree.io/f/xaeqleva';
   var LEAD_RELAY_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyNd7HahWaM1sArcknVzvSKrEyhp0sm7Q2NdUlBPSj86HASOzk8MAQuco0LNqwvK-Xi/exec';
@@ -34,6 +36,7 @@
     page_title: document.title,
     page_location: window.location.href
   });
+  window.gtag('config', ADS_ID);
   var gaScript = document.createElement('script');
   gaScript.async = true;
   gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + MEASUREMENT_ID;
@@ -111,6 +114,11 @@
           utm_source: attribution.utm_source || '(none)',
           utm_medium: attribution.utm_medium || '(none)',
           utm_campaign: attribution.utm_campaign || '(none)'
+        });
+        window.gtag('event', 'conversion', {
+          send_to: ADS_CONVERSION,
+          value: 1.0,
+          currency: 'KRW'
         });
         if (note) {
           note.textContent = '브리프가 접수되었습니다. 확인 후 회신드리겠습니다.';
