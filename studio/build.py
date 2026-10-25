@@ -339,6 +339,17 @@ h2{font-size:clamp(22px,3vw,38px);font-weight:400;letter-spacing:-0.03em;
 .case-card h3{margin-top:12px;font-size:clamp(20px,2.2vw,30px);font-weight:400;line-height:1.12;letter-spacing:-.03em;color:var(--text-strong)}
 .case-card p{margin-top:14px;font-size:14px;line-height:1.7;color:var(--text-subtle);max-width:58ch}
 .case-card-link{display:inline-block;margin-top:22px;font-size:12px;color:var(--text-strong);text-decoration:underline;text-underline-offset:4px}
+/* references */
+.reference-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);gap:clamp(22px,4vw,64px);align-items:end}
+.reference-card{background:var(--surface);border:1px solid var(--line);overflow:hidden}
+.reference-media{aspect-ratio:1/1;background:#111;overflow:hidden}
+.reference-media video{width:100%;height:100%;display:block;object-fit:cover}
+.reference-copy{padding:clamp(20px,2.5vw,32px)}
+.reference-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;color:var(--text-faint);text-transform:uppercase}
+.reference-copy h3{margin-top:12px;font-size:clamp(24px,3.2vw,44px);font-weight:400;line-height:1.05;letter-spacing:-.04em;color:var(--text-strong)}
+.reference-copy p{margin-top:16px;font-size:14px;line-height:1.7;color:var(--text-subtle);max-width:42ch}
+.reference-source{display:inline-block;margin-top:22px;font-size:12px;color:var(--text-strong);text-decoration:underline;text-underline-offset:4px}
+@media(max-width:820px){.reference-grid{grid-template-columns:1fr}.reference-media{aspect-ratio:1/1;max-width:680px}}
 /* project brief */
 .brief-form{border-top:1px solid var(--line);padding-top:clamp(24px,3vw,36px)}
 .brief-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 24px}
@@ -417,8 +428,9 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
     nav = "".join(
         f'<a href="#{i}">{esc(t[k])}</a>'
         for i, k in [("work", "nav_work"), ("case-studies", "nav_case"),
-                     ("fields", "nav_fields"), ("faq", "nav_faq"),
-                     ("brief", "nav_brief"), ("contact", "nav_contact")]
+                     ("references", "nav_reference"), ("fields", "nav_fields"),
+                     ("faq", "nav_faq"), ("brief", "nav_brief"),
+                     ("contact", "nav_contact")]
     )
     nav += f'<a class="mailto" href="mailto:{esc(s["email"])}">{esc(s["email"])}</a>'
 
@@ -517,6 +529,21 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         case_cards.append(f'<a class="case-card" href="{esc(href)}"><div class="case-card-media">{media}</div><div class="case-card-body"><span class="case-card-label">{esc(c.get("label", "CASE STUDY"))}</span><h3>{esc(c.get("title", ""))}</h3><p>{esc(c.get("summary", ""))}</p><span class="case-card-link">상세 케이스스터디 ↗</span></div></a>')
     case_cards_html = "".join(case_cards)
     case_lead = f'<p class="lead">{esc(d["case_studies"]["lead"])}</p>' if d.get("case_studies", {}).get("lead") else ""
+
+    references_data = d.get("references", {})
+    reference_cards = []
+    for r in references_data.get("items", []):
+        video = (r.get("video_url") or "").strip()
+        poster = (r.get("poster") or "").strip()
+        source = (r.get("source") or "").strip()
+        poster_attr = f' poster="{esc(poster)}"' if poster else ""
+        source_html = f'<a class="reference-source" href="{esc(source)}" target="_blank" rel="noopener noreferrer">{esc(r.get("source_label", "원문 보기 ↗"))}</a>' if source else ""
+        reference_cards.append(
+            f'<article class="reference-card"><div class="reference-media"><video src="{esc(video)}"{poster_attr} controls playsinline preload="metadata"></video></div>'
+            f'<div class="reference-copy"><span class="reference-label">{esc(r.get("label", "REFERENCE"))}</span>'
+            f'<h3>{esc(r.get("title", ""))}</h3><p>{esc(r.get("summary", ""))}</p>{source_html}</div></article>'
+        )
+    references_html = "".join(reference_cards)
 
     brief_data = d.get("brief", {})
     brief_options = "".join(f'<option value="{esc(x)}">{esc(x)}</option>' for x in brief_data.get("purposes", []))
@@ -684,6 +711,17 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         {case_lead}
       </div>
       <div class="case-grid">{case_cards_html}</div>
+    </div>
+  </section>
+
+  <section id="references">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">{esc(references_data.get("eyebrow", "REFERENCES"))}</p>
+        <h2>{esc(references_data.get("title", "레퍼런스"))}</h2>
+        <p class="lead">{esc(references_data.get("lead", ""))}</p>
+      </div>
+      <div class="reference-grid">{references_html}</div>
     </div>
   </section>
 

@@ -1845,6 +1845,7 @@
     "skip": "본문으로 건너뛰기",
     "footer_note": "SIA.HAUS",
     "nav_case": "케이스스터디",
+    "nav_reference": "레퍼런스",
     "nav_brief": "프로젝트 브리프",
     "gallery_more": "전체 이미지 보기",
     "project_type_featured": "FEATURED CASE STUDY",
@@ -1854,6 +1855,22 @@
     "media_chapter_process": "공간 · 과정",
     "media_chapter_output": "결과 장면",
     "related_projects": "관련 프로젝트"
+  },
+  "references": {
+    "eyebrow": "REFERENCES",
+    "title": "움직이는 장면의 레퍼런스",
+    "lead": "SIA.HAUS가 직접 기록하고 공유한 공간 영상 레퍼런스입니다.",
+    "items": [
+      {
+        "label": "SIA.HAUS OFFICIAL",
+        "title": "기차 타고 어디 가실까요?",
+        "summary": "공간 안에서 빛과 이미지가 관객의 이동을 따라 장면으로 전환되는 짧은 영상입니다.",
+        "video_url": "/assets/references/sia-haus-official-dax5jfaryde.mp4",
+        "poster": "/assets/references/sia-haus-official-dax5jfaryde.jpg",
+        "source": "https://www.instagram.com/sia.haus_official/",
+        "source_label": "Instagram에서 보기 ↗"
+      }
+    ]
   },
   "case_studies": {
     "eyebrow": "CASE STUDIES",
