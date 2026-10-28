@@ -662,7 +662,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
           <label>프로젝트 목적 <select name="purpose" required><option value="">선택해 주세요</option>{brief_options}</select></label>
         </div>
         <label class="brief-full">프로젝트 설명 <textarea name="description" rows="6" placeholder="만들고 싶은 경험, 필요한 산출물, 참고 링크를 자유롭게 적어주세요." required></textarea></label>
-        <label class="brief-consent"><input type="checkbox" name="privacy_consent" value="accepted" required /> <span>{esc(d.get("privacy", {}).get("consent_label", "개인정보 처리 안내를 확인했으며, 문의 응대를 위한 정보 처리에 동의합니다."))} <a href="/privacy/">전문 보기</a></span></label>
+        <label class="brief-consent"><input type="checkbox" name="privacy_consent" value="accepted" required /> <span>{esc(d.get("privacy", {}).get("consent_label", "개인정보 처리 안내를 확인했으며, 문의 응대를 위한 정보 처리에 동의합니다."))} <a href="/privacy">전문 보기</a></span></label>
         <input type="hidden" name="privacy_policy_version" value="2026-10-29" />
         <div class="brief-actions"><button type="submit" class="brief-submit">{esc(brief_data.get("submit", "브리프 보내기"))} ↗</button><p class="brief-note" role="status">{esc(brief_data.get("note", ""))}</p></div>
       </form>'''
@@ -900,7 +900,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
       <div>
         <dt>Information</dt>
         <dd><a href="https://docs.google.com/presentation/d/171DjianF251m7syNLfqL5QrkOTJxo29TOQLVexNRJJ8/edit?usp=sharing" target="_blank" rel="noopener">brief</a></dd>
-        <dd><a href="/privacy/">개인정보 처리 안내</a></dd>
+        <dd><a href="/privacy">개인정보 처리 안내</a></dd>
       </div>
       <div>
         <dt>Studio</dt>
@@ -1291,7 +1291,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 
 <footer class="site">
   <div class="wrap">
-    <div class="foot-copy">\u00a9 {date.today().year} {esc(s["name"])} · <a href="/privacy/">개인정보 처리 안내</a></div>
+    <div class="foot-copy">\u00a9 {date.today().year} {esc(s["name"])} · <a href="/privacy">개인정보 처리 안내</a></div>
   </div>
 </footer>
 </body>
@@ -1307,7 +1307,7 @@ def build_privacy_html(d: dict, locales: list) -> str:
         f'<section class="privacy-item"><h2>{esc(item.get("title", ""))}</h2><p>{esc(item.get("body", ""))}</p></section>'
         for item in p.get("items", [])
     )
-    canonical = s["url"] + "privacy/"
+    canonical = s["url"] + "privacy"
     return f"""<!DOCTYPE html>
 <html lang="{s["lang"]}">
 <head>
