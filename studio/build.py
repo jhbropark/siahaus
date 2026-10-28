@@ -19,6 +19,7 @@ from __future__ import annotations
 import html
 import json
 import re
+import struct
 import sys
 from datetime import date
 from pathlib import Path
@@ -29,8 +30,9 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT = Path(__file__).parent
+BUILD_VERSION = date.today().isoformat()
 ANALYTICS_TAGS = ('<script defer src="/_vercel/insights/script.js"></script>\n'
-                  '<script defer src="/site-analytics.js"></script>')
+                  f'<script defer src="/site-analytics.js?v={BUILD_VERSION}"></script>')
 # 파일 하나가 로케일 하나입니다. site.json 이 기준이고 나머지는 있으면 함께 빌드합니다.
 DATA_FILES = [ROOT / "data" / "site.json"] + sorted(
     p for p in (ROOT / "data").glob("site.*.json") if p.name != "site.json"
@@ -41,6 +43,94 @@ warnings: list[str] = []
 
 def esc(s) -> str:
     return html.escape(str(s), quote=True)
+
+
+def asset_url(src: str) -> str:
+    """Prefer generated WebP assets and version local URLs for immutable caching."""
+    src = str(src or "")
+    if src.startswith("/assets/") and "?" not in src:
+        source_path = ROOT / src.lstrip("/")
+        if source_path.suffix.lower() in {".jpg", ".jpeg", ".png"}:
+            webp_path = source_path.with_suffix(".webp")
+            if webp_path.exists():
+                src = "/" + str(webp_path.relative_to(ROOT)).replace("\\", "/")
+        return f"{src}?v={BUILD_VERSION}"
+    return src
+
+
+def absolute_asset_url(site: dict, src: str) -> str:
+    src = asset_url(src)
+    if src.startswith("/"):
+        return site["url"].rstrip("/") + src
+    return src
+
+
+def image_dimensions(src: str) -> str:
+    """Return intrinsic dimensions for local PNG/JPEG/WebP assets when available."""
+    src = str(src or "")
+    if not src.startswith("/assets/"):
+        return ""
+    source_path = ROOT / src.lstrip("/").split("?", 1)[0]
+    path = source_path
+    webp_path = source_path.with_suffix(".webp") if source_path.suffix.lower() in {".jpg", ".jpeg", ".png"} else source_path
+    try:
+        if webp_path.exists():
+            path = webp_path
+        with path.open("rb") as fh:
+            data = fh.read()
+            if data.startswith(b"RIFF") and data[8:12] == b"WEBP":
+                chunk = data[12:16]
+                if chunk == b"VP8X" and len(data) >= 30:
+                    width = 1 + data[24] + (data[25] << 8) + (data[26] << 16)
+                    height = 1 + data[27] + (data[28] << 8) + (data[29] << 16)
+                    return f' width="{width}" height="{height}"'
+                if chunk == b"VP8 " :
+                    marker = data.find(b"\x9d\x01\x2a")
+                    if marker >= 0 and len(data) >= marker + 7:
+                        width = data[marker + 3] | ((data[marker + 4] & 0x3F) << 8)
+                        height = data[marker + 5] | ((data[marker + 6] & 0x3F) << 8)
+                        return f' width="{width}" height="{height}"'
+            if data.startswith(b"\x89PNG\r\n\x1a\n") and len(data) >= 24:
+                width, height = struct.unpack(">II", data[16:24])
+                return f' width="{width}" height="{height}"'
+            if data.startswith(b"\xff\xd8"):
+                i = 2
+                while i + 9 < len(data):
+                    if data[i] != 0xFF:
+                        i += 1
+                        continue
+                    marker = data[i + 1]
+                    i += 2
+                    while marker == 0xFF and i < len(data):
+                        marker = data[i]
+                        i += 1
+                    if marker in (0xD8, 0xD9):
+                        continue
+                    if i + 2 > len(data):
+                        break
+                    length = struct.unpack(">H", data[i:i + 2])[0]
+                    if marker in list(range(0xC0, 0xC4)) + list(range(0xC5, 0xC8)) + list(range(0xC9, 0xCC)) + list(range(0xCD, 0xD0)):
+                        height, width = struct.unpack(">HH", data[i + 3:i + 7])
+                        return f' width="{width}" height="{height}"'
+                    i += max(2, length)
+    except (OSError, ValueError, struct.error):
+        pass
+    return ""
+
+def project_label(w: dict) -> str:
+    return w.get("display_title") or (f'{w["client"]} — {w["name"]}' if w.get("name") else w["client"])
+
+
+def project_description(d: dict, w: dict, case_study: dict | None = None) -> str:
+    """Use editorial copy when present, otherwise a truthful archive description."""
+    explicit = str(w.get("description") or ((case_study or {}).get("summary") or "")).strip()
+    if explicit:
+        return explicit
+    label = project_label(w)
+    category = str(w.get("category") or "PROJECT").strip()
+    year = str(w.get("year") or "").strip()
+    year_text = f" {year}년" if year else ""
+    return f"SIA.HAUS의{year_text} {category} 프로젝트 아카이브입니다. {label}의 이미지와 제작 기록을 소개합니다."
 
 
 def licensing_launched(d: dict) -> bool:
@@ -358,6 +448,9 @@ h2{font-size:clamp(22px,3vw,38px);font-weight:400;letter-spacing:-0.03em;
 .brief-form input:focus,.brief-form select:focus,.brief-form textarea:focus{border-color:var(--text-strong);background:var(--white)}
 .brief-form textarea{resize:vertical;min-height:130px}
 .brief-full{display:block;margin-top:18px}
+.brief-consent{display:flex;align-items:flex-start;gap:9px;margin-top:18px;font-size:12px;line-height:1.6;color:var(--text-muted)}
+.brief-consent input{width:16px;height:16px;margin:2px 0 0;flex:0 0 auto}
+.brief-consent a{text-decoration:underline;text-underline-offset:3px}
 .brief-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}
 .brief-submit{border:0;background:var(--black);color:var(--white);padding:13px 18px;font:inherit;font-size:12px;cursor:pointer}
 .brief-submit:hover{background:#333}
@@ -474,7 +567,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         # This prevents iframe/video loading failures and text-bearing fallbacks.
         if image_url:
             media = (f'<div class="work-card-media">'
-                     f'<img src="{esc(image_url)}" alt="{esc(label)} 대표 이미지" loading="lazy" decoding="async" />'
+                     f'<img src="{esc(asset_url(image_url))}"{image_dimensions(image_url)} alt="{esc(label)} 대표 이미지" loading="lazy" decoding="async" sizes="(max-width: 520px) 100vw, (max-width: 820px) 50vw, 33vw" />'
                      f'</div>')
         else:
             media = ''
@@ -525,7 +618,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         w = work_by_slug.get(c.get("slug"), {})
         href = w.get("url") or (f'/projects/{c.get("slug")}' if c.get("slug") else "")
         image = (w.get("image_url") or "").strip()
-        media = f'<img src="{esc(image)}" alt="{esc(c.get("title", ""))} 대표 이미지" loading="lazy" decoding="async" />' if image else f'<div class="case-card-placeholder">{esc(c.get("title", ""))}</div>'
+        media = f'<img src="{esc(asset_url(image))}"{image_dimensions(image)} alt="{esc(c.get("title", ""))} 대표 이미지" loading="lazy" decoding="async" sizes="(max-width: 820px) 100vw, 50vw" />' if image else f'<div class="case-card-placeholder">{esc(c.get("title", ""))}</div>'
         case_cards.append(f'<a class="case-card" href="{esc(href)}"><div class="case-card-media">{media}</div><div class="case-card-body"><span class="case-card-label">{esc(c.get("label", "CASE STUDY"))}</span><h3>{esc(c.get("title", ""))}</h3><p>{esc(c.get("summary", ""))}</p><span class="case-card-link">상세 케이스스터디 ↗</span></div></a>')
     case_cards_html = "".join(case_cards)
     case_lead = f'<p class="lead">{esc(d["case_studies"]["lead"])}</p>' if d.get("case_studies", {}).get("lead") else ""
@@ -536,10 +629,10 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         video = (r.get("video_url") or "").strip()
         poster = (r.get("poster") or "").strip()
         source = (r.get("source") or "").strip()
-        poster_attr = f' poster="{esc(poster)}"' if poster else ""
+        poster_attr = f' poster="{esc(asset_url(poster))}"' if poster else ""
         source_html = f'<a class="reference-source" href="{esc(source)}" target="_blank" rel="noopener noreferrer">{esc(r.get("source_label", "원문 보기 ↗"))}</a>' if source else ""
         reference_cards.append(
-            f'<article class="reference-card"><div class="reference-media"><video src="{esc(video)}"{poster_attr} controls playsinline preload="metadata"></video></div>'
+            f'<article class="reference-card"><div class="reference-media"><video src="{esc(asset_url(video))}"{poster_attr} controls playsinline preload="none"></video></div>'
             f'<div class="reference-copy"><span class="reference-label">{esc(r.get("label", "REFERENCE"))}</span>'
             f'<h3>{esc(r.get("title", ""))}</h3><p>{esc(r.get("summary", ""))}</p>{source_html}</div></article>'
         )
@@ -569,6 +662,8 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
           <label>프로젝트 목적 <select name="purpose" required><option value="">선택해 주세요</option>{brief_options}</select></label>
         </div>
         <label class="brief-full">프로젝트 설명 <textarea name="description" rows="6" placeholder="만들고 싶은 경험, 필요한 산출물, 참고 링크를 자유롭게 적어주세요." required></textarea></label>
+        <label class="brief-consent"><input type="checkbox" name="privacy_consent" value="accepted" required /> <span>{esc(d.get("privacy", {}).get("consent_label", "개인정보 처리 안내를 확인했으며, 문의 응대를 위한 정보 처리에 동의합니다."))} <a href="/privacy/">전문 보기</a></span></label>
+        <input type="hidden" name="privacy_policy_version" value="2026-10-29" />
         <div class="brief-actions"><button type="submit" class="brief-submit">{esc(brief_data.get("submit", "브리프 보내기"))} ↗</button><p class="brief-note" role="status">{esc(brief_data.get("note", ""))}</p></div>
       </form>'''
 
@@ -609,8 +704,9 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         fi = (featured_work.get("image_url") or "").strip()
         if fi:
             hero_media = (
-                f'<img class="hero-media" src="{esc(fi)}" '
-                f'alt="{esc(featured_work["client"] + " — " + featured_work["name"])} 대표 이미지" />'
+                f'<img class="hero-media" src="{esc(asset_url(fi))}"{image_dimensions(fi)} '
+                f'alt="{esc(featured_work["client"] + " — " + featured_work["name"])} 대표 이미지" '
+                f'loading="eager" fetchpriority="high" decoding="async" sizes="100vw" />'
             )
         meta_bits = [featured_work.get("context", ""), featured_work.get("year", "")]
         meta_text = " · ".join(x for x in meta_bits if x)
@@ -621,6 +717,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
 
     # Footer: media.work 7-column dense layout
     social_links = "".join(f'<dd><a href="{esc(u)}" target="_blank" rel="noopener">{esc(u.split("/")[-2] if u.endswith("/") else u.split("/")[-1])}</a></dd>' for u in s.get("same_as", []))
+    social_image = absolute_asset_url(s, (featured_work or {}).get("image_url") or "/og-default.svg")
 
     return f"""<!DOCTYPE html>
 <html lang="{s["lang"]}">
@@ -639,15 +736,15 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
 <meta property="og:title" content="{esc(d["meta"]["title"])}" />
 <meta property="og:description" content="{esc(d["meta"]["description"])}" />
 <meta property="og:locale" content="{esc(s["locale"])}" />
-<meta property="og:image" content="{esc(s["url"] + "og-default.svg")}" />
+<meta property="og:image" content="{esc(social_image)}" />
 <meta property="og:image:alt" content="{esc(d["meta"]["title"])}" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="{esc(s["url"] + "og-default.svg")}" />
+<meta name="twitter:image" content="{esc(social_image)}" />
 <meta name="twitter:title" content="{esc(d["meta"]["title"])}" />
 <meta name="twitter:description" content="{esc(d["meta"]["description"])}" />
 <meta name="twitter:image:alt" content="{esc(d["meta"]["title"])}" />
 <style>{CSS}</style>
-<link rel="stylesheet" href="/theme-v2.css" />
+<link rel="stylesheet" href="/theme-v2.css?v={BUILD_VERSION}" />
 {ANALYTICS_TAGS}
 <script type="application/ld+json">
 {build_jsonld(d, launched)}
@@ -803,6 +900,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
       <div>
         <dt>Information</dt>
         <dd><a href="https://docs.google.com/presentation/d/171DjianF251m7syNLfqL5QrkOTJxo29TOQLVexNRJJ8/edit?usp=sharing" target="_blank" rel="noopener">brief</a></dd>
+        <dd><a href="/privacy/">개인정보 처리 안내</a></dd>
       </div>
       <div>
         <dt>Studio</dt>
@@ -854,10 +952,7 @@ def build_project_jsonld(d: dict, w: dict) -> str:
         "isPartOf": {"@id": s["url"] + "#website"},
     }
     case_study = next((c for c in d.get("case_studies", {}).get("items", []) if c.get("slug") == w.get("slug")), None)
-    archive_only = w.get("slug") in d.get("archive_only_slugs", [])
-    visible_description = w.get("description") or ((case_study.get("summary") if case_study else "") if not archive_only else "")
-    if visible_description:
-        work["description"] = visible_description
+    work["description"] = project_description(d, w, case_study)
     if w.get("year"):
         work["dateCreated"] = w["year"]
     if w.get("context"):
@@ -886,15 +981,16 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
     is_behance = slug.startswith("behance-")
     project_type = "archive" if archive_only else ("rich-gallery" if is_behance else ("featured-case" if case_study else "archive"))
     hero_title = display_title if not w.get("name") else w["client"]
-    hero_description = str(w.get("description") or ((case_study.get("summary") if case_study else "") if not archive_only else "") or "").strip()
-    has_body = bool(hero_description)
+    hero_description = project_description(d, w, case_study)
+    has_body = True
+    explicit_description = bool(str(w.get("description") or ((case_study or {}).get("summary") or "")).strip())
     title = f'{display_title} | {s["name"]}'
-    if has_body:
+    if explicit_description:
         desc = hero_description.split(". ")[0].strip().rstrip(".") + "."
-        if len(desc) > 300:
-            desc = desc[:297].rstrip() + "\u2026"
     else:
-        desc = display_title
+        desc = hero_description
+    if len(desc) > 300:
+        desc = desc[:297].rstrip() + "\u2026"
     if w.get("context"):
         desc += f' \u00b7 {w["context"]}'
 
@@ -957,9 +1053,9 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
                     f'loading="{loading}" allow="autoplay; fullscreen" allowfullscreen></iframe></div>')
         preload = "none" if embed_url.startswith("/assets/") else "metadata"
         poster = _poster_for(embed_url)
-        poster_attr = f' poster="{esc(poster)}"' if poster else ""
+        poster_attr = f' poster="{esc(asset_url(poster))}"' if poster else ""
         return (f'<div class="proj-media-stage is-video">'
-                f'<video src="{esc(embed_url)}"{poster_attr} muted loop playsinline preload="{preload}" '
+                f'<video src="{esc(asset_url(embed_url))}"{poster_attr} muted loop playsinline preload="{preload}" '
                 f'data-autoplay="true" aria-label="{esc(media_label)} · {esc(role_label)}"></video></div>')
 
     def _image_stage(src: str, index: int, total: int, loading: str = "lazy") -> str:
@@ -969,8 +1065,8 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
         else:
             role = "대표 이미지" if index == 0 else "프로젝트 이미지"
             alt = f"{media_label} · {role} {index + 1}"
-        return (f'<div class="proj-media-stage"><img src="{esc(src)}" alt="{esc(alt)}" '
-                f'loading="{loading}" decoding="async" /></div>')
+        return (f'<div class="proj-media-stage"><img src="{esc(asset_url(src))}"{image_dimensions(src)} alt="{esc(alt)}" '
+                f'loading="{loading}" decoding="async" sizes="100vw" /></div>')
 
     def _chapter(label: str, items: list[str]) -> str:
         if not items:
@@ -1058,6 +1154,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
         f'<a class="proj-nav-link" href="/projects/{next_item["slug"]}/">'
         f'{esc(next_label)} \u2192</a>'
     ) if next_item else '<span></span>'
+    project_social_image = absolute_asset_url(s, image_url or (gallery_images[0] if gallery_images else "") or "/og-default.svg")
     if project_type == "archive":
         related_cards = "".join(
             f'<a class="related-project-card" href="/projects/{item["slug"]}/">'
@@ -1083,7 +1180,6 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}" />
-{'<meta name="robots" content="noindex,follow" />' if not has_body else ""}
 <link rel="canonical" href="{esc(url)}" />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="{esc(s["name"])}" />
@@ -1091,10 +1187,10 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 <meta property="og:title" content="{esc(title)}" />
 <meta property="og:description" content="{esc(desc)}" />
 <meta property="og:locale" content="{esc(s["locale"])}" />
-<meta property="og:image" content="{esc(s["url"] + "og-default.svg")}" />
+<meta property="og:image" content="{esc(project_social_image)}" />
 <meta property="og:image:alt" content="{esc(title)}" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="{esc(s["url"] + "og-default.svg")}" />
+<meta name="twitter:image" content="{esc(project_social_image)}" />
 <meta name="twitter:title" content="{esc(title)}" />
 <meta name="twitter:description" content="{esc(desc)}" />
 <meta name="twitter:image:alt" content="{esc(title)}" />
@@ -1115,7 +1211,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 .proj-name,.proj-ctx,.proj-year,.proj-category{{display:inline-block}}
 .proj-year.is-unknown{{color:#999}}
 .proj-summary{{grid-column:2;align-self:end;min-width:0}}
-.project-type-archive .proj-summary{{display:none}}
+.project-type-archive .proj-summary{{grid-column:1;margin-top:30px}}
 .proj-desc{{margin:0!important;max-width:48ch!important;
   font-size:clamp(15px,1.45vw,19px)!important;line-height:1.75!important;word-break:keep-all}}
 .project-actions{{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px}}
@@ -1151,7 +1247,7 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
   .project-actions{{margin-top:26px}}
   .proj-media-wrap{{margin-top:0}}
 }}</style>
-<link rel="stylesheet" href="/theme-v2.css" />
+<link rel="stylesheet" href="/theme-v2.css?v={BUILD_VERSION}" />
 {ANALYTICS_TAGS}
 </head>
 <body>
@@ -1195,13 +1291,59 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
 
 <footer class="site">
   <div class="wrap">
-    <div class="foot-copy">\u00a9 {date.today().year} {esc(s["name"])}</div>
+    <div class="foot-copy">\u00a9 {date.today().year} {esc(s["name"])} · <a href="/privacy/">개인정보 처리 안내</a></div>
   </div>
 </footer>
 </body>
 </html>
 """
 
+
+
+def build_privacy_html(d: dict, locales: list) -> str:
+    s = d["site"]
+    p = d.get("privacy", {})
+    items = "".join(
+        f'<section class="privacy-item"><h2>{esc(item.get("title", ""))}</h2><p>{esc(item.get("body", ""))}</p></section>'
+        for item in p.get("items", [])
+    )
+    canonical = s["url"] + "privacy/"
+    return f"""<!DOCTYPE html>
+<html lang="{s["lang"]}">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<title>{esc(p.get("title", "개인정보 처리 안내"))} | {esc(s["name"])}</title>
+<meta name="description" content="{esc(p.get("description", ""))}" />
+<link rel="canonical" href="{esc(canonical)}" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="{esc(s["name"])}" />
+<meta property="og:url" content="{esc(canonical)}" />
+<meta property="og:title" content="{esc(p.get("title", "개인정보 처리 안내"))} | {esc(s["name"])}" />
+<meta property="og:description" content="{esc(p.get("description", ""))}" />
+<meta property="og:image" content="{esc(absolute_asset_url(s, "/og-default.svg"))}" />
+<link rel="stylesheet" href="/theme-v2.css?v={BUILD_VERSION}" />
+{ANALYTICS_TAGS}
+<style>
+.privacy-page{{max-width:820px;margin:0 auto;padding:clamp(120px,14vw,200px) clamp(20px,4vw,48px) 120px}}
+.privacy-page h1{{font-size:clamp(36px,5vw,64px);font-weight:300;letter-spacing:-.05em;line-height:1.05}}
+.privacy-lead{{margin-top:24px;font-size:clamp(16px,1.5vw,20px);line-height:1.8;color:var(--text-muted)}}
+.privacy-item{{border-top:1px solid var(--line);padding:28px 0}}
+.privacy-item:first-of-type{{margin-top:64px}}
+.privacy-item h2{{font-size:20px;font-weight:400}}
+.privacy-item p{{margin-top:12px;max-width:70ch;font-size:15px;line-height:1.8;color:var(--text-muted)}}
+.privacy-back{{display:inline-block;margin-top:42px;text-decoration:underline;text-underline-offset:4px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site"><div class="wrap hdr"><a class="logo" href="/">{esc(s["name"])}</a></div></header>
+<main id="main"><article class="privacy-page"><p class="eyebrow">INFORMATION</p><h1>{esc(p.get("title", "개인정보 처리 안내"))}</h1><p class="privacy-lead">{esc(p.get("intro", ""))}</p>{items}<a class="privacy-back" href="/">SIA.HAUS 홈으로 돌아가기 ↗</a></article></main>
+<footer class="site"><div class="wrap"><div class="foot-copy">© {date.today().year} {esc(s["name"])}</div></div></footer>
+</body>
+</html>
+"""
 
 
 # ─────────────────────────── llms.txt · sitemap ───────────────────────────
@@ -1289,11 +1431,12 @@ def main() -> int:
         for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', doc, re.S):
             json.loads(m.group(1))
         # 실행 스크립트가 섞여 들어가지 않았는지 확인 — 이 사이트의 전제입니다.
-        for m in re.finditer(r'<script(?![^>]*type="application/ld\+json")(?![^>]*src="/_vercel/insights/script\.js")(?![^>]*src="/site-analytics\.js")[^>]*>', doc):
+        for m in re.finditer(r'<script(?![^>]*type="application/ld\+json")(?![^>]*src="/_vercel/insights/script\.js")(?![^>]*src="/site-analytics\.js(?:\?[^\"]*)?")[^>]*>', doc):
             raise SystemExit(f"실행 스크립트가 들어갔습니다: {m.group(0)}")
 
         out[path + "index.html"] = doc
         out[path + "llms.txt"] = build_llms(d, launched)
+        out[path + "privacy/index.html"] = build_privacy_html(d, locales)
 
         # 프로젝트 상세 페이지 생성
         for w in d["work"]["items"]:
@@ -1303,7 +1446,7 @@ def main() -> int:
             # JSON-LD 검증 (도입하면)
             for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', proj_doc, re.S):
                 json.loads(m.group(1))
-            for m in re.finditer(r'<script(?![^>]*type="application/ld\+json")(?![^>]*src="/_vercel/insights/script\.js")(?![^>]*src="/site-analytics\.js")[^>]*>', proj_doc):
+            for m in re.finditer(r'<script(?![^>]*type="application/ld\+json")(?![^>]*src="/_vercel/insights/script\.js")(?![^>]*src="/site-analytics\.js(?:\?[^\"]*)?")[^>]*>', proj_doc):
                 raise SystemExit(f"실행 스크립트가 들어갔습니다: {m.group(0)}")
             out[path + f'projects/{w["slug"]}/index.html'] = proj_doc
 
@@ -1312,9 +1455,7 @@ def main() -> int:
     for d2 in docs:
         case_by_slug2 = {c.get("slug"): c for c in d2.get("case_studies", {}).get("items", [])}
         for w2 in d2["work"]["items"]:
-            case2 = case_by_slug2.get(w2.get("slug"), {})
-            visible_description2 = w2.get("description") or case2.get("summary")
-            if w2.get("slug") and str(visible_description2 or "").strip():
+            if w2.get("slug"):
                 project_urls.append(d2["site"]["url"] + "projects/" + w2["slug"] )
     out["sitemap.xml"] = build_sitemap(locales, today, project_urls)
 
