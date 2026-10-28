@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import html
 import json
+import os
 import re
 import struct
 import sys
@@ -30,7 +31,9 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT = Path(__file__).parent
-BUILD_VERSION = date.today().isoformat()
+# Use the deployment commit when available so immutable asset URLs always change
+# with a deploy, even when the build machine's timezone differs from the editor.
+BUILD_VERSION = (os.getenv("VERCEL_GIT_COMMIT_SHA") or date.today().isoformat())[:12]
 ANALYTICS_TAGS = ('<script defer src="/_vercel/insights/script.js"></script>\n'
                   f'<script defer src="/site-analytics.js?v={BUILD_VERSION}"></script>')
 # 파일 하나가 로케일 하나입니다. site.json 이 기준이고 나머지는 있으면 함께 빌드합니다.
