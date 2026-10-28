@@ -781,7 +781,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
     <div class="hero-shade" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-v2">
-        <p class="hero-kicker">{esc(d["hero"].get("role", "서울 기반 미디어아트 스튜디오"))}</p>
+        <p class="hero-kicker">{esc(d["hero"].get("role", "서울 기반 AI GRAPHICS 스튜디오"))}</p>
         <h1 class="hero-title">{esc(d["hero"].get("display_title", d["hero"]["headline"]))}</h1>
         <p class="hero-subtitle">{esc(d["hero"]["headline"])}</p>
         <p class="hero-role">{esc(d["hero"].get("service_line", ""))}</p>
