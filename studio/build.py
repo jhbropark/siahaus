@@ -65,6 +65,17 @@ def absolute_asset_url(site: dict, src: str) -> str:
     return src
 
 
+def video_sources_html(src: str) -> str:
+    """Serve a local WebM first and retain MP4 as a browser fallback."""
+    src = str(src or "")
+    if src.startswith("/assets/") and src.lower().endswith(".mp4"):
+        webm = src[:-4] + ".webm"
+        if (ROOT / webm.lstrip("/")).exists():
+            return (f'<source src="{esc(asset_url(webm))}" type="video/webm" />'
+                    f'<source src="{esc(asset_url(src))}" type="video/mp4" />')
+    return f'<source src="{esc(asset_url(src))}" />'
+
+
 def image_dimensions(src: str) -> str:
     """Return intrinsic dimensions for local PNG/JPEG/WebP assets when available."""
     src = str(src or "")
@@ -632,7 +643,7 @@ def build_html(d: dict, locales: list, launched: bool) -> str:
         poster_attr = f' poster="{esc(asset_url(poster))}"' if poster else ""
         source_html = f'<a class="reference-source" href="{esc(source)}" target="_blank" rel="noopener noreferrer">{esc(r.get("source_label", "원문 보기 ↗"))}</a>' if source else ""
         reference_cards.append(
-            f'<article class="reference-card"><div class="reference-media"><video src="{esc(asset_url(video))}"{poster_attr} controls playsinline preload="none"></video></div>'
+            f'<article class="reference-card"><div class="reference-media"><video{poster_attr} controls playsinline preload="none">{video_sources_html(video)}</video></div>'
             f'<div class="reference-copy"><span class="reference-label">{esc(r.get("label", "REFERENCE"))}</span>'
             f'<h3>{esc(r.get("title", ""))}</h3><p>{esc(r.get("summary", ""))}</p>{source_html}</div></article>'
         )
@@ -1055,8 +1066,8 @@ def build_project_html(d: dict, w: dict, locales: list, launched: bool) -> str:
         poster = _poster_for(embed_url)
         poster_attr = f' poster="{esc(asset_url(poster))}"' if poster else ""
         return (f'<div class="proj-media-stage is-video">'
-                f'<video src="{esc(asset_url(embed_url))}"{poster_attr} muted loop playsinline preload="{preload}" '
-                f'data-autoplay="true" aria-label="{esc(media_label)} · {esc(role_label)}"></video></div>')
+                f'<video{poster_attr} muted loop playsinline preload="{preload}" '
+                f'data-autoplay="true" aria-label="{esc(media_label)} · {esc(role_label)}">{video_sources_html(embed_url)}</video></div>')
 
     def _image_stage(src: str, index: int, total: int, loading: str = "lazy") -> str:
         if project_type == "rich-gallery":
